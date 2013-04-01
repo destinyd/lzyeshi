@@ -119,6 +119,8 @@ GEM
       mongoid (>= 3.0.1)
       rake
       rspec (>= 2.9)
+    mongoid_taggable_on (0.1.4)
+      mongoid (> 2.0.0)
     moped (1.4.5)
     multi_json (1.7.2)
     nokogiri (1.5.9)
@@ -234,6 +236,7 @@ DEPENDENCIES
   money-rails
   mongoid (>= 3.1.2)
   mongoid-rspec (>= 1.7.0)
+  mongoid_taggable_on
   quiet_assets (>= 1.0.2)
   rails (= 3.2.13)
   rolify (>= 3.2.0)

@@ -29,3 +29,4 @@ gem "therubyracer", ">= 0.11.3", :group => :assets, :platform => :ruby, :require
 gem "inherited_resources"
 gem 'kaminari'
 gem 'money-rails'
+gem 'mongoid_taggable_on'
