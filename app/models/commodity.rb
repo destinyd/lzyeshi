@@ -1,5 +1,6 @@
 class Commodity
   include Mongoid::Document
+  include Mongoid::Timestamps
   include Mongoid::TaggableOn
   taggable_on :categories
 
@@ -9,4 +10,8 @@ class Commodity
   validates :name, presence: true
   validates :price, presence: true
   validates :reserve, presence: true
+
+  mount_uploader :picture, PictureUploader
+
+  attr_accessible :name, :price, :reserve, :picture, :picture_cache
 end

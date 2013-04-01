@@ -78,3 +78,5 @@ pickle-email-*.html
 
 bak/
 *.bak
+
+public/uploads/

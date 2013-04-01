@@ -30,3 +30,4 @@ gem "inherited_resources"
 gem 'kaminari'
 gem 'money-rails'
 gem 'mongoid_taggable_on'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
