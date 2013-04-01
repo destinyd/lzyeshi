@@ -1,4 +1,5 @@
 Yeshi::Application.routes.draw do
+  resources :commodities
   authenticated :user do
     root :to => 'home#index'
   end
