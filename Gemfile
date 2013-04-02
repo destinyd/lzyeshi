@@ -22,7 +22,7 @@ gem "simple_form", ">= 2.1.0"
 gem "quiet_assets", ">= 1.0.2", :group => :development
 gem "figaro", ">= 0.6.3"
 gem "better_errors", ">= 0.7.2", :group => :development
-gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri_19, :rbx]
+gem "binding_of_caller", ">= 0.7.1", :group => :development#, :platforms => [:mri_19, :rbx]
 gem "libv8", ">= 3.11.8"
 gem "therubyracer", ">= 0.11.3", :group => :assets, :platform => :ruby, :require => "v8"
 
@@ -31,3 +31,6 @@ gem 'kaminari'
 gem 'money-rails'
 gem 'mongoid_taggable_on'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem 'mini_magick', '>= 3.4'
+gem 'rack-raw-upload', '>= 1.1.0'
+gem 'debugger', git: 'git://github.com/cldwalker/debugger.git', :group => :development

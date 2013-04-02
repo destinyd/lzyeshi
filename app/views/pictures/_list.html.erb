@@ -1,0 +1,7 @@
+<% @pictures.each do |picture| %>
+  <div class="picture">
+  <a target="_blank" href="<%= picture.image.thumb.url %>">
+  <%= image_tag picture.image.thumb %><br />
+  <%= link_to "删除", picture_path(picture.id), :method => :delete, 'data-confirm' => '确定要删除吗?', :remote => true %>
+  </div>  
+<% end %>

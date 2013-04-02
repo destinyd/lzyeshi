@@ -1,5 +1,19 @@
 <p id="notice"><%= notice %></p>
 
+<%= content_tag :dl do %>
+  <%= d @commodity,:name %>
+  <%= d @commodity,:price %>
+  <%= d @commodity,:reserve %>
+  <%= d @commodity,:desc %>
+<% end -%>
+
+<div class="group_commodities">
+  <% @commodity.group.commodities.each do |commodity| %>
+    <%= link_to commodity do %>
+      <%= image_tag commodity.picture.image.thumb, class: "commodity_#{'un' if @commodity != commodity}select" %>
+    <% end -%>
+  <% end %>
+</div>
 
 <%= link_to 'Edit', edit_commodity_path(@commodity) %> |
 <%= link_to 'Back', commodities_path %>

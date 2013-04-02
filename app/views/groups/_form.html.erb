@@ -1,0 +1,54 @@
+<div id="file-uploader">
+  <noscript>
+    <p>请允许执行javascript.</p>
+    <!-- or put a simple form for upload here -->
+  </noscript>
+</div>
+
+
+<script type="text/javascript">
+  var hash_pictures = {};
+  $(document).ready(function(){
+
+    var uploader = new qq.FileUploader({
+      debug: true,
+      allowedExtensions: ['jpg', 'jpeg', 'png', 'gif'],
+      sizeLimit: 1048576, // max size: 1MB
+      minSizeLimit: 0, // min size
+      multiple: true,
+      element: document.getElementById('file-uploader'),
+      action: '<%= pictures_path %>',
+      onComplete: function(id, fileName, responseJSON){
+        var picture = responseJSON.src;
+        hash_pictures[picture._id] =  picture;
+        hash_to_qquploader();
+//        $.getScript("<%= pictures_path %>");
+      },
+      onSubmit: function(id, fileName) {
+        uploader.setParams({
+          authenticity_token: "<%= form_authenticity_token.to_s %>"
+        });
+      }
+    });
+
+});
+
+</script>
+<div id ="pictures_list">
+</div>
+<%= simple_form_for(@group) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :category_list, input_html: { value: '夜市' } %>
+    <%= f.input :name %>
+    <%= f.input :price %>
+    <%= f.input :reserve %>
+    <%= f.input :text,as: :text %>
+    <%= f.input :pictures_ids,as: :hidden %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -1,0 +1,35 @@
+<div id="file-uploader">
+  <noscript>
+    <p>请允许执行javascript.</p>
+    <!-- or put a simple form for upload here -->
+  </noscript>
+</div>
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    var uploader = new qq.FileUploader({
+      debug: true,
+      allowedExtensions: ['jpg', 'jpeg', 'png', 'gif'],
+      sizeLimit: 1048576, // max size: 1MB
+      minSizeLimit: 0, // min size
+      multiple: true,
+      element: document.getElementById('file-uploader'),
+      action: '<%= pictures_path %>',
+      onComplete: function(id, fileName, responseJSON){
+        $.getScript("<%= pictures_path %>");
+      },
+      onSubmit: function(id, fileName) {
+        uploader.setParams({
+          authenticity_token: "<%= form_authenticity_token.to_s %>"
+        });
+      }
+    });
+
+});
+
+</script>
+<div id ="pictures_list">
+  <%= render "pictures/list" %>
+</div>

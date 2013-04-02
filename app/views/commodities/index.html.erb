@@ -1,21 +1,9 @@
-<h1>Listing commodities</h1>
-
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @commodities.each do |commodity| %>
-  <tr>
-    <td><%= link_to 'Show', commodity %></td>
-    <td><%= link_to 'Edit', edit_commodity_path(commodity) %></td>
-    <td><%= link_to 'Destroy', commodity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<% @commodities.group_by{|c| c.name}.each do |name,commodities| %>
+  <h2><%= name %></h2>
+  <% commodities.each do |commodity| %>
+    <%= link_to commodity do %>
+      <%= image_tag commodity.picture.image.thumb.url %>
+    <% end -%>
+  <% end -%>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Commodity', new_commodity_path %>
