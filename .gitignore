@@ -80,3 +80,4 @@ bak/
 *.bak
 
 public/uploads/
+config/mongoid.yml
