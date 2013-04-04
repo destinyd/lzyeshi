@@ -8,6 +8,7 @@ Yeshi::Application.routes.draw do
     root :to => 'home#index'
   end
   root :to => "home#index"
+  get '/contact', :to => "home#contact"
   devise_for :users
   resources :users
 end
