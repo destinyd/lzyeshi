@@ -1,4 +1,24 @@
-<h3>Home</h3>
-<% @users.each do |user| %>
-  <p>User: <%=link_to user.name, user %></p>
-<% end %>
+<h1><%= t('title') %></h1>
+
+<% @groups.each do |group| %>
+  <div class="">
+    <div class="title">
+      <h3><%= link_to group.name, group %></h3>
+    </div>
+    <ul class="thumbs inline">
+      <% group.commodities.limit(13).each do |commodity| %>
+        <li class="pull-left">
+          <%= link_to commodity do %>
+            <%= image_tag commodity.picture.image.thumb %>
+          <% end -%>
+        </li>
+      <% end -%>
+      <li class="pull-left">
+        <%= link_to group do %>
+          <%= image_tag 'view_more.jpg' %>
+        <% end -%>
+      </li>
+    </ul>
+    <div class="clearfix"></div>
+  </div>  
+<% end -%>
