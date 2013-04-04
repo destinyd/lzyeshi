@@ -1,12 +1,20 @@
-<p id="notice"><%= notice %></p>
-
-<div>
-  <% @group.commodities.each do |commodity| %>
-    <%= link_to commodity do %>
-      <%= image_tag commodity.picture.image.thumb %>
+<h1><%= @group.name %></h1>
+<dl class="dl-horizontal">
+  <dt>价格</dt>
+  <dd><%= @group.humanize_price %></dd>
+  <dt>单件库存</dt>
+  <dd><%= @group.reserve %></dd>
+  <dt>款式</dt>
+  <dd>
+  <ul class="groups_ul inline">
+    <% @group.commodities.each do |commodity| %>
+      <li>
+        <%= link_to commodity do %>
+          <%= image_tag commodity.picture.image.thumb %>
+        <% end -%>
+      </li>
     <% end -%>
-  <% end -%>
-</div>
-
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+  </ul>
+  <div class="clearfix"></div>
+  </dd>
+</dl>

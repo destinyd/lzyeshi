@@ -1,5 +1,7 @@
 Yeshi::Application.routes.draw do
-  resources :groups
+  resources :groups do
+    resources :commodities, only: [:index]
+  end
   resources :pictures
   resources :commodities
   authenticated :user do
