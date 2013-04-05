@@ -22,11 +22,15 @@ module ApplicationHelper
   end
 
   def default_meta_tags
+    if controller_name == 'home'
+      name = "#{t('title')}"
+    else
+      name = "#{t("controller.#{controller_name}")} | #{t('title')}"
+    end
     {
-      site: "#{t("controller.#{controller_name}")} | #{t('website.title')}",
-      site: t('website.title'),
-      description: t('website.desc'),
-      keywords: t('website.keywords'), 
+      site: name,
+      description: t('desc'),
+      keywords: t('keywords'), 
       reverse: true
     }
   end

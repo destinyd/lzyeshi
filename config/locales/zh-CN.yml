@@ -353,8 +353,6 @@ zh-CN:
     expired: 过期
     closed: 关闭
 
-  website:
-    title: 找嗨
   views:
     pagination:
       first: "&laquo; 首页"
