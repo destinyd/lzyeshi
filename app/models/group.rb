@@ -15,7 +15,7 @@ class Group
   has_many :pictures
 
   after_create do 
-    self.pictures << Picture.find(self.pictures_ids.split(', '))
+    self.pictures << Picture.find(self.pictures_ids.split(','))
     self.pictures.each do |p|
       commodity = Commodity.create name: self.name, price: self.price, reserve: self.reserve, text: self.text, category_list: self.category_list
       commodity.picture = p
