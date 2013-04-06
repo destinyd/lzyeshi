@@ -12,7 +12,7 @@ class Group
   attr_accessible :name, :price, :reserve,  :pictures_ids, :text, :category_list
 
   has_many :commodities, dependent: :destroy
-  has_many :pictures
+  has_many :pictures, dependent: :destroy
 
   after_create do 
     self.pictures << Picture.find(self.pictures_ids.split(','))
