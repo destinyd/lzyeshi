@@ -7,12 +7,13 @@ class Group
   field :price, type: Money
   field :reserve, type: Integer
   field :text, type: String, default: ''
-
-  attr_accessor :pictures_ids
-  attr_accessible :name, :price, :reserve,  :pictures_ids, :text, :category_list
+  belongs_to :trader
 
   has_many :commodities, dependent: :destroy
   has_many :pictures, dependent: :destroy
+
+  attr_accessor :pictures_ids
+  attr_accessible :name, :price, :reserve,  :pictures_ids, :text, :category_list
 
   after_create do 
     self.pictures << Picture.find(self.pictures_ids.split(','))

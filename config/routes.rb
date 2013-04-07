@@ -1,4 +1,7 @@
 Yeshi::Application.routes.draw do
+
+  devise_for :traders
+
   resources :groups do
     resources :commodities, only: [:index]
   end

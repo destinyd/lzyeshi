@@ -232,7 +232,15 @@ zh-CN:
     email: 邮箱
     reserve: 库存
     price: 单价
-    
+    password: 密码
+    password_confirmation: 密码验证
+    username: 用户名
+    desc: 描述
+    remember_me: 记住我
+    title: 标题
+    content: 内容
+
+ 
 
   labels:
     back: 返回

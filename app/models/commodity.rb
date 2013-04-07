@@ -8,6 +8,11 @@ class Commodity
   field :price, type: Money
   field :reserve, type: Integer
   field :text, type: String, default: ''
+  belongs_to :group
+  belongs_to :trader
+
+  has_one :picture
+
   validates :name, presence: true
   validates :price, presence: true
   validates :reserve, presence: true
@@ -17,8 +22,6 @@ class Commodity
   attr_accessible :name, :price, :reserve, :text, :picture, :picture_id, :category_list
 
   #has_many :goods
-  has_one :picture
-  belongs_to :group
 
   scope :recent, desc(:created_at)
   scope :opening, where(:reserve.gt => 0)
