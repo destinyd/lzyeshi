@@ -20,6 +20,7 @@ class Commodity
   has_one :picture
   belongs_to :group
 
+  scope :recent, desc(:created_at)
   scope :opening, where(:reserve.gt => 0)
   scope :with_pic, includes(:picture)
 
