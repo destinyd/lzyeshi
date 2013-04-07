@@ -1,0 +1,2 @@
+module Trader::CommoditiesHelper
+end

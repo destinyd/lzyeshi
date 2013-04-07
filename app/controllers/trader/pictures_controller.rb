@@ -1,5 +1,4 @@
-class PicturesController < ApplicationController
-
+class Trader::PicturesController < ApplicationController
   def index
     @pictures = Picture.all.desc(:created_at)
 

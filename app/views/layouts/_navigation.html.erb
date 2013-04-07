@@ -1,7 +1,7 @@
 <%= link_to t('title'), root_path, :class => 'brand' %>
 <ul class="nav">
     <li>
-    <%= link_to '联系方式', contact_path %>
+    <%= link_to '联系方式', contact_url(subdomain: 'ysdev') %>
     </li>
   <% if user_signed_in? %>
     <li>
