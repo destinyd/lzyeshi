@@ -44,6 +44,7 @@ class Trader
 
   has_many :groups
   has_many :commodities
+  has_many :locations
 
   attr_accessible :role_ids, :as => :admin
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at
