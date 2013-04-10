@@ -6,6 +6,10 @@
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
+    <!--[if IE 6]>
+    <%= javascript_include_tag "ie6png" %>
+    <%= stylesheet_link_tag "ie6", :media => "all" %>
+    <![endif]-->  
     <%= yield(:head) %>
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
@@ -16,6 +20,13 @@
         </div>
       </nav>
     </div>
+
+    <!--[if IE 6]>
+    <div id="notice_ie6">
+      使用IE6浏览器可能导致无法正常使用本网站，请使用更高版本的IE、<a href="http://firefox.com.cn/">火狐</a>或Chrome浏览器访问。
+    </div>
+    <![endif]-->  
+
     <div id="main" role="main">
       <div class="container">
         <div class="content">
