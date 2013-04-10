@@ -62,4 +62,5 @@ Yeshi::Application.configure do
   config.active_support.deprecation = :notify
   config.assets.precompile += %w( ie6png.js ie6.css )
 
+  config.log_tags = [ :subdomain ]
 end
