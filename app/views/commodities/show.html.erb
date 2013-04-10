@@ -13,7 +13,7 @@
     <% @commodity.group.commodities.each do |commodity| %>
       <li>
         <%= link_to commodity do %>
-          <%= image_tag commodity.picture.image.thumb %>
+          <%= image_tag commodity.picture.image.thumb, class: commodity == @commodity ? 'commodity_select' : 'commodity_unselect' %>
         <% end -%>
       </li>
     <% end -%>
