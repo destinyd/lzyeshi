@@ -13,11 +13,13 @@
           <% end -%>
         </li>
       <% end -%>
-      <li class="pull-left">
-        <%= link_to group do %>
-          <%= image_tag 'view_more.jpg' %>
-        <% end -%>
-      </li>
+      <% if group.commodities.count > 13 %>
+        <li class="pull-left">
+          <%= link_to group do %>
+            <%= image_tag 'view_more.jpg' %>
+          <% end -%>
+        </li>
+      <% end %>
     </ul>
     <div class="clearfix"></div>
   </div>  
