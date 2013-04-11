@@ -1,8 +1,8 @@
 <h1><%= @group.name %></h1>
 <%= content_tag :dl,class: 'dl-horizontal' do %>
-  <%= d @commodity,:price %>
-  <%= d @commodity,:reserve %>
-  <%= d @commodity,:desc %>
+  <%= d @group,:price %>
+  <%= d @group,:reserve %>
+  <%= d @group,:desc %>
   <dt>款式</dt>
   <dd>
   <ul class="groups_ul inline">

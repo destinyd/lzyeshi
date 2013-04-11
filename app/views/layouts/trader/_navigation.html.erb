@@ -1,4 +1,4 @@
-<%= link_to t('title'), root_url(subdomain: ENV['SUBDOMAIN']), :class => 'brand' %>
+<%= link_to t('title') + "商家版", root_url(subdomain: ENV['TRADER_SUBDOMAIN']), :class => 'brand' %>
 <div class="nav-collapse collapse">
   <ul class="nav pull-right">
     <% if user_signed_in? %>
@@ -31,7 +31,7 @@
       <%= link_to '联系方式', contact_url(subdomain: ENV['SUBDOMAIN']) %>
     </li>
     <li>
-      <%= link_to '切换到商家版', root_url(subdomain: ENV['TRADER_SUBDOMAIN']) %>
+      <%= link_to '切换到客户版', root_url(subdomain: ENV['SUBDOMAIN']) %>
     </li>
   </ul>
 </div>

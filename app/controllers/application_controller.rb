@@ -5,4 +5,23 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, :alert => exception.message
   end
 
+  def after_sign_in_path_for(resource)
+    #admin login in domain
+    #if resource.has_role?(:admin) 
+      #users_url(subdomain: ENV['ADMIN_SUBDOMAIN'])
+      ##user login in subdomain
+    #els 
+    if resource.has_role?(:trader)
+      dashboard_url(subdomain: ENV['TRADER_SUBDOMAIN'])
+      #subdomain_root_path
+    else
+      super
+    end    
+  end
+
+  def after_sign_out_path_for(resource)
+    #puts "called from after_sign_out_path"
+    root_url(:subdomain => ENV['SUBDOMAIN'])
+  end
+
 end

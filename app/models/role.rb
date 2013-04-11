@@ -3,6 +3,7 @@ class Role
   
   has_and_belongs_to_many :users
   belongs_to :resource, :polymorphic => true
+  validates :name, uniqueness: {scope:  [:resource_type,:resource_id]}
   
   field :name, :type => String
   index({ :name => 1 }, { :unique => true })

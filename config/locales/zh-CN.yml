@@ -185,10 +185,10 @@ zh-CN:
   mongoid:
     models:
       user: 用户
-      userinfo: 用户信息
-      activity: 活动
-      activity_request: 活动请求
       comment: 评论
+      group: 商品分类
+      commodity: 商品
+      picture: 图片
     attributes:
       userinfo:
         status: 签名
@@ -239,8 +239,12 @@ zh-CN:
     remember_me: 记住我
     title: 标题
     content: 内容
+    is_trader: 我是商家
+    text: 描述
+    image: 图片
+    category_list: 标签
 
- 
+
 
   labels:
     back: 返回
@@ -306,6 +310,7 @@ zh-CN:
   controller:
     groups: 商品分类
     commodities: 商品
+    pictures: 图片
     home: '主页'
     sessions: 登录
   action:

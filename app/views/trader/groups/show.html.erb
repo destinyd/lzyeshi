@@ -1,19 +1,22 @@
 <h1><%= @group.name %></h1>
 <%= content_tag :dl,class: 'dl-horizontal' do %>
-  <%= d @commodity,:price %>
-  <%= d @commodity,:reserve %>
-  <%= d @commodity,:desc %>
-  <dt>款式</dt>
-  <dd>
-  <ul class="groups_ul inline">
-    <% @group.commodities.each do |commodity| %>
-      <li>
-        <%= link_to commodity do %>
-          <%= image_tag commodity.picture.image.thumb %>
-        <% end -%>
-      </li>
-    <% end -%>
-  </ul>
+  <%#= d @group,:price %>
+  <%#= d @group,:reserve %>
+  <%#= d @group,:desc %>
+  <% if @group.commodities.any? %>
+    <dt>款式</dt>
+    <dd>
+    <ul class="groups_ul inline">
+      <% @group.commodities.each do |commodity| %>
+        <li>
+          <%= link_to commodity do %>
+            <%= image_tag commodity.picture.image.thumb %>
+          <% end -%>
+        </li>
+      <% end -%>
+    </ul>
+  <% end -%>
   <div class="clearfix"></div>
   </dd>
 <% end -%>
+<%= link_to "添加商品", new_group_commodity_path(@group) %>

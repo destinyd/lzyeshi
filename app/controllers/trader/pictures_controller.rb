@@ -1,6 +1,6 @@
 class Trader::PicturesController < ApplicationController
   def index
-    @pictures = Picture.all.desc(:created_at)
+    @pictures = current_user.pictures.recent.page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb    
@@ -10,7 +10,7 @@ class Trader::PicturesController < ApplicationController
 
   def create
     file = params[:qqfile].is_a?(ActionDispatch::Http::UploadedFile) ? params[:qqfile] : params[:file]
-    @picture = Picture.new
+    @picture = current_user.pictures.new
     @picture.image = file
     if @picture.save
       render json: { success: true, src: @picture }
@@ -20,13 +20,13 @@ class Trader::PicturesController < ApplicationController
   end
 
   def destroy
-    @picture = Picture.find(params[:id])
+    @picture = current_user.pictures.find(params[:id])
     @picture.destroy
 
     respond_to do |format|
       format.html { redirect_to pictures_path }
       format.js{ 
-        @pictures = Picture.all.desc(:created_at)
+        @pictures = current_user.pictures.recent
         render :layout => false
       }
     end

@@ -47,6 +47,19 @@ class User
   index({ email: 1 }, { unique: true, background: true })
   field :name, :type => String
   validates_presence_of :name
+  attr_accessor :is_trader
   attr_accessible :role_ids, :as => :admin
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :is_trader
+
+  has_many :groups
+  has_many :commodities
+  has_many :pictures
+
+  after_create do 
+    self.add_role :trader if self.is_trader
+  end
+
+  def to_s
+    self.name.to_s
+  end
 end

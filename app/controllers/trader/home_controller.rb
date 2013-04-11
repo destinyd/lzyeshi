@@ -1,9 +1,10 @@
 class Trader::HomeController < ApplicationController
   def index
-    if trader_signed_in?
+    if user_signed_in?
       redirect_to dashboard_path
     else
-      redirect_to new_trader_session_path
+      render :index
+      #redirect_to new_user_session_url(subdomain: ENV["SUBDOMAIN"])
     end
   end
 

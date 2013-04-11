@@ -1,6 +1,12 @@
 Yeshi::Application.routes.draw do
+  use_doorkeeper
+  constraints subdomain: "admin#{"." + ENV['SUBDOMAIN'] unless ENV['SUBDOMAIN'].blank? }" do
+
+    resources :users
+  end
+
   constraints subdomain: "trader#{"." + ENV['SUBDOMAIN'] unless ENV['SUBDOMAIN'].blank? }" do
-    devise_for :traders
+    #devise_for :users
     scope module: 'trader' do
       resources :locations
       resources :groups do
@@ -26,6 +32,5 @@ Yeshi::Application.routes.draw do
     root :to => "home#index"
     get '/contact', :to => "home#contact"
     devise_for :users
-    resources :users
   end
 end

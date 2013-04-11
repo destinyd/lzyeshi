@@ -36,3 +36,4 @@ gem 'rack-raw-upload', '>= 1.1.0'
 gem 'debugger', git: 'git://github.com/cldwalker/debugger.git', :group => :development
 gem 'meta-tags', :require => 'meta_tags',git: 'git://github.com/destinyd/meta-tags.git'
 gem "symbolize", :require => "symbolize/mongoid"
+gem 'doorkeeper'

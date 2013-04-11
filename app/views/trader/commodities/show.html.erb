@@ -1,5 +1,27 @@
-<p id="notice"><%= notice %></p>
+<%= link_to '查看实际页面', commodity_url(@commodity,subdomain: ENV['SUBDOMAIN']) %> |
+<%= link_to '修改', edit_commodity_path(@commodity) %> |
+<%= link_to '返回', commodities_path %>
 
-
-<%= link_to 'Edit', edit_commodity_path(@commodity) %> |
-<%= link_to 'Back', commodities_path %>
+<%= content_tag :dl,class: 'dl-horizontal' do %>
+  <%= d @commodity,:name %>
+  <%= d @commodity,:price %>
+  <%= d @commodity,:reserve %>
+  <%= d @commodity,:desc %>
+  <dt>大图</dt>
+  <dd>
+    <%= image_tag @commodity.picture.image.url,class: 'commodity_image' %>
+  </dd>
+  <dt>其他款式</dt>
+  <dd>
+  <ul class="groups_ul inline">
+    <% @commodity.group.commodities.each do |commodity| %>
+      <li>
+        <%= link_to commodity do %>
+          <%= image_tag commodity.picture.image.thumb, class: commodity == @commodity ? 'commodity_select' : 'commodity_unselect' %>
+        <% end -%>
+      </li>
+    <% end -%>
+  </ul>
+  <div class="clearfix"></div>
+  </dd>
+<% end -%>

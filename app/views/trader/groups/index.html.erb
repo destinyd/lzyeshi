@@ -1,7 +1,8 @@
-<h1>Listing groups</h1>
+<h1>商品分组列表</h1>
 
 <table>
   <tr>
+    <th>商品分组名称</th>
     <th></th>
     <th></th>
     <th></th>
@@ -9,13 +10,14 @@
 
 <% @groups.each do |group| %>
   <tr>
-    <td><%= link_to 'Show', group %></td>
-    <td><%= link_to 'Edit', edit_group_path(group) %></td>
-    <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to group, group %></td>
+    <td><%= link_to '添加商品', new_group_commodity_path(group) %></td>
+    <td><%= link_to '修改', edit_group_path(group) %></td>
+    <td><%= link_to '删除', group, method: :delete, data: { confirm: '你确定?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Group', new_group_path %>
+<%= link_to '新建商品分组', new_group_path %>

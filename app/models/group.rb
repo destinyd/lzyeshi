@@ -7,7 +7,7 @@ class Group
   field :price, type: Money
   field :reserve, type: Integer
   field :text, type: String, default: ''
-  belongs_to :trader
+  belongs_to :user
 
   has_many :commodities, dependent: :destroy
   has_many :pictures, dependent: :destroy
@@ -15,14 +15,20 @@ class Group
   attr_accessor :pictures_ids
   attr_accessible :name, :price, :reserve,  :pictures_ids, :text, :category_list
 
-  after_create do 
-    self.pictures << Picture.find(self.pictures_ids.split(','))
+  after_create :admin_create_group, if: :is_admin_group?
+
+  def admin_create_group
+     self.pictures << Picture.find(self.pictures_ids.split(','))
     self.pictures.each do |p|
-      commodity = Commodity.create name: self.name, price: self.price, reserve: self.reserve, text: self.text, category_list: self.category_list
+      commodity = self.user.commodities.create name: self.name, price: self.price, reserve: self.reserve, text: self.text, category_list: self.category_list
       commodity.picture = p
       self.commodities << commodity
     end
     self.save
+  end
+
+  def is_admin_group?
+    self.user and self.user.has_role :admin
   end
 
   def humanize_price

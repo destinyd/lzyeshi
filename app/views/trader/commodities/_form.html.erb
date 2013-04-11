@@ -1,7 +1,17 @@
-<%= simple_form_for(@commodity) do |f| %>
+<% @commodity.build_picture if @commodity.picture.blank? %>
+<%= simple_form_for([@group,@commodity]) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.input :category_list,hint: '请使用半角,分割。如:夜市,T恤', input_html: { value: '夜市' } %>
+    <%#= f.input :group,collection: current_user.groups %>
+    <%= f.input :name %>
+    <%= f.input :price %>
+    <%= f.input :reserve %>
+    <%= f.input :text,as: :text %>
+    <%= f.simple_fields_for :picture do |fs| %>
+      <%= fs.input :image,label: t('attributes.image') %>
+    <% end -%>
   </div>
 
   <div class="form-actions">

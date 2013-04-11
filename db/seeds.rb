@@ -16,3 +16,14 @@ end
 #user = User.create! :name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup
 #puts 'user: ' << user.name
 #user.add_role :admin
+
+a = Doorkeeper::Application.find_or_create_by(
+  uid: ENV['API_UID'],
+  secret: ENV['API_SECRET'],
+  name:'ys',
+  redirect_uri: "http://#{ENV['SUBDOMAIN'] + "." unless ENV['SUBDOMAIN'].blank?}realityandapp.com/users/auth/zhaohai/callback"
+)
+if a.uid != ENV['API_UID']
+  a.update_attribute :uid,ENV['API_UID']
+  a.update_attribute :secret,ENV['API_SECRET']
+end

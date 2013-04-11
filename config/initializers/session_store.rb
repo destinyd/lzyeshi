@@ -1,6 +1,6 @@
 # Be sure to restart your server when you modify this file.
 
-Yeshi::Application.config.session_store :cookie_store, key: '_yeshi_session'
+Yeshi::Application.config.session_store :cookie_store, key: '_yeshi_session', domain: ".#{ENV['SUBDOMAIN'] + "." unless ENV['SUBDOMAIN'].blank?}realityandapp.com"
 
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information

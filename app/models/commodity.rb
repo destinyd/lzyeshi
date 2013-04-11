@@ -9,7 +9,7 @@ class Commodity
   field :reserve, type: Integer
   field :text, type: String, default: ''
   belongs_to :group
-  belongs_to :trader
+  belongs_to :user
 
   has_one :picture
 
@@ -18,8 +18,9 @@ class Commodity
   validates :reserve, presence: true
 
   #mount_uploader :picture, PictureUploader
+  accepts_nested_attributes_for :picture
 
-  attr_accessible :name, :price, :reserve, :text, :picture, :picture_id, :category_list
+  attr_accessible :name, :price, :reserve, :text, :picture, :picture_id, :category_list, :picture_attributes
 
   #has_many :goods
 

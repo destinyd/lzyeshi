@@ -21,7 +21,9 @@
       onComplete: function(id, fileName, responseJSON){
         var picture = responseJSON.src;
         hash_pictures[picture._id] =  picture;
-        hash_to_qquploader();
+        picture_append_qquploader(picture);
+        $('#group_pictures_ids').val(array_pictures_ids.join(','));
+//        hash_to_qquploader();
 //        $.getScript("<%= pictures_path %>");
       },
       onSubmit: function(id, fileName) {
