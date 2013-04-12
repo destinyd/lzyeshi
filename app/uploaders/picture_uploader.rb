@@ -26,12 +26,14 @@ class PictureUploader < CarrierWave::Uploader::Base
   # def default_url
   #   # For Rails 3.1+ asset pipeline compatibility:
   #   # asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
+  # asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
-  #def default_url
-    #"/pictures/" + ["nopic",version_name].compact.join('_') + ".gif"
-  #end
+  def default_url
+    ["noface",version_name
+    ].compact.join('_') + ".gif"
+  end
   #file.extension
 
   process :convert => 'png'

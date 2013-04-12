@@ -9,9 +9,13 @@
     <ul class="groups_ul inline">
       <% @group.commodities.each do |commodity| %>
         <li>
-          <%= link_to commodity do %>
-            <%= image_tag commodity.picture.image.thumb %>
-          <% end -%>
+          <% if commodity.picture %>
+            <%= link_to commodity do %>
+              <%= image_tag commodity.picture.image.thumb %>
+            <% end -%>
+          <% else %>
+            <%= link_to commodity, commodity %>
+          <% end %>
         </li>
       <% end -%>
     </ul>

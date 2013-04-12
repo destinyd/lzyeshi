@@ -1,9 +1,6 @@
-<% @commodities.group_by{|c| c.name}.each do |name,commodities| %>
-  <h2><%= name %></h2>
-  <% commodities.each do |commodity| %>
-    <%= link_to commodity do %>
-      <%= image_tag commodity.picture.image.thumb.url %>
-    <% end -%>
-  <% end -%>
-<% end %>
-</table>
+<%= render "commodities/list" %>
+<div class="clearfix"></div>
+<div class="pull-right">
+  <%= paginate @pictures %>
+</div>
+<div class="clearfix"></div>

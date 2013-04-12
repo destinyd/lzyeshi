@@ -4,7 +4,7 @@ class Trader::CommoditiesController < InheritedResources::Base
   load_and_authorize_resource :group
   load_and_authorize_resource :commodity, :through => :group
   def create
-    create!{@comodity}
+    create!{@group}
   end
 
   def destroy
@@ -14,7 +14,7 @@ class Trader::CommoditiesController < InheritedResources::Base
   def begin_of_association_chain
     current_user
   end
-  def collection
-    @commodities ||= end_of_association_chain.opening.recent.page params[:page]
-  end
+  #def collection
+    #@commodities ||= end_of_association_chain.opening.recent.page params[:page]
+  #end
 end

@@ -28,6 +28,11 @@ class Commodity
   scope :opening, where(:reserve.gt => 0)
   scope :with_pic, includes(:picture)
 
+
+  after_initialize do
+    self.build_picture if self.picture.blank?
+  end
+
   def humanize_price
     price.to_s
   end

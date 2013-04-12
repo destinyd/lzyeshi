@@ -15,20 +15,22 @@ class Group
   attr_accessor :pictures_ids
   attr_accessible :name, :price, :reserve,  :pictures_ids, :text, :category_list
 
-  after_create :admin_create_group, if: :is_admin_group?
+  after_create :admin_create_group#, if: :is_admin_group?
 
   def admin_create_group
-     self.pictures << Picture.find(self.pictures_ids.split(','))
-    self.pictures.each do |p|
-      commodity = self.user.commodities.create name: self.name, price: self.price, reserve: self.reserve, text: self.text, category_list: self.category_list
-      commodity.picture = p
-      self.commodities << commodity
+    if is_admin_group?
+      self.pictures << Picture.find(self.pictures_ids.split(','))
+      self.pictures.each do |p|
+        commodity = self.user.commodities.create name: self.name, price: self.price, reserve: self.reserve, text: self.text, category_list: self.category_list
+        commodity.picture = p
+        self.commodities << commodity
+      end
+      self.save
     end
-    self.save
   end
 
   def is_admin_group?
-    self.user and self.user.has_role :admin
+    self.user and self.user.has_role? :admin
   end
 
   def humanize_price

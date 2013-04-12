@@ -1,18 +1,2 @@
 <h1>商品管理</h1>
-<% @commodities.group_by{|c| c.name}.each do |name,commodities| %>
-  <h2>分类: <%= name %></h2>
-  <% commodities.each do |commodity| %>
-    <div class="commodity">
-      <p>
-        <%= link_to commodity do %>
-          <%= image_tag commodity.picture.image.thumb.url %>
-        <% end -%>
-      </p>
-      <p>
-        <%= link_to "修改", edit_commodity_path(commodity) %>
-        <%= link_to '删除', commodity, method: :delete, data: { confirm: '你确定?' } %>
-      </p>
-    </div>
-  <% end -%>
-<% end %>
-</table>
+<%= render "trader/commodities/list" %>

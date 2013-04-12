@@ -9,5 +9,7 @@ class Picture
   belongs_to :commodity
   attr_accessible :image, :image_cache
 
+  validates :image, presence: true
+
   scope :recent,desc(:created_at)
 end
