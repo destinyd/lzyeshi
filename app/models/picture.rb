@@ -12,4 +12,8 @@ class Picture
   validates :image, presence: true
 
   scope :recent,desc(:created_at)
+
+  before_create do 
+    self.user_id = self.commodity.user_id if self.user_id.blank? and self.commodity
+  end
 end
