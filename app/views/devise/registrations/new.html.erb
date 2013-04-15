@@ -1,4 +1,4 @@
-<h2>Sign up</h2>
+<h2>注册</h2>
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
   <%= f.error_notification %>
   <%= display_base_errors resource %>
@@ -6,7 +6,18 @@
   <%= f.input :email, :required => true %>
   <%= f.input :password, :required => true %>
   <%= f.input :password_confirmation, :required => true %>
-  <%= f.input :is_trader,as: :boolean,inline_label: '我是商家' %>
-  <%= f.button :submit, 'Sign up', :class => 'btn-primary' %>
+  <%= f.input :is_trader,as: :boolean %>
+  <div id="sign_up_trader">
+    <%= f.fields_for :trader do |ft| %>
+      <%= render "trader/traders/fields_for",f: ft %>
+    <% end -%>
+  </div>
+  <%= f.button :submit, '注册', :class => 'btn-primary' %>
 <% end %>
 <%= render "devise/shared/links" %>
+<script>
+  $('#user_is_trader').click(function(){
+    show_trader_form();
+  })
+  show_trader_form();
+</script>

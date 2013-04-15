@@ -8,6 +8,7 @@ Yeshi::Application.routes.draw do
   constraints subdomain: "trader#{"." + ENV['SUBDOMAIN'] unless ENV['SUBDOMAIN'].blank? }" do
     #devise_for :users
     scope module: 'trader' do
+      resources :traders,only: [:index, :create, :update]
       resources :locations
       resources :groups do
         resources :commodities

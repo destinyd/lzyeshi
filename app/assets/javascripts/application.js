@@ -17,4 +17,5 @@
 //= require locations
 //= require groups
 //= require home
+//= require devise
 // require_tree .

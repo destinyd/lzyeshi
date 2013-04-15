@@ -189,38 +189,10 @@ zh-CN:
       group: 商品分类
       commodity: 商品
       picture: 图片
+      trader: 摊位
     attributes:
-      userinfo:
-        status: 签名
-      activity:
-        title: 活动标题
-        desc: 活动描述
-        started_at: 活动开始时间
-        finished_at: 活动结束时间
-        address: 活动地址
-        user: 举办者
-        type_list: 活动类型
-        users: 参与者
-        invited_users: 邀请了的人
-        interested_users: 感兴趣的人
-        status: 活动状态
-      activity_request:
-        text: 请求信息
-      place:
-        name: 地点名称
-      shop:
-        address:  商家地址
-        name: 店铺名称
-      contact:
-        name:  联系人名称
-      upload:
-        image_file_name: 图片
-      msg:
-        to_name: 用户名
-        from: 发送者
-      order:
-        shop: 店铺
-        total: 账单总额
+      trader:
+        address: 常驻地点
 
   attributes:
     created_at: 创建于
@@ -312,6 +284,9 @@ zh-CN:
     commodities: 商品
     pictures: 图片
     locations: 摊位定位
+    traders: 摊位
+    registrations: 注册
+    sessions: 登录
     home: '主页'
     sessions: 登录
   action:

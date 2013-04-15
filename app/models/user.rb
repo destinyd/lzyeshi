@@ -49,15 +49,23 @@ class User
   validates_presence_of :name
   attr_accessor :is_trader
   attr_accessible :role_ids, :as => :admin
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :is_trader
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :is_trader, :trader_attributes
 
   has_many :groups
   has_many :commodities
   has_many :pictures
   has_many :locations
+  #embeds_one :trader
+  has_one :trader
 
-  after_create do 
-    self.add_role :trader if self.is_trader
+  accepts_nested_attributes_for :trader
+
+  after_initialize do
+    self.build_trader if self.new_record? and self.trader.blank? and self.is_trader != '0'
+  end
+
+  after_create do
+    self.add_role :trader if not self.is_trader.blank? and self.is_trader != '0'
   end
 
   def to_s
