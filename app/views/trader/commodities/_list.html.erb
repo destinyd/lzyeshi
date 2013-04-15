@@ -1,4 +1,4 @@
-<% @commodities.group_by{|c| c.name}.each do |name,commodities| %>
+<% @commodities.group_by{|c| c.group.name}.each do |name,commodities| %>
   <h2>分类: <%= name %></h2>
   <% commodities.each do |commodity| %>
     <div class="commodity">

@@ -14,7 +14,7 @@ class Trader::CommoditiesController < InheritedResources::Base
   def begin_of_association_chain
     current_user
   end
-  #def collection
-    #@commodities ||= end_of_association_chain.opening.recent.page params[:page]
-  #end
+  def collection
+    @commodities ||= end_of_association_chain.recent.with_group.page params[:page]
+  end
 end

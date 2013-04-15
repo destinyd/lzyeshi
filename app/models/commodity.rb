@@ -27,6 +27,7 @@ class Commodity
   scope :recent, desc(:created_at)
   scope :opening, where(:reserve.gt => 0)
   scope :with_pic, includes(:picture)
+  scope :with_group, includes(:group)
 
 
   after_initialize do
