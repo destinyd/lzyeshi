@@ -1,5 +1,23 @@
-<p id="notice"><%= notice %></p>
-
-
-<%= link_to 'Edit', edit_trader_location_path(@trader_location) %> |
-<%= link_to 'Back', trader_locations_path %>
+<% content_for :head do -%>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=40c0fbba05f274067d7a07a8aa3bb578"></script>
+  <style>
+    #bmap{
+    }
+  </style>
+<% end -%>
+<h1>摊位定位显示</h1>
+<div id="bmap_location" class="bmap"></div>
+<script>
+  $(document).ready(function(){
+    init_location_map('bmap_location');
+    var point = get_point(<%= @location.lat %>,<%= @location.lng %>)
+    var marker = point_to_marker(point)
+      init_location_info(marker,
+        "<form action='/locations/<%= @location._id %>' class='button_to' method='post'><div><input name='_method' type='hidden' value='delete' /><input class='btn btn-danger' data-confirm='你确定?' type='submit' value='删除' /><input name='authenticity_token' type='hidden' value='<%= form_authenticity_token %>' /></div></form>"
+        );
+    map.addOverlay(marker)
+    map.centerAndZoom(point,16);
+  });
+</script>
+<p>  </p>
+<%= link_to '返回', locations_path,class: 'btn' %> 

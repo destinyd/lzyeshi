@@ -54,6 +54,7 @@ class User
   has_many :groups
   has_many :commodities
   has_many :pictures
+  has_many :locations
 
   after_create do 
     self.add_role :trader if self.is_trader

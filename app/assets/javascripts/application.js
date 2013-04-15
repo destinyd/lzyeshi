@@ -14,4 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require fileuploader
-//= require_tree .
+//= require locations
+//= require groups
+//= require home
+// require_tree .

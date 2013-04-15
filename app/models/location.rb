@@ -7,5 +7,6 @@ class Location
   validates :lat, presence: true
   validates :lng, presence: true
 
+  scope :recent,desc(:created_at)
   default_scope desc(:created_at)
 end

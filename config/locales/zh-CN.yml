@@ -311,6 +311,7 @@ zh-CN:
     groups: 商品分类
     commodities: 商品
     pictures: 图片
+    locations: 摊位定位
     home: '主页'
     sessions: 登录
   action:
