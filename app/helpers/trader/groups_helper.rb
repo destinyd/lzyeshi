@@ -1,2 +1,0 @@
-module Trader::GroupsHelper
-end
