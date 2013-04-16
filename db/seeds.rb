@@ -1,3 +1,4 @@
+# encoding: utf-8
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -24,6 +25,23 @@ a = Doorkeeper::Application.find_or_create_by(
   redirect_uri: "http://#{ENV['SUBDOMAIN'] + "." unless ENV['SUBDOMAIN'].blank?}realityandapp.com/users/auth/zhaohai/callback"
 )
 if a.uid != ENV['API_UID']
-  a.update_attribute :uid,ENV['API_UID']
-  a.update_attribute :secret,ENV['API_SECRET']
+  a.update_attribute :uid, ENV['API_UID']
+  a.update_attribute :secret, ENV['API_SECRET']
+end
+
+h = {name:'新浪微博', value:'http://weibo.com/liuzhouyeshi', contactable:nil}
+Contact::Link.first_or_create(h)
+h = {name:'腾讯微博', value:'http://t.qq.com/liuzhouyeshi', contactable:nil}
+Contact::Link.first_or_create(h)
+
+h = {name:'私人微信(业务联系)', value:'ayoudd', contactable:nil}
+Contact::Base.first_or_create(h)
+h = {name:'公众微信', value:'lzyeshi', contactable:nil}
+Contact::Base.first_or_create(h)
+
+h = {name:'公众微信', contactable:nil}
+p = Contact::Base.first_or_create(h)
+if p.value.blank?
+  p.image = File.new [Rails.root,'app/assets/images/wechat_mp.jpg'].join('/')
+  p.save
 end
