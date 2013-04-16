@@ -4,6 +4,6 @@ class HomeController < ApplicationController
   end
 
   def contact
-    
+    @contacts = Contact::Base.system
   end
 end

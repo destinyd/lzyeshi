@@ -12,6 +12,20 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def d_contact(model)
+    tmp = content_tag(:dt,model.name)
+    case model.class
+    when Contact::Base
+      tmp += content_tag(:dd,model.value)
+    when Contact::Link
+      tmp += content_tag(:dd,link_to(model.value,model.value))
+    when Contact::Picture
+      tmp += content_tag(:dd,image_tag(model.value))
+    else
+      tmp += content_tag(:dd,model.value)
+    end
+  end
+
   def d(model,attr)
     if model.respond_to? attr and !model.send(attr).blank?
       tmp = content_tag(:dt,model.class.human_attribute_name(attr))
