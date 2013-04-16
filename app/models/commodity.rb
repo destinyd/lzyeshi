@@ -10,6 +10,7 @@ class Commodity
   field :text, type: String, default: ''
   belongs_to :group
   belongs_to :user
+  belongs_to :trader
 
   has_one :picture
 
@@ -47,5 +48,12 @@ class Commodity
     options[:methods] ||= [:humanize_price]
     options[:include] ||= [:picture]
     super(options)
+  end
+
+  before_create :give_trader
+
+  def give_trader
+    self.user = self.try(:group).try(:user)
+    self.trader = self.try(:user).try(:trader)
   end
 end

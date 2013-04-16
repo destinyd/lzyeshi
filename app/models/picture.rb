@@ -5,6 +5,7 @@ class Picture
 
   mount_uploader :image, PictureUploader
   belongs_to :user
+  belongs_to :trader
   belongs_to :group
   belongs_to :commodity
   attr_accessible :image, :image_cache
@@ -14,6 +15,7 @@ class Picture
   scope :recent,desc(:created_at)
 
   before_create do 
-    self.user_id = self.commodity.user_id if self.user_id.blank? and self.commodity
+    self.user = self.commodity.try(:user) if self.user_id.blank?
+    self.trader = self.try(:user).try(:trader)
   end
 end

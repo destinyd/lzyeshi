@@ -18,6 +18,6 @@
 </table>
 <div class="clearfix"></div>
 <div class="pull-right">
-  <%= paginate @commodities %>
+  <%= paginate @commodities unless @commodities.blank? %>
 </div>
 <div class="clearfix"></div>

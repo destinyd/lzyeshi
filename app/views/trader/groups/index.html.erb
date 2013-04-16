@@ -18,6 +18,10 @@
 <% end %>
 </table>
 
-<br />
+<div class="clearfix"></div>
+<div class="pull-right">
+  <%= paginate @groups %>
+</div>
+<div class="clearfix"></div>
 
 <%= link_to '新建商品分组', new_group_path %>
