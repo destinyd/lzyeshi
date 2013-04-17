@@ -3,12 +3,12 @@ Yeshi::Application.routes.draw do
 
   constraints subdomain: ENV['SUBDOMAIN'] do
     resources :traders, only: [:index,:show]
-    resources :locations
-    resources :groups do
+    #resources :locations, only: [:index,:show]
+    resources :groups, only: [:index,:show] do
       resources :commodities, only: [:index]
     end
-    resources :pictures
-    resources :commodities
+    #resources :pictures
+    resources :commodities, only: [:index,:show]
     authenticated :user do
       root :to => 'home#index'
     end
