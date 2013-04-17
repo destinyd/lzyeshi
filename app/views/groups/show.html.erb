@@ -1,5 +1,7 @@
 <% @commodities = @group.commodities.page(params[:page]) %>
-<h1><%= title @group.name %></h1>
+<h1 id="title">
+  <%= title @group.name %>
+</h1>
 <%= content_tag :dl,class: 'dl-horizontal' do %>
   <dt>商品</dt>
   <dd>

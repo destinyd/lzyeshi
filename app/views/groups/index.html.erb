@@ -1,4 +1,6 @@
-<h1>分组列表</h1>
+<h1 id="title">
+  <%= title "商品分类列表 第#{params[:page] || 1}页" %>
+</h1>
 
 <% @groups.each do |group| %>
   <% if group.commodities.any? %>
