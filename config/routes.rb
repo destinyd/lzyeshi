@@ -1,8 +1,20 @@
 Yeshi::Application.routes.draw do
   use_doorkeeper
-  constraints subdomain: "admin#{"." + ENV['SUBDOMAIN'] unless ENV['SUBDOMAIN'].blank? }" do
 
-    resources :users
+  constraints subdomain: ENV['SUBDOMAIN'] do
+    resources :traders, only: [:index,:show]
+    resources :locations
+    resources :groups do
+      resources :commodities, only: [:index]
+    end
+    resources :pictures
+    resources :commodities
+    authenticated :user do
+      root :to => 'home#index'
+    end
+    root :to => "home#index"
+    get '/contact', :to => "home#contact", as: :system_contact
+    devise_for :users
   end
 
   constraints subdomain: "trader#{"." + ENV['SUBDOMAIN'] unless ENV['SUBDOMAIN'].blank? }" do
@@ -21,18 +33,7 @@ Yeshi::Application.routes.draw do
     end
   end
 
-  constraints subdomain: ENV['SUBDOMAIN'] do
-    resources :locations
-    resources :groups do
-      resources :commodities, only: [:index]
-    end
-    resources :pictures
-    resources :commodities
-    authenticated :user do
-      root :to => 'home#index'
-    end
-    root :to => "home#index"
-    get '/contact', :to => "home#contact", as: :system_contact
-    devise_for :users
+  constraints subdomain: "admin#{"." + ENV['SUBDOMAIN'] unless ENV['SUBDOMAIN'].blank? }" do
+    resources :users
   end
 end

@@ -28,6 +28,9 @@
 
   <ul class="nav">
     <li>
+      <%= link_to '商家摊位', traders_url(subdomain: ENV['SUBDOMAIN']) %>
+    </li>
+    <li>
       <%= link_to '联系方式', system_contact_url(subdomain: ENV['SUBDOMAIN']) %>
     </li>
     <li>

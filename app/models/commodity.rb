@@ -56,4 +56,16 @@ class Commodity
     self.user = self.try(:group).try(:user)
     self.trader = self.try(:user).try(:trader)
   end
+
+  after_create :update_group_count, :update_trader_count
+
+  after_destroy :update_group_count, :update_trader_count
+
+  def update_group_count
+    self.group.update_attribute :commodities_count, self.group.commodities.count
+  end
+
+  def update_trader_count
+    self.trader.update_attribute :commodities_count, self.trader.commodities.count
+  end
 end

@@ -1,12 +1,10 @@
+<% title @group.name %>
 <h1><%= @group.name %></h1>
 <%= content_tag :dl,class: 'dl-horizontal' do %>
-  <%#= d @group,:price %>
-  <%#= d @group,:reserve %>
-  <%#= d @group,:desc %>
-  <dt>款式</dt>
+  <dt>商品</dt>
   <dd>
   <ul class="groups_ul inline">
-    <% @group.commodities.each do |commodity| %>
+    <% @commodities.each do |commodity| %>
       <li>
         <%= link_to commodity do %>
           <%= image_tag commodity.picture.image.thumb %>
@@ -17,3 +15,8 @@
   <div class="clearfix"></div>
   </dd>
 <% end -%>
+<div class="clearfix"></div>
+<div class="pull-right">
+  <%= paginate @commodities %>
+</div>
+<div class="clearfix"></div>

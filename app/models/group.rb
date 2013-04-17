@@ -7,6 +7,7 @@ class Group
   field :price, type: Money
   field :reserve, type: Integer
   field :text, type: String, default: ''
+  field :commodities_count, type: Integer, default: 0
   belongs_to :user
   belongs_to :trader
 
@@ -15,6 +16,9 @@ class Group
 
   attr_accessor :pictures_ids
   attr_accessible :name, :price, :reserve,  :pictures_ids, :text, :category_list
+
+  scope :available,where(:commodities_count.gt => 0)
+  scope :with_commodities,includes(:commodities)
 
   def humanize_price
     price.to_s

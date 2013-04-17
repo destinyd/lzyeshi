@@ -1,4 +1,4 @@
-<h1>分组列表</h1>
+<h1><%= link_to @trader, @trader %></h1>
 
 <% @groups.each do |group| %>
   <% if group.commodities.any? %>
@@ -27,8 +27,3 @@
   <% end -%>
 <% end -%>
 
-<div class="clearfix"></div>
-<div class="pull-right">
-  <%= paginate @groups %>
-</div>
-<div class="clearfix"></div>

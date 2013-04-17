@@ -1,4 +1,7 @@
 module ApplicationHelper
+  def current_trader
+    current_user.trader
+  end
 
   def display_base_errors resource
     return '' if (resource.errors.empty?) or (resource.errors[:base].empty?)

@@ -1,34 +1,36 @@
-<h1>分组列表</h1>
+<h1>商家摊位列表</h1>
 
-<% @groups.each do |group| %>
-  <% if group.commodities.any? %>
-    <div class="commodities">
-      <div class="title">
-        <h3><%= link_to group.name, group %></h3>
-      </div>
+<% @traders.each do |trader| %>
+  <% @commodities = trader.commodities.limit(13) %>
+  <div class="trader">
+    <div class="title">
+      <h3><%= link_to trader.name, trader %></h3>
+    </div>
+    <% if @commodities.any? %>
       <ul class="thumbs inline">
-        <% group.commodities.limit(13).each do |commodity| %>
+        <% @commodities.each do |commodity| %>
           <li class="pull-left">
             <%= link_to commodity do %>
               <%= image_tag commodity.picture.image.thumb %>
             <% end -%>
           </li>
         <% end -%>
-        <% if group.commodities.count > 13 %>
+        <% if @commodities.count > 13 %>
           <li class="pull-left">
-            <%= link_to group do %>
+            <%= link_to trader do %>
               <%= image_tag 'view_more.jpg' %>
             <% end -%>
           </li>
         <% end %>
       </ul>
       <div class="clearfix"></div>
-    </div>  
-  <% end -%>
+    <% else %>
+      <p> 暂无商品 </p>
+    <% end -%>
+  </div>
 <% end -%>
-
 <div class="clearfix"></div>
 <div class="pull-right">
-  <%= paginate @groups %>
+  <%= paginate @traders %>
 </div>
 <div class="clearfix"></div>
