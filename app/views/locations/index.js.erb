@@ -1,0 +1,13 @@
+$('#title').html("摊位定位列表 第<%= params[:page] || "1" %>页");
+locations = <%= @locations.to_json.html_safe %>;
+locations_markers = [];
+init_locations_markers(locations);
+map.clearOverlays();
+console.log(locations_markers);
+$.each(locations_markers,function(index,marker){
+  init_location_info(marker,
+    "<a href='/traders/<%= @trader._id %>/locations/" + locations[index]._id + "' class='btn'>详细</a>"
+    );
+  map.addOverlay(marker);
+})
+$('#paginate').html('<%= j paginate @locations,remote: true %>')

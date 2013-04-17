@@ -1,0 +1,10 @@
+<h1><%= title "#{@trader.name}的联系方式" %></h1>
+
+<%= render_cell :trader,:nav, parent: @trader, c: controller_name, a: action_name %>
+
+<dl class="dl-horizontal">
+  <% @contacts.each do |contact| %>
+    <%= d_contact contact %>
+  <% end -%>
+</dl>
+

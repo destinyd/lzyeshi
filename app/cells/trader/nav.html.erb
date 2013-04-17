@@ -1,0 +1,21 @@
+<% if @parent.class == Trader %>
+  <ul class="nav nav-pills">
+    <li class='<%= 'active' if @c == 'traders' and @a != 'contact' %>'>
+      <%= link_to "商家摊位", @parent %>
+    </li>
+    <% if nil %>
+      <li class='<%= 'active' if @c == 'groups' %>'>
+        <%= link_to "分类", trader_groups_path(@parent) %>
+      </li>
+    <% end -%>
+    <li class='<%= 'active' if @c == 'commodities' %>'>
+      <%= link_to "商品", trader_commodities_path(@parent) %>
+    </li>
+    <li class='<%= 'active' if @c == 'traders' and @a == 'contact'  %>'>
+      <%= link_to "联系方式", contact_trader_path(@parent) %>
+    </li>
+    <li class='<%= 'active' if @c == 'locations' %>'>
+      <%= link_to "摆摊地点记录", trader_locations_path(@parent) %>
+    </li>
+  </ul>
+<% end -%>

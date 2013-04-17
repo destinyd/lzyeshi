@@ -2,6 +2,7 @@ class Commodity
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::TaggableOn
+  paginates_per 30
   taggable_on :categories
 
   field :name, type: String

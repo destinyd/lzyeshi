@@ -1,4 +1,3 @@
-<h1>商品列表</h1>
 <% @commodities.each do |commodity| %>
   <%= link_to commodity do %>
     <%= image_tag commodity.picture.image.thumb.url %>

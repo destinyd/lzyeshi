@@ -1,8 +1,9 @@
 class TradersController < InheritedResources::Base
-  actions :index,:show
-  def show
+  actions :index, :show
+
+  def contact
     @trader = Trader.find(params[:id])
-    @groups = @trader.groups#.with_commodities
+    @contacts = @trader.contacts
   end
 
   protected

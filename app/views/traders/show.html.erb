@@ -1,6 +1,8 @@
-<h1><%= link_to @trader, @trader %></h1>
+<h1><%= title @trader.name %></h1>
 
-<% @groups.each do |group| %>
+<%= render_cell :trader,:nav, parent: @trader, c: controller_name, a: action_name %>
+
+<% @trader.groups.available.each do |group| %>
   <% if group.commodities.any? %>
     <div class="commodities">
       <div class="title">

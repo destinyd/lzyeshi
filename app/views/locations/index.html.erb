@@ -1,21 +1,30 @@
-<h1>Listing locations</h1>
+<% content_for :head do -%>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=40c0fbba05f274067d7a07a8aa3bb578"></script>
+  <style>
+    #bmap{
+    }
+  </style>
+<% end -%>
+<h1 id="title">
+  <%= title "摊位定位列表 第#{params[:page] || 1}页" %>
+</h1>
+<%= render_cell :trader,:nav, parent: @trader, c: controller_name, a: action_name %>
+<div id="bmap_location" class="bmap"></div>
+<div class="clearfix"></div>
+<div class="pull-right" id="paginate">
+  <%= paginate @locations,remote: true %>
+</div>
+<div class="clearfix"></div>
 
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<script>
+  $(document).ready(function(){
+    locations = <%= @locations.to_json.html_safe %>;
+    init_locations('bmap_location',locations);
+    $.each(locations_markers,function(index,marker){
+      map.addOverlay(marker);
+    })
+    map.centerAndZoom('柳州市')
+  });
+</script>
 
-<% @locations.each do |location| %>
-  <tr>
-    <td><%= link_to 'Show', location %></td>
-    <td><%= link_to 'Edit', edit_location_path(location) %></td>
-    <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
 
-<br />
-
-<%= link_to 'New Location', new_location_path %>

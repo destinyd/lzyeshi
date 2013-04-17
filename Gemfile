@@ -38,3 +38,5 @@ gem 'debugger', git: 'git://github.com/cldwalker/debugger.git', :group => :devel
 gem 'meta-tags', :require => 'meta_tags',git: 'git://github.com/destinyd/meta-tags.git'
 gem "symbolize", :require => "symbolize/mongoid"
 gem 'doorkeeper'
+gem 'cells'
+gem 'rspec-cells'

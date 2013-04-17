@@ -2,8 +2,12 @@ Yeshi::Application.routes.draw do
   use_doorkeeper
 
   constraints subdomain: ENV['SUBDOMAIN'] do
-    resources :traders, only: [:index,:show]
-    #resources :locations, only: [:index,:show]
+    resources :traders, only: [:index,:show] do
+      get :contact, to: 'traders#contact', on: :member
+      resources :locations, only: [:index]
+      resources :commodities, only: [:index]
+      resources :groups, only: [:index]
+    end
     resources :groups, only: [:index,:show] do
       resources :commodities, only: [:index]
     end
