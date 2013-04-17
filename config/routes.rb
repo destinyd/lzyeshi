@@ -8,6 +8,7 @@ Yeshi::Application.routes.draw do
   constraints subdomain: "trader#{"." + ENV['SUBDOMAIN'] unless ENV['SUBDOMAIN'].blank? }" do
     #devise_for :users
     scope module: 'trader' do
+      resources :contacts
       resources :traders,only: [:index, :create, :update]
       resources :locations
       resources :groups do
@@ -31,7 +32,7 @@ Yeshi::Application.routes.draw do
       root :to => 'home#index'
     end
     root :to => "home#index"
-    get '/contact', :to => "home#contact"
+    get '/contact', :to => "home#contact", as: :system_contact
     devise_for :users
   end
 end

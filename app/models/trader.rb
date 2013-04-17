@@ -9,7 +9,8 @@ class Trader
   has_many :commodities
   has_many :pictures
   has_many :locations
-  has_many :contacts, as: :contactable,class_name: 'Contact::Base'
+  has_many :contacts,class_name: 'Contact::Base'#, as: :contactable
+  #has_many :contacts, as: :contactable,class_name: 'Contact::Base'
   #embeds_many :contacts, :class_name => 'Contact::Base'
 
   belongs_to :user

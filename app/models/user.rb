@@ -55,7 +55,7 @@ class User
   has_many :commodities
   has_many :pictures
   has_many :locations
-  has_many :contacts, as: :contactable,class_name: 'Contact::Base'
+  has_many :contacts,class_name: 'Contact::Base'#, as: :contactable
   #embeds_one :trader
   has_one :trader
   #embeds_many :contacts, :class_name => 'Contact::Base'

@@ -1,0 +1,17 @@
+<h1>修改联系方式</h1>
+
+<%= simple_form_for(@contact, url: contact_path(@contact)) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name, input_html: {name: 'contact[name]'} %>
+    <%= f.input :value, input_html: {name: 'contact[value]'} unless @contact.class == Contact::Picture %>
+    <%= f.input :value, as: :file, input_html: {name: 'contact[value]'} if @contact.class == Contact::Picture%>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, '修改联系方式' %>
+  </div>
+<% end %>
+
+<%= link_to '返回', contacts_path %>

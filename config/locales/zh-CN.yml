@@ -190,6 +190,10 @@ zh-CN:
       commodity: 商品
       picture: 图片
       trader: 摊位
+      contact:
+        base: 联系方式
+        picture: 图片联系方式
+        link: 链接联系方式
     attributes:
       trader:
         address: 常驻地点
@@ -215,6 +219,8 @@ zh-CN:
     text: 描述
     image: 图片
     category_list: 标签
+    value: 内容
+    _type: 类型
 
 
 
@@ -285,8 +291,8 @@ zh-CN:
     pictures: 图片
     locations: 摊位定位
     traders: 摊位
+    contacts: 联系方式
     registrations: 注册
-    sessions: 登录
     home: '主页'
     sessions: 登录
   action:

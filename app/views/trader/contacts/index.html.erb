@@ -1,0 +1,11 @@
+<h1>联系方式列表</h1>
+
+<dl class="dl-horizontal">
+  <% @contacts.each do |contact| %>
+    <%= d_contact contact %>
+    <dd><%= link_to '修改',edit_contact_path(contact) %></dd>
+    <dd><%= link_to '删除', contact_path(contact), method: :delete, data: { confirm: '你确定?' } %></dd>
+  <% end -%>
+</dl>
+
+<%= link_to '新联系方式', new_contact_path %>

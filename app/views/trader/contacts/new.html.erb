@@ -1,0 +1,42 @@
+<h1>新建联系方式</h1>
+
+<%= simple_form_for(@contact, url: contacts_path) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :_type, collection: Contact::Base.types, include_blank: false, input_html: {name: 'contact[_type]', id: :contact_type} %>
+    <%= f.input :name, input_html: {name: 'contact[name]'} %>
+    <%= f.input :value, wrapper_html: {id: :wrapper_contact_value}, input_html: {name: 'contact[value]', id: :contact_value } %>
+    <%= f.input :value, as: :file, disabled: true, wrapper_html: {class: :hide, id: :wrapper_contact_picture}, input_html: {id: :contact_picture, name: 'contact[value]'} %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, '新建联系方式' %>
+  </div>
+<% end %>
+
+<%= link_to '返回', contacts_path %>
+<script>
+  function change_contact_type_show(){
+    if(obj.val() == "Contact::Picture"){
+      $('#wrapper_contact_value').hide();
+      $('#contact_value').attr('disabled', true);
+      $('#contact_picture').attr('disabled', false);
+      $('#wrapper_contact_picture').show();
+    }
+    else{
+      $('#contact_picture').attr('disabled', true);
+      $('#wrapper_contact_picture').hide();
+      $('#contact_value').attr('disabled', false);
+      $('#wrapper_contact_value').show();
+    }
+  }
+  var obj;
+  $(document).ready(function(){
+    obj = $('#contact_type');
+    obj.change(function(e){
+      change_contact_type_show()
+    });
+    change_contact_type_show()
+  });
+</script>
