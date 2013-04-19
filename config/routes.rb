@@ -13,6 +13,7 @@ Yeshi::Application.routes.draw do
       resources :commodities, only: [:index]
     end
     #resources :pictures
+    resources :locations, only: [:index]
     resources :commodities, only: [:index, :show]
     authenticated :user do
       root :to => 'home#index'
