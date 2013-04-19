@@ -46,7 +46,7 @@ class User
   # run 'rake db:mongoid:create_indexes' to create indexes
   index({ email: 1 }, { unique: true, background: true })
   field :name, :type => String
-  validates_presence_of :name
+  validates :name, presence: true, length: 2..16
   attr_accessor :is_trader
   attr_accessible :role_ids, :as => :admin
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :is_trader, :trader_attributes
@@ -56,6 +56,8 @@ class User
   has_many :pictures
   has_many :locations
   has_many :contacts,class_name: 'Contact::Base'#, as: :contactable
+  has_many :chat_messages
+  has_many :got_chat_messages, class_name: 'ChatMessage', inverse_of: :to
   #embeds_one :trader
   has_one :trader
   #embeds_many :contacts, :class_name => 'Contact::Base'
