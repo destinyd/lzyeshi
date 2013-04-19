@@ -14,27 +14,32 @@
       </li>
     <% end %>
     <% if user_signed_in? %>
+      <% if current_user.has_role? :trader %>
+        <li>
+          <%= link_to '切换到商家版', root_url(subdomain: ENV['TRADER_SUBDOMAIN']) %>
+        </li>
+      <% end %>
       <% if current_user.has_role? :admin %>
         <li>
           <%= link_to 'Admin', users_url(subdomain: ENV['ADMIN_SUBDOMAIN']) %>
         </li>
-      <% end if nil %>
-    <% else %>
-      <li>
-        <%= link_to '注册', new_user_registration_url(subdomain: ENV['SUBDOMAIN']) %>
-      </li>
-    <% end %>
-  </ul>
+        <% end if nil %>
+      <% else %>
+        <li>
+          <%= link_to '注册', new_user_registration_url(subdomain: ENV['SUBDOMAIN']) %>
+        </li>
+      <% end %>
+    </ul>
 
-  <ul class="nav">
-    <li>
-      <%= link_to '商家摊位', traders_url(subdomain: ENV['SUBDOMAIN']) %>
-    </li>
-    <li>
-      <%= link_to '联系方式', system_contact_url(subdomain: ENV['SUBDOMAIN']) %>
-    </li>
-    <li>
-      <%= link_to '切换到商家版', root_url(subdomain: ENV['TRADER_SUBDOMAIN']) %>
-    </li>
-  </ul>
-</div>
+    <ul class="nav">
+      <li>
+        <%= link_to '最新商品', commodities_url(subdomain: ENV['SUBDOMAIN']) %>
+      </li>
+      <li>
+        <%= link_to '商家摊位', traders_url(subdomain: ENV['SUBDOMAIN']) %>
+      </li>
+      <li>
+        <%= link_to '联系方式', system_contact_url(subdomain: ENV['SUBDOMAIN']) %>
+      </li>
+    </ul>
+  </div>
