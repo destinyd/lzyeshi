@@ -30,18 +30,18 @@ if a.uid != ENV['API_UID']
 end
 
 h = {name:'新浪微博', value:'http://weibo.com/liuzhouyeshi', contactable:nil}
-Contact::Link.first_or_create(h)
+c = Contact::Link.where(h).first_or_create
 h = {name:'腾讯微博', value:'http://t.qq.com/liuzhouyeshi', contactable:nil}
-Contact::Link.first_or_create(h)
+c = Contact::Link.where(h).first_or_create
 
 h = {name:'私人微信(业务联系)', value:'ayoudd', contactable:nil}
-Contact::Base.first_or_create(h)
+Contact::Base.where(h).first_or_create
 h = {name:'公众微信', value:'lzyeshi', contactable:nil}
-Contact::Base.first_or_create(h)
+Contact::Base.where(h).first_or_create
 
 h = {name:'公众微信', contactable:nil}
-p = Contact::Base.first_or_create(h)
+p = Contact::Picture.where(h).first_or_create
 if p.value.blank?
-  p.image = File.new [Rails.root,'app/assets/images/wechat_mp.jpg'].join('/')
+  p.value = File.new [Rails.root,'app/assets/images/wechat_mp.jpg'].join('/')
   p.save
 end
