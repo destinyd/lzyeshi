@@ -194,9 +194,14 @@ zh-CN:
         base: 联系方式
         picture: 图片联系方式
         link: 链接联系方式
+      chat_message: 短信息
     attributes:
       trader:
         address: 常驻地点
+      chat_message:
+        name: 收件人
+        chatable: 谈论对象
+        user: 发送者
 
   attributes:
     created_at: 创建于
@@ -295,6 +300,7 @@ zh-CN:
     registrations: 注册
     home: '主页'
     sessions: 登录
+    chat_messages: 短信息
   action:
     prices:
       new: 记账

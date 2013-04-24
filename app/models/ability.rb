@@ -8,8 +8,9 @@ class Ability
     elsif user.has_role? :trader
       can :manage, [Group, Commodity, Picture], user_id: user.id
     elsif user.has_role? :user
-      can :read, ChatMessage, to_id: user.id
-      can :create, ChatMessage
+      can :read, Commodity
+      can :manage, ChatMessage, to_id: user.id
+      can [:new, :create], ChatMessage
     end
     # Define abilities for the passed in user here. For example:
     #

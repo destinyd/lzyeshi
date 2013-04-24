@@ -2,7 +2,9 @@ Yeshi::Application.routes.draw do
   use_doorkeeper
 
   constraints subdomain: ENV['SUBDOMAIN'] do
-    resources :chat_messages, only: [:index, :show, :new, :create]
+    resources :chat_messages, except: [:edit, :update] do
+      resources :chat_messages, only: [:new, :create]
+    end
     resources :traders, only: [:index, :show] do
       get :contact, to: 'traders#contact', on: :member
       resources :locations, only: [:index]
@@ -14,7 +16,9 @@ Yeshi::Application.routes.draw do
     end
     #resources :pictures
     resources :locations, only: [:index]
-    resources :commodities, only: [:index, :show]
+    resources :commodities, only: [:index, :show] do
+      resources :chat_messages, only: [:new, :create]
+    end
     authenticated :user do
       root :to => 'home#index'
     end

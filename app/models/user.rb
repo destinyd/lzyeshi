@@ -56,7 +56,7 @@ class User
   has_many :pictures
   has_many :locations
   has_many :contacts,class_name: 'Contact::Base'#, as: :contactable
-  has_many :chat_messages
+  has_many :chat_messages, inverse_of: :user
   has_many :got_chat_messages, class_name: 'ChatMessage', inverse_of: :to
   #embeds_one :trader
   has_one :trader
@@ -70,6 +70,7 @@ class User
 
   after_create do
     self.add_role :trader if not self.is_trader.blank? and self.is_trader != '0'
+    self.add_role :user
   end
 
   def to_s
