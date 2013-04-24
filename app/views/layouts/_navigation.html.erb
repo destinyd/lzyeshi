@@ -6,6 +6,9 @@
         <%= link_to current_user,edit_user_registration_url(subdomain: ENV['SUBDOMAIN']) %>
       </li>
       <li>
+        <%= link_to current_user.notifications.unread.count,notifications_path,title:'未读提示' %>
+      </li>
+      <li>
         <%= link_to '退出', destroy_user_session_url(subdomain: ENV['SUBDOMAIN']), :method=>'delete' %>
       </li>
     <% else %>

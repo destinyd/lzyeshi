@@ -39,6 +39,7 @@ class ChatMessage
   end
 
   before_validation :find_to, :find_chatable
+  after_create :notify
 
   protected
   def find_to
@@ -54,5 +55,14 @@ class ChatMessage
     elsif !commodity_id.blank?
       self.chatable = Commodity.find(chat_message_id)
     end
+  end
+
+  def notify
+    self.to.notifications.create!({
+      from: self.user,
+      chat_message: self,
+      text: self.content,
+    },
+    Notification::Chat)
   end
 end

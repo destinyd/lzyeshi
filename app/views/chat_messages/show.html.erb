@@ -1,13 +1,17 @@
 <h1><%= title "来自#{@chat_message.user}的短信息" %></h1>
 <%= content_tag :dl, class: 'dl-horizontal' do %>
   <%= d @chat_message, :user %>
-  <dt>谈论对象</dt>
-  <dd><%= link_to @chat_message.chatable, @chat_message.chatable %></dd>
+  <% if @chat_message.chatable %>
+    <dt>谈论对象</dt>
+    <dd>
+    <%= link_to @chat_message.chatable, @chat_message.chatable %>
+    </dd>
+  <% end -%>
   <%= d @chat_message, :content %>
   <dt>操作</dt>
   <dd>
-    <%= link_to '回复', new_chat_message_chat_message_path(@chat_message, chat_message: {name: @chat_message.user.name}) if current_user == @chat_message.to %>
-    <%= link_to '删除', @chat_message, method: :delete, data: { confirm: '你确定?' } if !@chat_message.is_delete? and current_user == @chat_message.to %>
+  <%= link_to '回复', new_chat_message_chat_message_path(@chat_message, chat_message: {name: @chat_message.user.name}) if current_user == @chat_message.to %>
+  <%= link_to '删除', @chat_message, method: :delete, data: { confirm: '你确定?' } if !@chat_message.is_delete? and current_user == @chat_message.to %>
   </dd>
   <div class="clearfix"></div>
   </dd>

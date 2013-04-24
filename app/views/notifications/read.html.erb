@@ -1,0 +1,28 @@
+<h1>已读通知</h1>
+<ul class="nav nav-pills">
+  <li>
+    <%= link_to '未读',notifications_path %>
+  </li>
+  <li class="active">
+    <%= link_to '已读',read_notifications_path %>
+  </li>
+</ul>
+<div class="row" id="notifications">
+  <div class="span11">
+    <% @notifications.each do |notification| %>
+      <div class="row" id="<%= notification.id%>">
+        <div class="span10">
+          <%= render_cell :notification,notification.type_name, notification: notification %>
+        </div>
+        <div class="span1">
+          <%#= link_to t('labels.ignore'), notification_path(notification), method: :delete,remote:true,class:'btn btn-info' %>
+        </div>
+        <div class="divider" style="margin-left: 20px">
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="pull-right">
+  <%= paginate @notifications %>
+</div>

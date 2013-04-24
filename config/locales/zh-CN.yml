@@ -301,6 +301,7 @@ zh-CN:
     home: '主页'
     sessions: 登录
     chat_messages: 短信息
+    notifications: 通知
   action:
     prices:
       new: 记账

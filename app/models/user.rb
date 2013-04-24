@@ -58,6 +58,7 @@ class User
   has_many :contacts,class_name: 'Contact::Base'#, as: :contactable
   has_many :chat_messages, inverse_of: :user
   has_many :got_chat_messages, class_name: 'ChatMessage', inverse_of: :to
+  embeds_many :notifications, :class_name => 'Notification::Base'
   #embeds_one :trader
   has_one :trader
   #embeds_many :contacts, :class_name => 'Contact::Base'

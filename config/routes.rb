@@ -2,6 +2,14 @@ Yeshi::Application.routes.draw do
   use_doorkeeper
 
   constraints subdomain: ENV['SUBDOMAIN'] do
+  resources :notifications ,except: [:edit,:update,:new,:create] do
+    get :read,on: :collection
+    #member do 
+      #post :accept
+      #post :deny
+    #end
+  end
+
     resources :chat_messages, except: [:edit, :update] do
       resources :chat_messages, only: [:new, :create]
     end
