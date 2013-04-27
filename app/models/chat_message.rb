@@ -14,8 +14,8 @@ class ChatMessage
 
   has_many :chat_messages, as: :chatable
 
-  scope :not_read, where(read_at: nil)
-  scope :not_delete, where(delete_at: nil)
+  scope :unread, where(read_at: nil)
+  scope :undelete, where(delete_at: nil)
   scope :recent, desc(:created_at)
 
   def read
@@ -58,11 +58,27 @@ class ChatMessage
   end
 
   def notify
-    self.to.notifications.create!({
-      from: self.user,
-      chat_message: self,
-      text: self.content,
-    },
-    Notification::Chat)
+    #notification = self.to.notifications.create!({
+      #from: self.user,
+      #chat_message: self,
+      #text: self.content,
+    #},
+    #Notification::Chat)
+
+    channel = "/n/#{self.to.name}"
+    hash = {
+      #'notification_id'  => notification.id.to_s,
+      'chat_message_id' => self.id.to_s,
+      'count' => self.to.notifications.count,
+      #'content' => notification.to_s,
+      #'_type' => notification._type
+    }
+    #message = {channel: channel, data: hash}
+    #uri = URI.parse(ENV['FAYE'])
+    #Net::HTTP.post_form(uri, message: message.to_json)
+
+    client = Faye::Client.new(ENV['FAYE'])
+    client.publish(channel, hash)
+    client
   end
 end

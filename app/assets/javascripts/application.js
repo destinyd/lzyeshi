@@ -18,4 +18,11 @@
 //= require groups
 //= require home
 //= require devise
+//= require humane
 // require_tree .
+humane.timeout = 10000;
+humane.waitForMove = true;
+humane.clickToClose = true;
+humane.alter = humane.spawn({ addnCls: 'humane-libnotify-info'})
+humane.success = humane.spawn({ addnCls: 'humane-libnotify-success'})
+humane.error = humane.spawn({ addnCls: 'humane-libnotify-error'})

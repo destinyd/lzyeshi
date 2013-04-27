@@ -10,10 +10,13 @@
   <%= d @chat_message, :content %>
   <dt>操作</dt>
   <dd>
-  <%= link_to '回复', new_chat_message_chat_message_path(@chat_message, chat_message: {name: @chat_message.user.name}) if current_user == @chat_message.to %>
+  <%#= link_to '回复', new_chat_message_chat_message_path(@chat_message, chat_message: {name: @chat_message.user.name}) if current_user == @chat_message.to %>
   <%= link_to '删除', @chat_message, method: :delete, data: { confirm: '你确定?' } if !@chat_message.is_delete? and current_user == @chat_message.to %>
   </dd>
+  <dt>回复</dt>
+  <dd><%= render "form", chat_message: ChatMessage.new(name: @chat_message.user.name), parent: @chat_message %></dd>
   <div class="clearfix"></div>
   </dd>
 <% end -%>
 
+<%= link_to '返回收件箱', chat_messages_path %>

@@ -5,6 +5,7 @@
     <%= display_meta_tags default_meta_tags %>
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "application" ,"#{ENV['FAYE']}.js" %>
     <%= csrf_meta_tags %>
     <!--[if IE 6]>
     <%= javascript_include_tag "ie6png" %>
@@ -42,5 +43,15 @@
         </div>
       </div> <!--! end of .container -->
     </div> <!--! end of #main -->
+    <% if current_user %>
+      <script>
+        $(function() {
+          var faye = new Faye.Client('<%= ENV['FAYE'] %>');
+          faye.subscribe("/n/<%= current_user.name %>", function(data) {
+            humane.alter('您有新消息!<a href="/chat_messages/'+ data.chat_message_id + '">点击查看</a>');
+          });
+        });
+      </script>
+    <% end -%>
   </body>
 </html>

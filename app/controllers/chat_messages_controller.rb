@@ -8,7 +8,7 @@ class ChatMessagesController < ApplicationController
   #load_and_authorize_resource :chat_message, through: :commodity, except: [:index, :show]
   #skip_load_and_authorize_resource only: :index
   def index
-    @chat_messages = current_user.got_chat_messages.not_delete.recent.page params[:page]
+    @chat_messages = current_user.got_chat_messages.undelete.recent.page params[:page]
   end
 
   def new
