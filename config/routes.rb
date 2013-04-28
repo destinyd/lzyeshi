@@ -45,7 +45,10 @@ Yeshi::Application.routes.draw do
         resources :commodities
       end
       resources :pictures
-      resources :commodities
+      resources :bills, except: [:new, :show]
+      resources :commodities do
+        resources :bills, only: [:index, :new]
+      end
       root :to => 'home#index'
       get '/dashboard' => 'home#dashboard'
     end

@@ -1,4 +1,5 @@
 <%= link_to '查看实际页面', commodity_url(@commodity,subdomain: ENV['SUBDOMAIN']) %> |
+<%= link_to "记账", new_commodity_bill_path(@commodity) %> |
 <%= link_to '修改', edit_commodity_path(@commodity) %> |
 <%= link_to '返回', commodities_path %>
 

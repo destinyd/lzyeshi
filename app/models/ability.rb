@@ -6,7 +6,7 @@ class Ability
     if user.has_role? :admin
       can :manage, :all
     elsif user.has_role? :trader
-      can :manage, [Group, Commodity, Picture], user_id: user.id
+      can :manage, [Group, Commodity, Picture, Bill], user_id: user.id
     elsif user.has_role? :user
       can :read, Commodity
       can :manage, ChatMessage, to_id: user.id

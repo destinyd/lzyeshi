@@ -173,6 +173,7 @@ zh-CN:
       not_exist: 不存在
       could_not_self: 不能为自己
       status_change_fault: 状态转换失败
+      reserve_not_enough: 库存不足
 
   helpers:
     select:
@@ -195,6 +196,7 @@ zh-CN:
         picture: 图片联系方式
         link: 链接联系方式
       chat_message: 短信息
+      bill: 账单
     attributes:
       trader:
         address: 常驻地点
@@ -226,6 +228,9 @@ zh-CN:
     category_list: 标签
     value: 内容
     _type: 类型
+    quantity: 数量
+    total: 总价
+    plus: 备注
 
 
 
@@ -302,6 +307,7 @@ zh-CN:
     sessions: 登录
     chat_messages: 短信息
     notifications: 通知
+    bills: 账单
   action:
     prices:
       new: 记账

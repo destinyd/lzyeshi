@@ -1,4 +1,4 @@
-<% @commodities.group_by{|c| c.group.name}.each do |name,commodities| %>
+<% @commodities.group_by{|c| c.group.name}.each do |name, commodities| %>
   <h2>分类: <%= name %></h2>
   <% commodities.each do |commodity| %>
     <div class="commodity">
@@ -8,6 +8,7 @@
         <% end -%>
       </p>
       <p>
+        <%= link_to "记账", new_commodity_bill_path(commodity) %>
         <%= link_to "修改", edit_commodity_path(commodity) %>
         <%= link_to '删除', commodity, method: :delete, data: { confirm: '你确定?' } %>
       </p>

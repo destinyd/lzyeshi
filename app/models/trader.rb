@@ -11,6 +11,7 @@ class Trader
   has_many :pictures
   has_many :locations
   has_many :contacts,class_name: 'Contact::Base'#, as: :contactable
+  has_many :bills
   #has_many :contacts, as: :contactable,class_name: 'Contact::Base'
   #embeds_many :contacts, :class_name => 'Contact::Base'
 

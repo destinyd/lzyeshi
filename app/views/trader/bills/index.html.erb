@@ -1,0 +1,47 @@
+<h1><%= title "#{@commodity.to_s + "的" if @commodity}账单管理" %></h1>
+
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>价格</th>
+    <th>数量</th>
+    <th>总价</th>
+    <th>备注</th>
+    <th>商品</th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+
+<% @bills.each do |bill| %>
+  <tr>
+    <td><%= bill.price %></td>
+    <td><%= bill.quantity %></td>
+    <td><%= bill.total %></td>
+    <td><%= bill.plus %></td>
+    <td><%= @commodity ? link_to(@commodity,  @commodity) : link_to(bill.commodity, bill.commodity) %></td>
+    <td><%= link_to '修改', edit_bill_path(bill) %></td>
+    <td><%= link_to '删除', bill, method: :delete, data: { confirm: '你确定?' } %></td>
+  </tr>
+<% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td>
+        <b>
+          统计
+        </b>
+      </td>
+      <td><%= @bills.sum(&:quantity) %></td>
+      <td><%= @bills.sum(&:total) %></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tfoot>
+</table>
+
+<br />
+<%= link_to '新建账单', new_commodity_bill_path(@commodity) if @commodity %>
