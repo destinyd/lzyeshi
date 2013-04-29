@@ -17,6 +17,7 @@ class ChatMessage
   scope :unread, where(read_at: nil)
   scope :undelete, where(delete_at: nil)
   scope :recent, desc(:created_at)
+  scope :ounread, order_by(:read_at => 0)
 
   def read
     update_attribute :read_at, Time.now unless self.read_at

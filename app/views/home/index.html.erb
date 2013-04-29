@@ -1,26 +1,37 @@
-<h1><%= t('title') %></h1>
-
-<% @groups.each do |group| %>
-  <div class="">
-    <div class="title">
-      <h3><%= link_to group.name, group %></h3>
-    </div>
-    <ul class="thumbs inline">
-      <% group.commodities.limit(13).each do |commodity| %>
-        <li class="pull-left">
-          <%= link_to commodity do %>
-            <%= image_tag commodity.picture.image.thumb %>
-          <% end -%>
-        </li>
+<div class="row">
+  <div class="span3 bs-docs-sidebar">
+    <ul class="nav nav-list bs-docs-sidenav">
+      <% @groups.each do |group| %>
+        <li><a href="#<%= group.id %>"><i class="icon-chevron-right"></i> <%= group.name %></a></li>
       <% end -%>
-      <% if group.commodities.count > 13 %>
-        <li class="pull-left">
-          <%= link_to group do %>
-            <%= image_tag 'view_more.jpg' %>
-          <% end -%>
-        </li>
-      <% end %>
     </ul>
-    <div class="clearfix"></div>
-  </div>  
-<% end -%>
+  </div>
+  <div class="span9">
+    <% @groups.each do |group| %>
+      <section id="<%= group.id %>">
+        <div class="page-header">
+          <h1><%= link_to group.name, group %></h1>
+        </div>
+        <div class="">
+          <ul class="thumbs inline">
+            <% group.commodities.limit(23).each do |commodity| %>
+              <li class="pull-left">
+                <%= link_to commodity do %>
+                  <%= image_tag commodity.picture.image.thumb %>
+                <% end -%>
+              </li>
+            <% end -%>
+            <% if group.commodities.count > 23 %>
+              <li class="pull-left">
+                <%= link_to group do %>
+                  <%= image_tag 'view_more.jpg' %>
+                <% end -%>
+              </li>
+            <% end %>
+          </ul>
+          <div class="clearfix"></div>
+        </div>  
+      </section>
+    <% end -%>
+  </div>
+</div>

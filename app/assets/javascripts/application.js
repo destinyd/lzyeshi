@@ -26,3 +26,19 @@ humane.clickToClose = true;
 humane.alter = humane.spawn({ addnCls: 'humane-libnotify-info'})
 humane.success = humane.spawn({ addnCls: 'humane-libnotify-success'})
 humane.error = humane.spawn({ addnCls: 'humane-libnotify-error'})
+
+$(document).ready(function(){
+  var $window = $(window)
+  // side bar
+  setTimeout(function() {
+    $('.bs-docs-sidenav')
+    .affix({
+      offset: {
+        top: function() {
+          return $window.width() <= 980 ? 190 : 110
+        },
+      bottom: 270
+      }
+    })
+  }, 100)
+})

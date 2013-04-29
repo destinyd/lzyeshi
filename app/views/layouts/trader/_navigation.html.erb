@@ -6,6 +6,9 @@
         <%= link_to current_user,edit_user_registration_url(subdomain: ENV['SUBDOMAIN']) %>
       </li>
       <li>
+        <%= link_to current_user.got_chat_messages.unread.count, chat_messages_url(subdomain: ENV['SUBDOMAIN']), title:'未读消息', id: 'unread_messages_count' %>
+      </li>
+      <li>
         <%= link_to '退出', destroy_user_session_url(subdomain: ENV['SUBDOMAIN']), :method=>'delete' %>
       </li>
     <% else %>
@@ -19,6 +22,9 @@
           <%= link_to 'Admin', users_url(subdomain: ENV['ADMIN_SUBDOMAIN']) %>
         </li>
       <% end if nil %>
+      <li>
+        <%= link_to '切换到客户版', root_url(subdomain: ENV['SUBDOMAIN']) %>
+      </li>
     <% else %>
       <li>
         <%= link_to '注册', new_user_registration_url(subdomain: ENV['SUBDOMAIN']) %>
@@ -29,12 +35,6 @@
   <ul class="nav">
     <li>
       <%= link_to '自家摊位', trader_url(current_trader,subdomain: ENV['SUBDOMAIN']) %>
-    </li>
-    <li>
-      <%= link_to '联系方式', system_contact_url(subdomain: ENV['SUBDOMAIN']) %>
-    </li>
-    <li>
-      <%= link_to '切换到客户版', root_url(subdomain: ENV['SUBDOMAIN']) %>
     </li>
   </ul>
 </div>

@@ -1,34 +1,46 @@
 <h1><%= title "商家摊位列表 第#{params[:page] || '1'}页"%></h1>
 
-<% @traders.each do |trader| %>
-  <% @commodities = trader.commodities.limit(13) %>
-  <div class="trader">
-    <div class="title">
-      <h3><%= link_to trader.name, trader %></h3>
-    </div>
-    <% if @commodities.any? %>
-      <ul class="thumbs inline">
-        <% @commodities.each do |commodity| %>
-          <li class="pull-left">
-            <%= link_to commodity do %>
-              <%= image_tag commodity.picture.image.thumb %>
+<div class="row">
+  <div class="span3 bs-docs-sidebar">
+    <ul class="nav nav-list bs-docs-sidenav">
+      <% @traders.each do |trader| %>
+        <li><a href="#<%= trader.id %>"><i class="icon-chevron-right"></i> <%= trader.name %></a></li>
+      <% end -%>
+    </ul>
+  </div>
+  <div class="span9">
+    <% @traders.each do |trader| %>
+      <% @commodities = trader.commodities.limit(23) %>
+      <section id="<%= trader.id %>" class="trader">
+        <div class="page-header">
+          <h1><%= link_to trader.name, trader %></h1>
+        </div>
+        <% if @commodities.any? %>
+          <ul class="thumbs inline">
+            <% @commodities.each do |commodity| %>
+              <li class="pull-left">
+                <%= link_to commodity do %>
+                  <%= image_tag commodity.picture.image.thumb %>
+                <% end -%>
+              </li>
             <% end -%>
-          </li>
+            <% if @commodities.count > 23 %>
+              <li class="pull-left">
+                <%= link_to trader do %>
+                  <%= image_tag 'view_more.jpg' %>
+                <% end -%>
+              </li>
+            <% end %>
+          </ul>
+          <div class="clearfix"></div>
+        <% else %>
+          <p> 暂无商品 </p>
         <% end -%>
-        <% if @commodities.count > 13 %>
-          <li class="pull-left">
-            <%= link_to trader do %>
-              <%= image_tag 'view_more.jpg' %>
-            <% end -%>
-          </li>
-        <% end %>
-      </ul>
-      <div class="clearfix"></div>
-    <% else %>
-      <p> 暂无商品 </p>
+      </section>
     <% end -%>
   </div>
-<% end -%>
+</div>
+
 <div class="clearfix"></div>
 <div class="pull-right">
   <%= paginate @traders %>
