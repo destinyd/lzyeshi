@@ -17,6 +17,13 @@ class Trader::BillsController < InheritedResources::Base
     destroy!{commodity_bills_path(@bill.commodity_id)}
   end
 
+  def dashboard
+    @day_bills = current_user.bills.day
+    @yesterday_bills = current_user.bills.yesterday
+    @month_bills = current_user.bills.month
+    @year_bills = current_user.bills.year
+  end
+
   protected
   def begin_of_association_chain
     current_user

@@ -1,0 +1,26 @@
+<table class="table">
+  <tr>
+    <td>本日售出商品数量</td>
+    <td><%= @day_bills.sum(&:quantity) %></td>
+    <td>本日营业额</td>
+    <td><%= @day_bills.sum(&:total) %></td>
+  </tr>
+  <tr>
+    <td>昨日售出商品数量</td>
+    <td><%= @yesterday_bills.sum(&:quantity) %></td>
+    <td>昨日营业额</td>
+    <td><%= @yesterday_bills.sum(&:total) %></td>
+  </tr>
+  <tr>
+    <td>本月售出商品数量</td>
+    <td><%= @month_bills.sum(&:quantity) %></td>
+    <td>本月营业额</td>
+    <td><%= @month_bills.sum(&:total) %></td>
+  </tr>
+  <tr>
+    <td>年度售出商品数量</td>
+    <td><%= @year_bills.sum(&:quantity) %></td>
+    <td>年度营业额</td>
+    <td><%= @year_bills.sum(&:total) %></td>
+  </tr>
+</table>

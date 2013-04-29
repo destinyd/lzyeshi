@@ -45,7 +45,9 @@ Yeshi::Application.routes.draw do
         resources :commodities
       end
       resources :pictures
-      resources :bills, except: [:new, :show]
+      resources :bills, except: [:new, :show] do
+        get :dashboard, on: :collection
+      end
       resources :commodities do
         resources :bills, only: [:index, :new]
       end

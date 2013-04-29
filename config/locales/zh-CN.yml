@@ -307,7 +307,7 @@ zh-CN:
     sessions: 登录
     chat_messages: 短信息
     notifications: 通知
-    bills: 账单
+    bills: 帐目
   action:
     prices:
       new: 记账

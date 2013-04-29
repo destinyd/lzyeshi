@@ -15,6 +15,10 @@ class Bill
   validates :commodity_id, presence: true
 
   scope :recent, desc(:created_at)
+  scope :day, where(:created_at.gte => Time.new.beginning_of_day)
+  scope :yesterday, where(:created_at.lt => Time.new.beginning_of_day, :created_at.gte => 1.day.ago.beginning_of_day)
+  scope :month, where(:created_at.gte => Time.new.beginning_of_month)
+  scope :year, where(:created_at.gte => Time.new.beginning_of_year)
 
   before_validation :valid_reserve
   before_create :give_trader
