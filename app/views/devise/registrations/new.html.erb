@@ -9,7 +9,7 @@
   <%= f.input :is_trader,as: :boolean %>
   <div id="sign_up_trader">
     <%= f.fields_for :trader do |ft| %>
-      <%= render "trader/traders/fields_for",f: ft %>
+      <%= render "trader/traders/fields_for",f: ft, trader: resource.trader %>
     <% end -%>
   </div>
   <%= f.button :submit, '注册', :class => 'btn-primary' %>
