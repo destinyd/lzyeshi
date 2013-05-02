@@ -8,7 +8,7 @@ namespace :yeshi do
         picture.image.recreate_versions!
         picture.save!
       rescue => e
-        puts  "ERROR: #{CLASS}: #{object.id} -> #{e.to_s}"
+        puts  "ERROR: Picture #{picture.id} -> #{e.to_s}"
       end
     end
   end
