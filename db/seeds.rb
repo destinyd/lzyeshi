@@ -42,6 +42,6 @@ Contact::Base.where(h).first_or_create
 h = {name:'公众微信', contactable:nil}
 p = Contact::Picture.where(h).first_or_create
 if p.value.blank?
-  p.value = File.new [Rails.root,'app/assets/images/wechat_mp.jpg'].join('/')
+  p.value = File.new [Rails.root,'app/assets/images/wechat_mp_258x258.jpg'].join('/')
   p.save
 end
