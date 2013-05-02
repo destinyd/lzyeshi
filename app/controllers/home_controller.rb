@@ -6,4 +6,8 @@ class HomeController < ApplicationController
   def contact
     @contacts = Contact::Base.system
   end
+
+  def download
+
+  end
 end

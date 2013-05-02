@@ -32,6 +32,7 @@ Yeshi::Application.routes.draw do
     end
     root :to => "home#index"
     get '/contact', :to => "home#contact", as: :system_contact
+    get '/download', :to => "home#download", as: :download
     devise_for :users
   end
 
