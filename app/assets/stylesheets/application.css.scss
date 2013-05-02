@@ -27,5 +27,23 @@ section{
 }
 
 footer{
+  font: 12px/1.5 Tahoma,Arial,"宋体b8b\4f53",sans-serif;
+  color: #999;
   min-height: 100px;
+  text-align: center;
+
+  li{
+    list-style: none;
+  }
+  .footer-container{
+    text-align: center;
+    border-top: 1px solid #d4d4d4;
+    padding-top: 20px;
+  }
+  .weixin_mp{
+    width: 120px;
+    height: 120px;
+  }
+
 }
+
