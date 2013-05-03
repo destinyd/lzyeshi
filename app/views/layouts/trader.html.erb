@@ -35,41 +35,7 @@
           <div class="row">
             <div class="span3 bs-docs-sidebar">
               <ul class="nav nav-list bs-docs-sidenav">
-                <li class="<%= 'active' if controller_name == 'traders' %>"> 
-                  <%= link_to traders_path do %>
-                    <i class="icon-chevron-right"></i> 摊位
-                  <% end -%>
-                </li>
-                <li class="<%= 'active' if controller_name == 'groups' %>"> 
-                  <%= link_to groups_path do %>
-                    <i class="icon-chevron-right"></i> 分组
-                  <% end -%>
-                </li>
-                <li class="<%= 'active' if controller_name == 'commodities' %>"> 
-                  <%= link_to commodities_path do %>
-                    <i class="icon-chevron-right"></i> 商品
-                  <% end -%>
-                </li>
-                <li class="<%= 'active' if controller_name == 'pictures' %>"> 
-                  <%= link_to pictures_path do %>
-                    <i class="icon-chevron-right"></i> 图片
-                  <% end -%>
-                </li>
-                <li class="<%= 'active' if controller_name == 'locations' %>"> 
-                  <%= link_to locations_path do %>
-                    <i class="icon-chevron-right"></i> 定位
-                  <% end -%>
-                </li>
-                <li class="<%= 'active' if controller_name == 'contacts' %>"> 
-                  <%= link_to contacts_path do %>
-                    <i class="icon-chevron-right"></i> 联系方式
-                  <% end -%>
-                </li>
-                <li class="<%= 'active' if controller_name == 'bills' %>"> 
-                  <%= link_to dashboard_bills_path do %>
-                    <i class="icon-chevron-right"></i> 帐目
-                  <% end -%>
-                </li>
+                <%= render_cell :layouts, :trader_nav, controller_name: controller_name, action_name: action_name %>
               </ul>
             </div>
 
