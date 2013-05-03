@@ -1,4 +1,5 @@
 class Trader::ContactsController < InheritedResources::Base
+  layout 'trader'
   defaults resource_class: Contact::Base
   actions :all, except: [:show]
   load_and_authorize_resource except: :index

@@ -1,5 +1,7 @@
-<p id="notice"><%= notice %></p>
+<h1>图片<%= @picture.id %></h1>
 
+<div class="picture">
+  <%= image_tag @picture.image %>
+</div>
 
-<%= link_to 'Edit', edit_trader_picture_path(@trader_picture) %> |
-<%= link_to 'Back', trader_pictures_path %>
+<%= link_to '返回', pictures_path %>

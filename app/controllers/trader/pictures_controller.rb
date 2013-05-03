@@ -1,4 +1,5 @@
 class Trader::PicturesController < ApplicationController
+  layout 'trader'
   def index
     @pictures = current_user.pictures.recent.page params[:page]
 
@@ -30,7 +31,10 @@ class Trader::PicturesController < ApplicationController
         render :layout => false
       }
     end
+  end
 
+  def show
+    @picture = current_user.pictures.find(params[:id])
   end
 
 end

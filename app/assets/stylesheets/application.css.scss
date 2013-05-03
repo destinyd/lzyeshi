@@ -29,8 +29,8 @@ section{
 footer{
   font: 12px/1.5 Tahoma,Arial,"宋体b8b\4f53",sans-serif;
   color: #999;
-  min-height: 100px;
   text-align: center;
+  margin-top: 20px;
 
   li{
     list-style: none;
@@ -47,3 +47,13 @@ footer{
 
 }
 
+.bs-docs-sidenav .icon-chevron-right {
+  float: right;
+  margin-top: 2px;
+  margin-right: -6px;
+  opacity: .25;
+}
+
+#mh-300{
+  min-height: 300px;
+}

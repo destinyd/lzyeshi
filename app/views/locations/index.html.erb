@@ -4,19 +4,24 @@
 <h1 id="title">
   <%= title "摊位定位列表 第#{params[:page] || 1}页" %>
 </h1>
-<%= render_cell :trader,:nav, parent: @trader, c: controller_name, a: action_name %>
+
+<%= render_cell :trader, :nav, parent: @trader, c: controller_name, a: action_name %>
+
 <div id="bmap_location" class="bmap"></div>
+
 <div class="clearfix"></div>
+
 <div class="pull-right" id="paginate">
-  <%= paginate @locations,remote: true %>
+  <%= paginate @locations, remote: true %>
 </div>
+
 <div class="clearfix"></div>
 
 <script>
   $(document).ready(function(){
     locations = <%= @locations.to_json.html_safe %>;
-    init_locations('bmap_location',locations);
-    $.each(locations_markers,function(index,marker){
+    init_locations('bmap_location', locations);
+    $.each(locations_markers, function(index, marker){
       map.addOverlay(marker);
     })
     map.centerAndZoom('柳州市')

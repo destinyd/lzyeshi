@@ -1,23 +1,25 @@
 <% content_for :head do -%>
   <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=<%= ENV['BD_LBS_KEY'] %>"></script>
-  <style>
-    #bmap{
-    }
-  </style>
 <% end -%>
-<h1>摊位定位列表</h1>
+<h1 id="title">
+<%= title "摊位定位列表 第#{params[:page] || 1}页" %>
+</h1>
+
 <div id="bmap_location" class="bmap"></div>
+
 <div class="clearfix"></div>
-<div class="pull-right">
-  <%= paginate @locations %>
+
+<div class="pull-right" id="paginate">
+  <%= paginate @locations, remote: true %>
 </div>
+
 <div class="clearfix"></div>
 
 <script>
   $(document).ready(function(){
     locations = <%= @locations.to_json.html_safe %>;
-    init_locations('bmap_location',locations);
-    $.each(locations_markers,function(index,marker){
+    init_locations('bmap_location', locations);
+    $.each(locations_markers, function(index, marker){
       init_location_info(marker,
         "<a href='/locations/" + locations[index]._id + "' class='btn'>详细</a><form action='/locations/" + locations[index]._id + "' class='button_to' method='post'><div><input name='_method' type='hidden' value='delete' /><input class='btn btn-danger' data-confirm='你确定?' type='submit' value='删除' /><input name='authenticity_token' type='hidden' value='<%= form_authenticity_token %>' /></div></form>"
         );

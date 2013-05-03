@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= display_meta_tags default_meta_tags %>
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "application" ,"#{ENV['FAYE']}.js" %>
+    <%= csrf_meta_tags %>
+    <!--[if IE 6]>
+    <%= javascript_include_tag "ie6png" %>
+    <%= stylesheet_link_tag "ie6", :media => "all" %>
+    <![endif]-->  
+    <%= yield(:head) %>
+  </head>
+  <body class="<%= controller_name %> <%= action_name %>" data-spy="scroll" data-target=".bs-docs-sidebar">
+    <div class="navbar navbar-fixed-top">
+      <nav class="navbar-inner">
+        <div class="container">
+          <%= render "layouts/#{request.subdomains.first.to_s + "/" if !request.subdomains.blank? and request.subdomains.first != ENV['SUBDOMAIN']}navigation" %>
+          <%#= render 'layouts/navigation' %>
+        </div>
+      </nav>
+    </div>
+
+    <!--[if IE 6]>
+    <div id="notice_ie6">
+      使用IE6浏览器可能导致无法正常使用本网站，请使用更高版本的IE、<a href="http://firefox.com.cn/">火狐</a>或Chrome浏览器访问。
+    </div>
+    <![endif]-->  
+
+    <div id="main" role="main">
+      <div class="container">
+        <div class="content">
+          <div class="row">
+            <div class="span3 bs-docs-sidebar">
+              <ul class="nav nav-list bs-docs-sidenav">
+                <li class="<%= 'active' if controller_name == 'traders' %>"> 
+                  <%= link_to traders_path do %>
+                    <i class="icon-chevron-right"></i> 摊位
+                  <% end -%>
+                </li>
+                <li class="<%= 'active' if controller_name == 'groups' %>"> 
+                  <%= link_to groups_path do %>
+                    <i class="icon-chevron-right"></i> 分组
+                  <% end -%>
+                </li>
+                <li class="<%= 'active' if controller_name == 'commodities' %>"> 
+                  <%= link_to commodities_path do %>
+                    <i class="icon-chevron-right"></i> 商品
+                  <% end -%>
+                </li>
+                <li class="<%= 'active' if controller_name == 'pictures' %>"> 
+                  <%= link_to pictures_path do %>
+                    <i class="icon-chevron-right"></i> 图片
+                  <% end -%>
+                </li>
+                <li class="<%= 'active' if controller_name == 'locations' %>"> 
+                  <%= link_to locations_path do %>
+                    <i class="icon-chevron-right"></i> 定位
+                  <% end -%>
+                </li>
+                <li class="<%= 'active' if controller_name == 'contacts' %>"> 
+                  <%= link_to contacts_path do %>
+                    <i class="icon-chevron-right"></i> 联系方式
+                  <% end -%>
+                </li>
+                <li class="<%= 'active' if controller_name == 'bills' %>"> 
+                  <%= link_to dashboard_bills_path do %>
+                    <i class="icon-chevron-right"></i> 帐目
+                  <% end -%>
+                </li>
+              </ul>
+            </div>
+
+            <div class="span9" id="mh-300">
+              <%= render 'layouts/messages' %>
+              <%= yield %>
+            </div>
+          </div>
+          <footer id="footer">
+            <%= render_cell :layouts, :footer %>
+          </footer>
+        </div>
+      </div> <!--! end of .container -->
+    </div> <!--! end of #main -->
+    <% if current_user %>
+      <script>
+        $(function() {
+          var faye = new Faye.Client('<%= ENV['FAYE'] %>');
+          faye.subscribe("/n/<%= current_user.name %>", function(data) {
+            humane.alter('您有新消息!<a href="/chat_messages/'+ data.chat_message_id + '">点击查看</a>');
+          });
+        });
+      </script>
+    <% end -%>
+  </body>
+</html>

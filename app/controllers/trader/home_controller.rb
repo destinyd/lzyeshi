@@ -1,4 +1,5 @@
 class Trader::HomeController < ApplicationController
+  layout 'trader'
   def index
     if user_signed_in?
       redirect_to dashboard_path

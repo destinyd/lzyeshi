@@ -39,9 +39,9 @@ Yeshi::Application.routes.draw do
   constraints subdomain: "trader#{"." + ENV['SUBDOMAIN'] unless ENV['SUBDOMAIN'].blank? }" do
     #devise_for :users
     scope module: 'trader' do
-      resources :contacts
+      resources :contacts, except: [:show]
       resources :traders, only: [:index, :create, :update]
-      resources :locations
+      resources :locations, except: [:edit, :update]
       resources :groups do
         resources :commodities
       end
@@ -49,11 +49,11 @@ Yeshi::Application.routes.draw do
       resources :bills, except: [:new, :show] do
         get :dashboard, on: :collection
       end
-      resources :commodities do
+      resources :commodities, except: [:new] do
         resources :bills, only: [:index, :new]
       end
       root :to => 'home#index'
-      get '/dashboard' => 'home#dashboard'
+      get '/dashboard' => 'bills#dashboard'
     end
   end
 

@@ -1,4 +1,5 @@
 class Trader::TradersController < InheritedResources::Base
+  layout 'trader'
   defaults :singleton => true 
   actions :create, :update
 
