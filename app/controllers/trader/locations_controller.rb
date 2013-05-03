@@ -2,7 +2,14 @@ class Trader::LocationsController < InheritedResources::Base
   layout 'trader'
   actions :all, except: [:edit, :update]
   respond_to :json
-  respond_to :js, only: [:index]
+  respond_to :js, only: [:index, :create]
+
+  def create
+    create! do |success,failure|
+      success.js{render :create}
+      failure.js{render :failure}
+    end
+  end
 
   def destroy
     destroy!{locations_path}

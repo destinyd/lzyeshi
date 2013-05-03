@@ -1,3 +1,8 @@
+<li class="<%= 'active' if @controller_name == 'bills' %>"> 
+  <%= link_to dashboard_bills_path do %>
+    <i class="icon-chevron-right"></i> 帐目
+  <% end -%>
+</li>
 <li class="<%= 'active' if @controller_name == 'traders' %>"> 
   <%= link_to traders_path do %>
     <i class="icon-chevron-right"></i> 摊位
@@ -28,9 +33,3 @@
     <i class="icon-chevron-right"></i> 联系方式
   <% end -%>
 </li>
-<li class="<%= 'active' if @controller_name == 'bills' %>"> 
-  <%= link_to dashboard_bills_path do %>
-    <i class="icon-chevron-right"></i> 帐目
-  <% end -%>
-</li>
-

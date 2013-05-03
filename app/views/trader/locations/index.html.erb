@@ -24,8 +24,70 @@
         "<a href='/locations/" + locations[index]._id + "' class='btn'>详细</a><form action='/locations/" + locations[index]._id + "' class='button_to' method='post'><div><input name='_method' type='hidden' value='delete' /><input class='btn btn-danger' data-confirm='你确定?' type='submit' value='删除' /><input name='authenticity_token' type='hidden' value='<%= form_authenticity_token %>' /></div></form>"
         );
       map.addOverlay(marker);
-    })
+    });
     map.centerAndZoom('柳州市')
+
+    function LocationControl(){
+      // 默认停靠位置和偏移量
+      this.defaultAnchor = BMAP_ANCHOR_TOP_LEFT;
+      this.defaultOffset = new BMap.Size(10, 220);
+    }
+
+  LocationControl.prototype = new BMap.Control();
+
+  LocationControl.prototype.initialize = function(map){
+    // 创建一个DOM元素
+    var div = document.createElement("div");
+    div.appendChild(document.createTextNode("摊位定位"));
+    div.style.cursor = "pointer";
+    div.style.border = "1px solid gray";
+    div.style.backgroundColor = "white";
+    div.style.color = "red";
+    div.onclick = function(e){
+      add_location();
+      // 创建控件
+      finishLocCtrl = new FinishLocationControl();
+      // 添加到地图当中
+      map.addControl(finishLocCtrl);
+      map.removeControl(this);
+    }
+    // 添加DOM元素到地图中
+    map.getContainer().appendChild(div);
+    // 将DOM元素返回
+    return div;
+  }
+
+  function FinishLocationControl(){
+    // 默认停靠位置和偏移量
+    this.defaultAnchor = BMAP_ANCHOR_TOP_LEFT;
+    this.defaultOffset = new BMap.Size(10, 220);
+  }
+
+  FinishLocationControl.prototype = new BMap.Control();
+
+  FinishLocationControl.prototype.initialize = function(map){
+    // 创建一个DOM元素
+    var div = document.createElement("div");
+    div.appendChild(document.createTextNode("结束定位"));
+    div.style.cursor = "pointer";
+    div.style.border = "1px solid gray";
+    div.style.backgroundColor = "white";
+    div.style.color = "red";
+    div.onclick = function(e){
+      console.log(loc_marker);
+      post_location(loc_marker, '<%= form_authenticity_token %>');
+      map.removeControl(this);
+    }
+    // 添加DOM元素到地图中
+    map.getContainer().appendChild(div);
+    // 将DOM元素返回
+    return div;
+  }
+
+  // 创建控件
+  addLocCtrl = new LocationControl();
+  // 添加到地图当中
+  map.addControl(addLocCtrl);
   });
 </script>
 
