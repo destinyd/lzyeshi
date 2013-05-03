@@ -19,6 +19,9 @@
 //= require home
 //= require devise
 //= require humane
+//= require jquery.scrollTo.min
+//= require jquery.localScroll.min
+//= require jquery.ui.totop.min
 // require_tree .
 humane.timeout = 10000;
 humane.waitForMove = true;
@@ -40,5 +43,11 @@ $(document).ready(function(){
       bottom: 270
       }
     })
-  }, 100)
+  }, 100);
+  $('ul.bs-docs-sidenav').localScroll();
+  $('ul.bs-docs-sidenav li a').click( function () {
+    $('ul.bs-docs-sidenav li').removeClass("active");
+    $(this).parent().addClass("active");
+  });
+  $('#main').UItoTop();
 })
