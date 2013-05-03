@@ -10,4 +10,20 @@
   <%= f.button :submit, '修改', :class => 'btn-primary' %>
 <% end %>
 <%#= render "cancel" %>
+<% @trader = current_user.trader %>
+<% unless @trader.try(:name) %>
+  <% @trader = current_user.build_trader %>
+  <h2>建立摊位</h2>
+  <%= simple_form_for(@trader) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= render "trader/traders/fields_for",f: f, trader: @trader %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+<% end -%>
 <%= link_to "返回", :back %>

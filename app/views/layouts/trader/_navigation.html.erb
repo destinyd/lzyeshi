@@ -33,9 +33,11 @@
   </ul>
 
   <ul class="nav">
+    <% if current_user.trader.try(:name) %>
     <li>
       <%= link_to '自家摊位', trader_url(current_trader,subdomain: ENV['SUBDOMAIN']) %>
     </li>
+    <% end %>
     <li>
       <%= link_to '应用下载', download_url(subdomain: ENV['SUBDOMAIN']) %>
     </li>

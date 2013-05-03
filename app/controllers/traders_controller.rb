@@ -1,9 +1,14 @@
 class TradersController < InheritedResources::Base
-  actions :index, :show
+  actions :index, :show, :create
 
   def contact
     @trader = Trader.find(params[:id])
     @contacts = @trader.contacts
+  end
+
+  def create
+    @trader = current_user.build_trader(params[:trader])
+    create!
   end
 
   protected

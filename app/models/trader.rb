@@ -28,6 +28,7 @@ class Trader
   end
 
   after_create do 
+    self.user.add_role :trader
     self.user.save
   end
 end

@@ -13,7 +13,7 @@ Yeshi::Application.routes.draw do
     resources :chat_messages, except: [:edit, :update] do
       resources :chat_messages, only: [:new, :create]
     end
-    resources :traders, only: [:index, :show] do
+    resources :traders, only: [:index, :show, :create] do
       get :contact, to: 'traders#contact', on: :member
       resources :locations, only: [:index]
       resources :commodities, only: [:index]
