@@ -21,7 +21,7 @@ module ApplicationHelper
     when Contact::Base
       tmp += content_tag(:dd,model.value)
     when Contact::Link
-      tmp += content_tag(:dd,link_to(model.value,model.value))
+      tmp += content_tag(:dd,link_to(model.value,model.value, target: '_blank'))
     when Contact::Picture
       tmp += content_tag(:dd,image_tag(model.value))
     else

@@ -6,19 +6,19 @@
   <% if group.commodities.any? %>
     <div class="commodities">
       <div class="title">
-        <h3><%= link_to group.name, group %></h3>
+        <h3><%= link_to group.name, group, target: '_blank' %></h3>
       </div>
       <ul class="thumbs inline">
         <% group.commodities.limit(13).each do |commodity| %>
           <li class="pull-left">
-            <%= link_to commodity do %>
+            <%= link_to commodity, target: '_blank' do %>
               <%= image_tag commodity.picture.image.thumb %>
             <% end -%>
           </li>
         <% end -%>
         <% if group.commodities.count > 13 %>
           <li class="pull-left">
-            <%= link_to group do %>
+            <%= link_to group, target: '_blank' do %>
               <%= image_tag 'view_more.jpg' %>
             <% end -%>
           </li>

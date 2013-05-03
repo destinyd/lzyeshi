@@ -2,7 +2,7 @@
   <% commodities.each do |commodity| %>
     <li class="sw-mod-offerShopwindow paGetId">
       <div class="photo-text-200">
-        <%= link_to commodity, class: 'photo200-box' do %>
+        <%= link_to commodity, class: 'photo200-box', target: '_blank' do %>
           <%= image_tag commodity.picture.image.list.url %>
         <% end -%>
         <p>￥<%= commodity.price %> </p>
