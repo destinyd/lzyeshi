@@ -51,9 +51,7 @@ class ChatMessage
   end
 
   def find_chatable
-    if !chat_message_id.blank?
-      self.chatable = ChatMessage.find(chat_message_id)
-    elsif !commodity_id.blank?
+    if !commodity_id.blank?
       self.chatable = Commodity.find(chat_message_id)
     end
   end
