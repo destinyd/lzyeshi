@@ -1,5 +1,6 @@
 class TradersController < InheritedResources::Base
   actions :index, :show, :create
+  respond_to :json, only: [:show]
 
   def contact
     @trader = Trader.find(params[:id])

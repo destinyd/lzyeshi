@@ -13,7 +13,7 @@
         </h2>
       </div>
       <div class="commodity-trader">
-        <%= link_to commodity.trader, commodity.trader, class: 'sw-mod-previewCompanyInfo', target: '_blank' %>
+        <%= link_to commodity.trader, commodity.trader, class: 'sw-mod-previewCompanyInfo', target: '_blank', trader_id: commodity.trader.id %>
       </div>
     </li>
   <% end %>
@@ -24,3 +24,15 @@
   <%= paginate commodities %>
 </div>
 <div class="clearfix"></div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.sw-mod-previewCompanyInfo').hover(
+      function(){
+        get_trader($(this));
+      },
+      function(e){
+        remove_trader_div($(this));
+      }
+      )
+  });
+</script>
