@@ -1,10 +1,13 @@
 <h1><%= title @commodity.name %></h1>
 <%= content_tag :dl,class: 'dl-horizontal' do %>
   <dt>
-  联系商家
+  商家
   </dt>
   <dd>
-  <%= link_to @commodity.trader, new_commodity_chat_message_path(@commodity, chat_message: {name: @commodity.try(:user).try(:name) || @commodity.try(:trader).try(:user).try(:name)}), target: '_blank' %>
+  <%= link_to @commodity, @commodity %>
+  <%= link_to new_commodity_chat_message_path(@commodity, chat_message: {name: @commodity.try(:user).try(:name) || @commodity.try(:trader).try(:user).try(:name)}), target: '_blank' do %>
+    <%= image_tag "chat_32x32.png", title: "联系#{@commodity}", alt: "联系#{@commodity}" %>
+    <% end -%>
   </dd>
   <%= d @commodity,:price %>
   <%= d @commodity,:reserve %>
