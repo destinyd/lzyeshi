@@ -20,7 +20,7 @@
         </td>
         <td>
           <%= link_to '回复', new_chat_message_path(chat_message: {name: cm.user.name}) %>
-          <%= link_to '删除', @chat_message, method: :delete, data: { confirm: '你确定?' } unless cm.is_delete? %>
+          <%= link_to '删除', cm, method: :delete, data: { confirm: '你确定?' } unless cm.is_delete? %>
         </td>
       </tr>
     <% end -%>
