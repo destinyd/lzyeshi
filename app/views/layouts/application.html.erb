@@ -5,6 +5,7 @@
     <%= display_meta_tags default_meta_tags %>
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= csrf_meta_tags %>
+    <%= javascript_include_tag "application" ,"#{ENV['FAYE']}.js" %>
     <!--[if lte IE 6]>
     <%= stylesheet_link_tag "bsie/bootstrap-ie6.min", "ie6", :media => "all" %>
     <![endif]-->
@@ -47,7 +48,6 @@
         </div>
       </div> <!--! end of .container -->
     </div> <!--! end of #main -->
-    <%= javascript_include_tag "application" ,"#{ENV['FAYE']}.js" %>
     <!--[if lte IE 6]>
     <%= javascript_include_tag "ie6png", "bsie/bootstrap-ie" %>
     <![endif]-->
