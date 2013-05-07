@@ -87,6 +87,7 @@ GEM
       fssm (>= 0.2.7)
       sass (~> 3.1)
     cookiejar (0.3.0)
+    crummy (1.7.1)
     daemons (1.1.9)
     database_cleaner (1.0.0.RC1)
     debug_inspector (0.0.2)
@@ -289,6 +290,7 @@ DEPENDENCIES
   cells
   coffee-rails (~> 3.2.1)
   compass
+  crummy (~> 1.7.1)
   database_cleaner (>= 1.0.0.RC1)
   debugger!
   devise (>= 2.2.3)

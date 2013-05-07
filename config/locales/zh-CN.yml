@@ -331,8 +331,10 @@ zh-CN:
       new: 登录
     registrations:
       new: 注册
-    homes:
-      integrals: 积分记录
+      edit: 修改资料
+    home:
+      contact: 联系方式
+      download: 应用下载
     costs:
       new: 记录消费
       create: 记录消费
@@ -350,6 +352,8 @@ zh-CN:
     edit: 修改
     show: 显示
     search: 搜索
+    traders:
+      contact: 联系方式
 
   will_paginate:
     previous_label: "&#8592; 上一页"

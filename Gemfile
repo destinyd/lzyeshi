@@ -41,4 +41,5 @@ gem 'meta-tags', :require => 'meta_tags',git: 'git://github.com/destinyd/meta-ta
 gem "symbolize", :require => "symbolize/mongoid"
 gem 'doorkeeper'
 gem 'cells'
-gem 'rspec-cells'
+gem 'rspec-cells', :group => [:development, :test]
+gem "crummy", "~> 1.7.1"

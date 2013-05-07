@@ -1,7 +1,7 @@
 <% if @parent.class == Trader %>
   <ul class="nav nav-pills">
     <li class='<%= 'active' if @c == 'traders' and @a != 'contact' %>'>
-      <%= link_to "商家摊位", @parent %>
+      <%= link_to "商家摊位信息", @parent %>
     </li>
     <% if nil %>
       <li class='<%= 'active' if @c == 'groups' %>'>

@@ -7,6 +7,8 @@ class ChatMessagesController < ApplicationController
   #load_and_authorize_resource :commodity, except: [:show]
   #load_and_authorize_resource :chat_message, through: :commodity, except: [:index, :show]
   #skip_load_and_authorize_resource only: :index
+  add_crumb(I18n.t("controller.chat_messages")) { |instance| instance.send :chat_messages_path }
+
   def index
     @chat_messages = current_user.got_chat_messages.undelete.recent.page params[:page]
   end
