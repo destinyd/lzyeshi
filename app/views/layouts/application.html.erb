@@ -9,7 +9,7 @@
     <%= stylesheet_link_tag "bsie/bootstrap-ie6.min", "ie6", :media => "all" %>
     <![endif]-->
     <!--[if lte IE 7]>
-    <%= stylesheet_link_tag "bsie/ie6", :media => "all" %>
+    <%= stylesheet_link_tag "bsie/ie", :media => "all" %>
     <![endif]-->
     <%= yield(:head) %>
   </head>
@@ -49,7 +49,7 @@
     </div> <!--! end of #main -->
     <%= javascript_include_tag "application" ,"#{ENV['FAYE']}.js" %>
     <!--[if lte IE 6]>
-    <%= javascript_include_tag "ie6png", "bsie/bootstrap-ie6" %>
+    <%= javascript_include_tag "ie6png", "bsie/bootstrap-ie" %>
     <![endif]-->
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
