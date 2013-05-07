@@ -48,7 +48,7 @@ class Commodity
   end
 
   def as_json(options={})
-    options[:except] ||= [:categories, :text, :price, :updated_at, :created_at, :group_id, :commodity_id]
+    options[:except] ||= [:categories, :text, :price, :updated_at, :created_at, :commodity_id]
     options[:methods] ||= [:humanize_price]
     options[:include] ||= [:picture]
     super(options)
