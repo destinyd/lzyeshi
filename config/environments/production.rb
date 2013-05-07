@@ -60,7 +60,7 @@ Yeshi::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
-  config.assets.precompile += %w( ie6png.js ie6.css )
+  config.assets.precompile += %w( ie6png.js ie6.css bsie/bootstrap-ie6.min.css bsie/ie.css bsie/bootstrap-ie.js )
 
   config.log_tags = [ :subdomain ]
 end
