@@ -46,9 +46,9 @@ $(document).ready(function(){
     })
   }, 100);
   $('ul.bs-docs-sidenav').localScroll();
-  $('ul.bs-docs-sidenav li a').click( function () {
-    $('ul.bs-docs-sidenav li').removeClass("active");
-    $(this).parent().addClass("active");
-  });
+  //$('ul.bs-docs-sidenav li a').click( function () {
+    //$('ul.bs-docs-sidenav li').removeClass("active");
+    //$(this).parent().addClass("active");
+  //});
   $('#main').UItoTop();
 })
