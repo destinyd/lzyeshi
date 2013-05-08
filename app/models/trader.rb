@@ -27,6 +27,16 @@ class Trader
     self.name.to_s
   end
 
+  def user_name
+    user.try(:name)
+  end
+
+  def as_json(options={})
+    options[:methods] ||= [:user_name]
+    super(options)
+  end
+
+
   after_create do 
     self.user.add_role :trader
     self.user.save

@@ -11,12 +11,14 @@ class ChatMessagesController < ApplicationController
 
   def index
     @chat_messages = current_user.got_chat_messages.undelete.recent.page params[:page]
+    respond_to do |format|
+      format.html
+      format.json{render json: @chat_messages}
+    end
   end
 
   def new
-    if !params[:chat_message_id].blank?
-      @parent = ChatMessage.find(params[:chat_message_id])
-    elsif !params[:commodity_id].blank?
+    if !params[:commodity_id].blank?
       @parent = Commodity.find(params[:commodity_id])
     end
     @chat_message = ChatMessage.new params[:chat_message]
@@ -25,9 +27,7 @@ class ChatMessagesController < ApplicationController
   end
 
   def create
-    if !params[:chat_message_id].blank?
-      @parent = ChatMessage.find(params[:chat_message_id])
-    elsif !params[:commodity_id].blank?
+    if !params[:commodity_id].blank?
       @parent = Commodity.find(params[:commodity_id])
     end
     @chat_message = current_user.chat_messages.new params[:chat_message]
@@ -42,6 +42,10 @@ class ChatMessagesController < ApplicationController
   def show
     @chat_message = ChatMessage.any_of({user_id: current_user.id}, {to_id: current_user.id}).find params[:id]
     @chat_message.read
+    respond_to do |format|
+      format.html
+      format.json{render json: @chat_message}
+    end
   end
 
   def destroy

@@ -2,13 +2,14 @@
 class ChatMessage
   include Mongoid::Document
   include Mongoid::Timestamps::Created
+  field :name, type: String
   field :content, type: String
   field :read_at, type: Time
   field :delete_at, type: Time
   belongs_to :user, inverse_of: :chat_messages
   belongs_to :to, class_name: 'User', inverse_of: :got_chat_messages
   belongs_to :chatable, polymorphic: true
-  attr_accessor :name, :chat_message_id, :commodity_id
+  attr_accessor :commodity_id
   validates :content, presence: true, length: 5..100
   validates :name, presence: true
 
@@ -18,6 +19,7 @@ class ChatMessage
   scope :undelete, where(delete_at: nil)
   scope :recent, desc(:created_at)
   scope :ounread, order_by(:read_at => 0)
+  default_scope includes(:user)
 
   def read
     update_attribute :read_at, Time.now unless self.read_at
@@ -39,7 +41,7 @@ class ChatMessage
     update_attribute :delete_at, Time.now unless self.delete_at
   end
 
-  before_validation :find_to, :find_chatable
+  before_validation :find_to, :find_chatable, on: :create
   after_create :notify
 
   protected
@@ -52,7 +54,7 @@ class ChatMessage
 
   def find_chatable
     if !commodity_id.blank?
-      self.chatable = Commodity.find(chat_message_id)
+      self.chatable = Commodity.find(commodity_id)
     end
   end
 
