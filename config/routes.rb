@@ -2,13 +2,13 @@ Yeshi::Application.routes.draw do
   use_doorkeeper
 
   constraints subdomain: ENV['SUBDOMAIN'] do
-  resources :notifications ,except: [:edit,:update,:new,:create] do
-    get :read,on: :collection
-    #member do 
+    resources :notifications ,except: [:edit,:update,:new,:create] do
+      get :read,on: :collection
+      #member do 
       #post :accept
       #post :deny
-    #end
-  end
+      #end
+    end
 
     resources :chat_messages, except: [:edit, :update]
     resources :traders, only: [:index, :show, :create] do
@@ -34,7 +34,7 @@ Yeshi::Application.routes.draw do
     devise_for :users
   end
 
-  constraints subdomain: "trader#{"." + ENV['SUBDOMAIN'] unless ENV['SUBDOMAIN'].blank? }" do
+  constraints subdomain: ENV['TRADER_SUBDOMAIN'] do
     #devise_for :users
     scope module: 'trader' do
       resources :contacts, except: [:show]
@@ -55,7 +55,30 @@ Yeshi::Application.routes.draw do
     end
   end
 
-  constraints subdomain: "admin#{"." + ENV['SUBDOMAIN'] unless ENV['SUBDOMAIN'].blank? }" do
+  constraints subdomain: ENV['ADMIN_SUBDOMAIN'] do
     resources :users
   end
+
+  constraints subdomain: ENV['API_SUBDOMAIN'] do
+    scope module: 'api' do
+      namespace :v1 do
+        # another api routes
+        #get '/me' => "credentials#me"
+        #get '/dashboard' => "credentials#dashboard"
+        #post '/reg' => "registrations#create"
+        #post '/test' => "registrations#test"
+        resources :got_chat_messages, only: [:index, :show, :destroy]
+        resources :chat_messages, only: [:create]
+        #resources :notifications ,except: [:edit,:update,:new,:create] do
+          #get :read,on: :collection
+          #get :status,on: :collection
+          #member do 
+            #post :accept
+            #post :deny
+          #end
+        #end
+      end
+    end
+  end
+
 end

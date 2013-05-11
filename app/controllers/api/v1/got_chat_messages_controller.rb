@@ -1,0 +1,22 @@
+module Api::V1
+  class GotChatMessagesController < ApiController
+    doorkeeper_for :all
+    respond_to :json
+
+    def index
+      @got_chat_messages = current_resource_owner.got_chat_messages.page params[:page]
+      respond_with @got_chat_messages
+    end
+
+    def show
+      @got_chat_message = current_resource_owner.got_chat_messages.find params[:id]
+      respond_with @got_chat_message
+    end
+
+    def destroy
+      @got_chat_message = current_resource_owner.got_chat_messages.find params[:id]
+      @got_chat_message.chat_message
+      respond_with @got_chat_message
+    end
+  end
+end
