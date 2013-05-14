@@ -1,21 +1,6 @@
 class ChatMessagesController < ApplicationController
   before_filter :authenticate_user!
-  #respond_to :html, except: [:edit, :update]
-  #respond_to :js
-  #actions :create, :show
-  #belongs_to :commodity, :chat_message, optional: true, polymorphic: true
-  #load_and_authorize_resource :commodity, except: [:show]
-  #load_and_authorize_resource :chat_message, through: :commodity, except: [:index, :show]
-  #skip_load_and_authorize_resource only: :index
   add_crumb(I18n.t("controller.chat_messages")) { |instance| instance.send :chat_messages_path }
-
-  def index
-    @chat_messages = current_user.got_chat_messages.undelete.recent.page params[:page]
-    respond_to do |format|
-      format.html
-      format.json{render json: @chat_messages}
-    end
-  end
 
   def new
     if !params[:commodity_id].blank?
@@ -33,32 +18,10 @@ class ChatMessagesController < ApplicationController
     @chat_message = current_user.chat_messages.new params[:chat_message]
     @chat_message.chatable = @parent
     if @chat_message.save
-      redirect_to chat_messages_path
+      redirect_to got_chat_messages_path
     else
       render :new
     end
   end
 
-  def show
-    @chat_message = ChatMessage.any_of({user_id: current_user.id}, {to_id: current_user.id}).find params[:id]
-    @chat_message.read
-    respond_to do |format|
-      format.html
-      format.json{render json: @chat_message}
-    end
-  end
-
-  def destroy
-    current_user.got_chat_messages.find(params[:id]).destroy
-    redirect_to chat_messages_path
-  end
-
-  #protected
-  #def begin_of_association_chain
-    #current_user
-  #end
-
-  #def collection
-  #@chat_messages ||= end_of_association_chain.accessible_by(current_ability).page params[:page]
-  #end
 end

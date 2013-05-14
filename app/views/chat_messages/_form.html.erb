@@ -1,5 +1,5 @@
 <%= simple_form_for [parent, chat_message] do |f| %>
   <%= f.input :name  %>
   <%= f.input :content, as: :text, hint: '内容必须在5~100字以内'  %>
-  <%= f.submit '发送' %>
+  <%= f.submit '发送', class: 'btn btn-primary' %>
 <% end -%>

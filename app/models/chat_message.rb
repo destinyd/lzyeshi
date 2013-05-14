@@ -19,6 +19,7 @@ class ChatMessage
   scope :undelete, where(delete_at: nil)
   scope :recent, desc(:created_at)
   scope :ounread, order_by(:read_at => 0)
+  scope :nav, undelete.unread
   default_scope includes(:user)
 
   def read
@@ -48,7 +49,8 @@ class ChatMessage
   def find_to
     if !self.name.blank?
       self.to = User.where(name: self.name).first
-      self.errors.add :name, '找不到此用户' if self.to.blank?
+      self.errors.add :name, :no_this_user if self.to.blank?
+      self.errors.add :name, :could_not_self if self.user_id == self.to_id
     end
   end
 

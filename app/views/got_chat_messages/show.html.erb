@@ -1,0 +1,21 @@
+<h1><%= title "来自#{@got_chat_message.user}的短信息" %></h1>
+<%= content_tag :dl, class: 'dl-horizontal' do %>
+  <%= d @got_chat_message, :user %>
+  <% if @got_chat_message.chatable %>
+    <dt>谈论对象</dt>
+    <dd>
+    <%= link_to @got_chat_message.chatable, @got_chat_message.chatable %>
+    </dd>
+  <% end -%>
+  <%= d @got_chat_message, :content %>
+  <dt>操作</dt>
+  <dd>
+  <%= button_to '删除', got_chat_message_path(@got_chat_message), method: :delete, data: { confirm: '你确定?' }, class: 'btn btn-danger' if !@got_chat_message.is_delete? and current_user == @got_chat_message.to %>
+  </dd>
+  <dt>回复</dt>
+  <dd><%= render "chat_messages/form", chat_message: ChatMessage.new(name: @got_chat_message.user.name), parent: nil %></dd>
+  <div class="clearfix"></div>
+  </dd>
+<% end -%>
+
+<%= link_to '返回收件箱', got_chat_messages_path %>

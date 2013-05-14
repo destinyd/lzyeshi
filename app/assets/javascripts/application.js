@@ -23,6 +23,7 @@
 //= require devise
 //= require humane
 //= require traders
+//= require chat_messages
 // require_tree .
 humane.timeout = 10000;
 humane.waitForMove = true;
