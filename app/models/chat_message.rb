@@ -42,6 +42,15 @@ class ChatMessage
     update_attribute :delete_at, Time.now unless self.delete_at
   end
 
+  def user_name
+    self.user.to_s
+  end
+
+  def as_json(options={})
+    options[:methods] ||= [:user_name]
+    super(options)
+  end
+
   before_validation :find_to, :find_chatable, on: :create
   after_create :notify
 

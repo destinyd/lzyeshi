@@ -4,18 +4,19 @@ module Api::V1
     respond_to :json
 
     def index
-      @got_chat_messages = current_resource_owner.got_chat_messages.page params[:page]
+      @got_chat_messages = current_resource_owner.got_chat_messages.undelete.page params[:page]
       respond_with @got_chat_messages
     end
 
     def show
-      @got_chat_message = current_resource_owner.got_chat_messages.find params[:id]
+      @got_chat_message = current_resource_owner.got_chat_messages.undelete.find params[:id]
+      @got_chat_message.read
       respond_with @got_chat_message
     end
 
     def destroy
-      @got_chat_message = current_resource_owner.got_chat_messages.find params[:id]
-      @got_chat_message.chat_message
+      @got_chat_message = current_resource_owner.got_chat_messages.undelete.find params[:id]
+      @got_chat_message.destroy
       respond_with @got_chat_message
     end
   end
