@@ -1,8 +1,8 @@
 <h2>登录</h2>
 <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
-  <%= f.input :email, :autofocus => true %>
+  <%= f.input :login, autofocus: true, placeholder: '邮箱/手机号码/用户名' %>
   <%= f.input :password %>
-  <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
+  <%= f.input :remember_me, :as => :boolean, inline_label: '下次自动登录' if devise_mapping.rememberable? %>
   <%= f.button :submit, "登录", :class => 'btn-primary' %>
 <% end %>
 <%= render "devise/shared/links" %>

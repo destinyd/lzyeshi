@@ -7,13 +7,13 @@ class User
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:login]
 
   ## Database authenticatable
   field :email,              :type => String, :default => ""
   field :encrypted_password, :type => String, :default => ""
 
-  validates_presence_of :email
+  #validates_presence_of :email
   validates_presence_of :encrypted_password
   
   ## Recoverable
@@ -44,12 +44,15 @@ class User
   ## Token authenticatable
   # field :authentication_token, :type => String
   # run 'rake db:mongoid:create_indexes' to create indexes
-  index({ email: 1 }, { unique: true, background: true })
+  #index({ email: 1 }, { unique: true, background: true })
+  index({ name: 1 }, { unique: true, background: true })
   field :name, :type => String
-  validates :name, presence: true, length: 2..16
-  attr_accessor :is_trader
+  field :phone, :type => String
+  validates :name, presence: true, length: 2..10, uniqueness: true
+  validates :phone, format: {with: /1[35](\d{9})/}, uniqueness: true#, presence: true
+  attr_accessor :is_trader, :login
   attr_accessible :role_ids, :as => :admin
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :is_trader, :trader_attributes
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :is_trader, :trader_attributes, :login, :phone
 
   has_many :groups
   has_many :commodities
@@ -75,7 +78,27 @@ class User
     self.add_role :user
   end
 
+  before_validation :valid_commucation
+
   def to_s
     self.name.to_s
+  end
+
+  def self.find_for_database_authentication(conditions={})
+    self.where(email: conditions[:login]).limit(1).first ||
+      self.where(phone: conditions[:login]).limit(1).first ||
+      self.where(name: conditions[:login]).limit(1).first
+  end
+
+  def email_required?
+    super && phone.blank?
+  end
+
+  protected
+  def valid_commucation
+    if self.phone.blank? and self.email.blank?
+      self.errors.add :email, :at_least
+      self.errors.add :phone, :at_least
+    end
   end
 end

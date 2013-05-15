@@ -175,6 +175,7 @@ zh-CN:
       status_change_fault: 状态转换失败
       reserve_not_enough: 库存不足
       no_this_user: 找不到此用户
+      at_least: 至少要填写一样方便联系到您
 
   helpers:
     select:
@@ -233,6 +234,8 @@ zh-CN:
     total: 总价
     plus: 备注
     current_password: 当前密码
+    login: 登录名
+    phone: 手机号码
 
 
 
