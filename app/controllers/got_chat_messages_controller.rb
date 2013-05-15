@@ -6,7 +6,7 @@ class GotChatMessagesController < InheritedResources::Base
   add_crumb(I18n.t("controller.chat_messages")) { |instance| instance.send :got_chat_messages_path }
 
   def index
-    @got_chat_messages = current_user.got_chat_messages.undelete.page params[:page]
+    @got_chat_messages = current_user.got_chat_messages.s_index.page params[:page]
     index!
   end
 

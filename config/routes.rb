@@ -64,7 +64,7 @@ Yeshi::Application.routes.draw do
     scope module: 'api' do
       namespace :v1 do
         # another api routes
-        #get '/me' => "credentials#me"
+        get '/me' => "credentials#me"
         #get '/dashboard' => "credentials#dashboard"
         #post '/reg' => "registrations#create"
         #post '/test' => "registrations#test"

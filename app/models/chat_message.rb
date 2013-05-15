@@ -20,6 +20,7 @@ class ChatMessage
   scope :recent, desc(:created_at)
   scope :ounread, order_by(:read_at => 0)
   scope :nav, undelete.unread
+  scope :s_index, undelete.ounread.recent
   default_scope includes(:user)
 
   def read
@@ -81,7 +82,8 @@ class ChatMessage
     hash = {
       #'notification_id'  => notification.id.to_s,
       'chat_message_id' => self.id.to_s,
-      'count' => self.to.notifications.count,
+      'count' => self.to.got_chat_messages.nav.count,
+      'name' => self.user_name,
       #'content' => notification.to_s,
       #'_type' => notification._type
     }

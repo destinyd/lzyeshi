@@ -4,7 +4,7 @@ module Api::V1
     respond_to :json
 
     def index
-      @got_chat_messages = current_resource_owner.got_chat_messages.undelete.page params[:page]
+      @got_chat_messages = current_resource_owner.got_chat_messages.s_index.page params[:page]
       respond_with @got_chat_messages
     end
 
