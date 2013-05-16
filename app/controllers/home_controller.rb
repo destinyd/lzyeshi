@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   end
 
   def contact
-    @contacts = Contact::Base.system
+    @contacts = Contact::Base.own
     add_crumb(I18n.t("action.home.contact")) { |instance| instance.send :contact_path }
   end
 

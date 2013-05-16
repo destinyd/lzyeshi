@@ -15,7 +15,7 @@ class Contact::Base
   attr_accessor :_type
   attr_accessible :name, :value, :_type
 
-  scope :system, where(user: nil, trader: nil)
+  scope :own, where(user: nil, trader: nil)
 
   #include Mongoid::Symbolize
   #symbolize :_type, in: [:'Contact::Base', :'Contact::Link', :'Contact::Picture']
