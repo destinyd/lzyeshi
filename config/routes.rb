@@ -66,7 +66,7 @@ Yeshi::Application.routes.draw do
         # another api routes
         get '/me' => "credentials#me"
         #get '/dashboard' => "credentials#dashboard"
-        #post '/reg' => "registrations#create"
+        post '/reg' => "registrations#create"
         #post '/test' => "registrations#test"
         resources :got_chat_messages, only: [:index, :show, :destroy]
         resources :chat_messages, only: [:create]
