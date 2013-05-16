@@ -15,7 +15,7 @@ ROLES: [admin, user, VIP, trader]
 SUBDOMAIN: ysdev
 TRADER_SUBDOMAIN: trader.ysdev
 ADMIN_SUBDOMAIN: admin.ysdev
-ADMIN_SUBDOMAIN: api.ysdev
+API_SUBDOMAIN: api.ysdev
 FAYE: http://ysdev.realityandapp.com:9292/faye
 API_UID: 4957a682a1b180485bcff93db383848f425880738fb68eed755b18cc8a100bde
 API_SECRET: 6e57151ad4f0dbc8df1d0864f3710e18e37404cf2c1a02f9fc488a5cab78c721
