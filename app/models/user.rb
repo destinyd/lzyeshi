@@ -58,6 +58,7 @@ class User
   has_many :commodities
   has_many :pictures
   has_many :locations
+  has_many :business_hours
   has_many :contacts,class_name: 'Contact::Base'#, as: :contactable
   has_many :chat_messages, inverse_of: :user
   has_many :got_chat_messages, class_name: 'ChatMessage', inverse_of: :to

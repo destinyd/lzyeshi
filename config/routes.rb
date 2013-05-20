@@ -65,11 +65,13 @@ Yeshi::Application.routes.draw do
       namespace :v1 do
         # another api routes
         get '/me' => "credentials#me"
-        #get '/dashboard' => "credentials#dashboard"
+        get '/dashboard' => "credentials#dashboard"
         post '/reg' => "registrations#create"
         #post '/test' => "registrations#test"
         resources :got_chat_messages, only: [:index, :show, :destroy]
         resources :chat_messages, only: [:create]
+        resources :locations, only: [:index, :create, :destroy]
+        resources :business_hours, only: [:index, :create, :update, :destroy]
         #resources :notifications ,except: [:edit,:update,:new,:create] do
           #get :read,on: :collection
           #get :status,on: :collection
