@@ -66,10 +66,10 @@ class Commodity
   after_destroy :update_group_count, :update_trader_count
 
   def update_group_count
-    self.group.update_attribute :commodities_count, self.group.commodities.count
+    self.group.update_attribute :commodities_count, self.group.commodities.count if self.group
   end
 
   def update_trader_count
-    self.trader.update_attribute :commodities_count, self.trader.commodities.count
+    self.trader.update_attribute :commodities_count, self.trader.commodities.count if self.trader
   end
 end

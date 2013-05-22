@@ -19,6 +19,7 @@ class Group
 
   scope :available,where(:commodities_count.gt => 0)
   scope :with_commodities,includes(:commodities)
+  scope :recent, desc(:created_at)
 
   def humanize_price
     price.to_s

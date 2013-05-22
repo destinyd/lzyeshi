@@ -72,6 +72,13 @@ Yeshi::Application.routes.draw do
         resources :chat_messages, only: [:create]
         resources :locations, only: [:index, :create, :destroy]
         resources :business_hours, only: [:index, :create, :update, :destroy]
+        resources :groups, only: [:index, :create, :update, :destroy] do
+          resources :commodities, only: :index
+        end
+
+        resources :commodities, only: [:index, :create, :update, :destroy] do
+          resources :bills
+        end
         #resources :notifications ,except: [:edit,:update,:new,:create] do
           #get :read,on: :collection
           #get :status,on: :collection

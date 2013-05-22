@@ -25,6 +25,9 @@ class Bill
 
   after_create :minus_reserve
 
+  attr_accessible :price, :quantity, :total, :plus
+  attr_accessible :commodity_id, :as => :api
+
   def valid_reserve
     unless self.commodity.reserve >= self.quantity
       self.errors.add(:quantity, :reserve_not_enough)
