@@ -18,14 +18,14 @@ class Commodity
   has_many :chat_messages, as: :chatable
   has_many :bills
 
-  validates :name, presence: true, length: 3..64
+  validates :name, presence: true, length: 2..64
   validates :price, presence: true
   validates :reserve, presence: true
 
   #mount_uploader :picture, PictureUploader
   accepts_nested_attributes_for :picture
 
-  attr_accessible :name, :price, :reserve, :text, :picture, :picture_id, :category_list, :picture_attributes
+  attr_accessible :name, :price, :reserve, :text, :picture, :picture_id, :category_list, :picture_attributes, :desc
 
   #has_many :goods
 

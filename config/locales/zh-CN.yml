@@ -227,7 +227,6 @@ zh-CN:
     is_trader: 我是商家
     text: 描述
     image: 图片
-    category_list: 标签
     value: 内容
     _type: 类型
     quantity: 数量
@@ -236,6 +235,7 @@ zh-CN:
     current_password: 当前密码
     login: 登录名
     phone: 手机号码
+    category_list: 类别
 
 
 

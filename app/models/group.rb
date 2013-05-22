@@ -17,6 +17,8 @@ class Group
   attr_accessor :pictures_ids
   attr_accessible :name, :price, :reserve,  :pictures_ids, :text, :category_list
 
+  validates :name, presence: true, length: 2..64
+
   scope :available,where(:commodities_count.gt => 0)
   scope :with_commodities,includes(:commodities)
   scope :recent, desc(:created_at)
@@ -42,6 +44,7 @@ class Group
       #options[:methods] ||= [:humanize_price]
       #super(options)
     #else
+      options[:methods] ||= [:category_list]
       options[:except] ||= [:created_at, :categories, :text, :price, :updated_at, :reserve]
       super(options)
     #end
