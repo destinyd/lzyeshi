@@ -76,7 +76,7 @@ Yeshi::Application.routes.draw do
           resources :commodities, only: [:index, :create]
         end
 
-        resources :commodities, only: [:index, :create, :update, :destroy] do
+        resources :commodities, only: [:index, :create, :update, :destroy, :show] do
           resources :bills
         end
         #resources :notifications ,except: [:edit,:update,:new,:create] do
