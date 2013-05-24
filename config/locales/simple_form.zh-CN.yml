@@ -15,3 +15,7 @@ zh-CN:
     placeholders:
       activity:
         type_list: 例如:桌游,鸡尾酒
+    hints:
+      group:
+        is_custom_code: 商品名称 + 自动编号
+        commodity_name: 2~64个字符

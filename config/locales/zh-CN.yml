@@ -176,6 +176,7 @@ zh-CN:
       reserve_not_enough: 库存不足
       no_this_user: 找不到此用户
       at_least: 至少要填写一样方便联系到您
+      need_least_one_picture: 至少要上传一张图片
 
   helpers:
     select:
@@ -206,6 +207,9 @@ zh-CN:
         name: 收件人
         chatable: 谈论对象
         user: 发送者
+      group:
+        is_custom_code: 自动生成编号
+        commodity_name: 商品名称
 
   attributes:
     created_at: 创建于

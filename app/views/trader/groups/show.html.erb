@@ -3,11 +3,11 @@
   <%#= d @group,:price %>
   <%#= d @group,:reserve %>
   <%#= d @group,:desc %>
-  <% if @group.commodities.any? %>
-    <dt>款式</dt>
+  <% if @commodities.any? %>
+    <dt>商品</dt>
     <dd>
     <ul class="groups_ul inline">
-      <% @group.commodities.each do |commodity| %>
+      <% @commodities.each do |commodity| %>
         <li>
           <% if commodity.picture %>
             <%= link_to commodity do %>

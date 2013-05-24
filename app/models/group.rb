@@ -14,8 +14,8 @@ class Group
   has_many :commodities, dependent: :destroy
   has_many :pictures, dependent: :destroy
 
-  attr_accessor :pictures_ids
-  attr_accessible :name, :price, :reserve,  :pictures_ids, :text, :category_list
+  attr_accessor :pictures_ids, :commodity_name, :is_custom_code
+  attr_accessible :name, :price, :reserve,  :pictures_ids, :text, :category_list, :commodity_name, :is_custom_code
 
   validates :name, presence: true, length: 2..64
 
@@ -50,30 +50,30 @@ class Group
     #end
   end
 
+  def bulk_add
+    if self.commodity_name.blank? or self.commodity_name.length < 2 or self.commodity_name.length > 64
+      errors.add :commodity_name, :invalid
+      return false
+    end
+
+    if pictures_ids.blank?
+      errors.add :commodity_name, :need_least_one_picture
+      return false
+    end
+    self.pictures << Picture.find(self.pictures_ids.split(','))
+    self.pictures.each do |p|
+      commodity = self.trader.commodities.create name: self.commodity_name, price: self.price, reserve: self.reserve, text: self.text, category_list: self.category_list
+      commodity.picture = p
+      commodity.name += commodity.id if is_custom_code == "1"
+      self.commodities << commodity
+    end
+    self.save
+  end
+
   protected
   before_create :give_trader
 
   def give_trader
     self.trader = self.try(:user).try(:trader)
-  end
-
-  after_create :admin_create_group#, if: :is_admin_group?
-
-  def admin_create_group
-    if is_admin_group?
-      unless pictures_ids.blank?
-        self.pictures << Picture.find(self.pictures_ids.split(','))
-        self.pictures.each do |p|
-          commodity = self.trader.commodities.create name: self.name, price: self.price, reserve: self.reserve, text: self.text, category_list: self.category_list
-          commodity.picture = p
-          self.commodities << commodity
-        end
-        self.save
-      end
-    end
-  end
-
-  def is_admin_group?
-    self.user and self.user.has_role? :admin
   end
 end

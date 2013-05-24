@@ -43,6 +43,8 @@ Yeshi::Application.routes.draw do
       resources :locations, except: [:edit, :update]
       resources :groups do
         resources :commodities
+        get :bulk_add, on: :member
+        put :bulk_add_commodities, on: :member
       end
       resources :pictures
       resources :bills, except: [:new, :show] do
