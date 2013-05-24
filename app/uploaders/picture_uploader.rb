@@ -36,7 +36,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   end
   #file.extension
 
-  process :convert => 'png'
+  #process :convert => 'png'
   version :thumb do
     process :resize_to_fill => [120, 120]
   end
