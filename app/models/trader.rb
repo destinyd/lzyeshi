@@ -4,7 +4,7 @@ class Trader
   field :name, type: String
   field :address, type: String
   field :commodities_count, type: Integer, default: 0
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true, length: 2..16
 
   has_many :groups
   has_many :commodities
