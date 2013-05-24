@@ -79,6 +79,9 @@ Yeshi::Application.routes.draw do
         resources :commodities, only: [:index, :create, :update, :destroy, :show] do
           resources :bills
         end
+        resources :bills, only: :index do
+          get :dashboard, on: :collection
+        end
         #resources :notifications ,except: [:edit,:update,:new,:create] do
           #get :read,on: :collection
           #get :status,on: :collection

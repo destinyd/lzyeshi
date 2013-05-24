@@ -26,12 +26,15 @@ module Api::V1
       #destroy!{commodity_bills_path(@bill.commodity_id)}
     #end
 
-    #def dashboard
-      #@day_bills = current_user.bills.day
-      #@yesterday_bills = current_user.bills.yesterday
-      #@month_bills = current_user.bills.month
-      #@year_bills = current_user.bills.year
-    #end
+    def dashboard
+      render json: {
+        isOpen: @isOpen,
+        income_yesterday: current_resource_owner.bills.yesterday.sum(&:total).to_f,
+        income_today: current_resource_owner.bills.day.sum(&:total).to_f,
+        income_month: current_resource_owner.bills.month.sum(&:total).to_f,
+        income_year: current_resource_owner.bills.month.sum(&:total).to_f
+      }
+    end
 
     #protected
     #def begin_of_association_chain
