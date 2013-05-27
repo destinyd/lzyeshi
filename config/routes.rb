@@ -74,8 +74,9 @@ Yeshi::Application.routes.draw do
         resources :chat_messages, only: [:create]
         resources :locations, only: [:index, :create, :destroy]
         resources :business_hours, only: [:index, :create, :update, :destroy]
-        resources :groups, only: [:index, :create, :update, :destroy] do
+        resources :groups, only: [:index, :create, :update, :destroy, :show] do
           resources :commodities, only: [:index, :create]
+          put :bulk_add_commodities, on: :member
         end
 
         resources :commodities, only: [:index, :create, :update, :destroy, :show] do

@@ -44,7 +44,7 @@ class Group
       #options[:methods] ||= [:humanize_price]
       #super(options)
     #else
-      options[:methods] ||= [:category_list]
+      options[:methods].nil? ? (options[:methods] = [:category_list]) : options[:methods].push(:category_list)
       options[:except] ||= [:created_at, :categories, :text, :price, :updated_at, :reserve]
       super(options)
     #end
