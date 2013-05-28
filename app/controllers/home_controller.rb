@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @groups = Group.available
+    @groups = Group.home_index
   end
 
   def contact
