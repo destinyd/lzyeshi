@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= display_meta_tags default_meta_tags %>
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= stylesheet_link_tag "bootstrap-wysihtml5", :media => "all" %>
+    <%= javascript_include_tag "application" ,"#{ENV['FAYE']}.js", 'wysihtml5' %>
+    <%= csrf_meta_tags %>
+    <!--[if IE 6]>
+    <%= javascript_include_tag "ie6png" %>
+    <%= stylesheet_link_tag "ie6", :media => "all" %>
+    <![endif]-->  
+    <%= yield(:head) %>
+  </head>
+  <body class="<%= controller_name %> <%= action_name %>" data-spy="scroll" data-target=".bs-docs-sidebar">
+    <div class="navbar navbar-fixed-top">
+      <nav class="navbar-inner">
+        <div class="container">
+          <%= render "layouts/#{request.subdomains.first.to_s + "/" if !request.subdomains.blank? and request.subdomains.first != ENV['SUBDOMAIN']}navigation" %>
+          <%#= render 'layouts/navigation' %>
+        </div>
+      </nav>
+    </div>
+
+    <!--[if IE 6]>
+    <div id="notice_ie6">
+      使用IE6浏览器可能导致无法正常使用本网站，请使用更高版本的IE、<a href="http://firefox.com.cn/">火狐</a>或Chrome浏览器访问。
+    </div>
+    <![endif]-->  
+
+    <div id="main" role="main">
+      <div class="container">
+        <div class="content">
+          <div class="row">
+            <div class="span3 bs-docs-sidebar">
+              <ul class="nav nav-list bs-docs-sidenav">
+                <%= render_cell :layouts, :admin_nav, controller_name: controller_name, action_name: action_name %>
+              </ul>
+            </div>
+
+            <div class="span9" id="mh-300">
+              <%= render 'layouts/messages' %>
+              <%= yield %>
+            </div>
+          </div>
+          <footer id="footer">
+            <%= render_cell :layouts, :footer %>
+          </footer>
+        </div>
+      </div> <!--! end of .container -->
+    </div> <!--! end of #main -->
+    <% if current_user %>
+      <script>
+        $(function() {
+          init_faye('<%= ENV['FAYE'] %>','<%= current_user.name %>')
+        });
+      </script>
+    <% end -%>
+  </body>
+</html>

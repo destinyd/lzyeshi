@@ -15,4 +15,10 @@ class LayoutsCell < Cell::Rails
     render
   end
 
+  def admin_nav(args)
+    @controller_name = args[:controller_name]
+    @action_name = args[:action_name]
+    render
+  end
+
 end

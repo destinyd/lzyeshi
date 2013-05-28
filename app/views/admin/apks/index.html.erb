@@ -1,0 +1,35 @@
+<h1>Listing apks</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>English name</th>
+    <th>Version</th>
+    <th>Update info</th>
+    <th>排序级别</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @apks.each do |apk| %>
+  <tr>
+    <td><%= apk.name %></td>
+    <td><%= apk.english_name %></td>
+    <td><%= apk.version %></td>
+    <td><%= apk.update_info %></td>
+    <td><%= apk.order %></td>
+    <td><%= link_to '更新版本', updated_version_apk_path(apk) %></td>
+    <td><%= link_to 'Edit', edit_apk_path(apk) %></td>
+    <td><%= link_to 'Destroy', apk, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+<div class="clearfix"></div>
+<div class="pull-right">
+  <%= paginate @apks %>
+</div>
+
+<br />
+
+<%= link_to 'New Apk', new_apk_path %>

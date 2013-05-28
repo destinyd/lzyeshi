@@ -59,7 +59,12 @@ Yeshi::Application.routes.draw do
   end
 
   constraints subdomain: ENV['ADMIN_SUBDOMAIN'] do
-    resources :users
+    scope module: 'admin' do
+      resources :apks do
+        get :updated_version, on: :member
+      end
+      resources :users
+    end
   end
 
   constraints subdomain: ENV['API_SUBDOMAIN'] do

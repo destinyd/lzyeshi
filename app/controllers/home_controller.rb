@@ -10,5 +10,6 @@ class HomeController < ApplicationController
 
   def download
     add_crumb(I18n.t("action.home.download")) { |instance| instance.send :download_path }
+    @apks = Apk.download
   end
 end

@@ -3,16 +3,31 @@
 
 <div id="应用下载" class="page">
   <h1>应用下载</h1>	
-  <h2>客户版</h2>
-  <div class="downloader full-width">
-    <p>版本：1.01 大小：3.3MB</p>
-    <p>发布日期：2013年5月17号</p>
-    <p>系统要求：Android 2.2或更高版本</p>
-    <p>
-      <a href="/client.apk">
-        <%= image_tag 'img/button.png',alt:'即刻下载',title:'即刻下载' %>
-      </a>
-    </p>
-  </div>
+
+  <% @apks.group_by(&:english_name).each do |english_name,apks| %>
+    <% apk = apks.first %>
+    <div class="span5 pull-left">
+      <h2><%= apk.name %></h2>
+      <div class="downloader full-width">
+        <p>版本：<%= apk.version %> 
+          <%#大小：3.3MB%>
+        </p>
+        <p>发布日期：<%= apk.created_at %></p>
+        <p>系统要求：Android 2.2或更高版本</p>
+        <p>更新内容：
+          <p>
+            <%= apk.update_info.html_safe %> 
+          </p>
+        </p>
+        <p>
+          <%= link_to apk.apk.url do %>
+            <%= image_tag 'img/button.png',alt:'即刻下载',title:'即刻下载' %>
+          <% end -%>
+        </p>
+      </div>
+    </div>
+
+  <% end -%>
+  <div class="clearfix"></div>
 
 </div><!-- end download page -->					

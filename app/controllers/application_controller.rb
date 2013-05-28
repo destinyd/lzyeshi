@@ -40,4 +40,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authenticate_admin!
+    not_found unless current_user.has_role? :admin
+  end
+
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
+
 end
