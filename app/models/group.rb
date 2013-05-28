@@ -45,7 +45,7 @@ class Group
       #super(options)
     #else
       options[:methods].nil? ? (options[:methods] = [:category_list]) : options[:methods].push(:category_list)
-      options[:except] ||= [:created_at, :categories, :text, :price, :updated_at, :reserve]
+      options[:except] = [:created_at, :categories, :text, :price, :updated_at, :reserve] unless options[:except]
       super(options)
     #end
   end

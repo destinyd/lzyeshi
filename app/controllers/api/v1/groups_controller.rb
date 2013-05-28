@@ -7,7 +7,7 @@ module Api::V1
     def show
       @group = current_resource_owner.groups.find(params[:id])
       show! do |format|
-        format.json { render json: @group.as_json({methods: [:humanize_price]})}
+        format.json { render json: @group.as_json({methods: [:humanize_price], except: []})}
       end
     end
 
