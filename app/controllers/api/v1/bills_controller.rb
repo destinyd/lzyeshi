@@ -32,7 +32,7 @@ module Api::V1
         income_yesterday: current_resource_owner.bills.yesterday.sum(&:total).to_f,
         income_today: current_resource_owner.bills.day.sum(&:total).to_f,
         income_month: current_resource_owner.bills.month.sum(&:total).to_f,
-        income_year: current_resource_owner.bills.month.sum(&:total).to_f
+        income_year: current_resource_owner.bills.year.sum(&:total).to_f
       }
     end
 
