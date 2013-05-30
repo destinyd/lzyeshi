@@ -77,7 +77,9 @@ Yeshi::Application.routes.draw do
         #post '/test' => "registrations#test"
         resources :got_chat_messages, only: [:index, :show, :destroy]
         resources :chat_messages, only: [:create]
-        resources :locations, only: [:index, :create, :destroy]
+        resources :locations, only: [:index, :create, :destroy] do
+          get :last, on: :collection
+        end
         resources :business_hours, only: [:index, :create, :update, :destroy]
         resources :groups, only: [:index, :create, :update, :destroy, :show] do
           resources :commodities, only: [:index, :create]
