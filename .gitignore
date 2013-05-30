@@ -82,3 +82,4 @@ bak/
 public/uploads/
 config/mongoid.yml
 public/assets/
+public/apk/
