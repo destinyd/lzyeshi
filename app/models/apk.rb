@@ -9,8 +9,7 @@ class Apk
   mount_uploader :apk, ApkUploader
 
   scope :recent, desc(:created_at)
-  scope :sequence, desc(:order)
-  scope :download, sequence.recent#.group_by_english_name
+  scope :download, desc(:order).desc(:created_at)
 
   def updated_version
     Apk.new name: self.name, english_name: self.english_name, version: (self.version.to_f + 0.01).to_s, update_info: self.update_info, order: self.order
