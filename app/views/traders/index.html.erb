@@ -11,21 +11,21 @@
   <div class="span9">
     <% @traders.each do |trader| %>
       <% @commodities = trader.commodities.limit(23) %>
-      <section id="<%= trader.id %>" class="trader">
+      <section id="<%= trader.id %>" class="trader section">
         <div class="page-header">
           <h1><%= link_to trader.name, trader %></h1>
         </div>
         <% if @commodities.any? %>
           <ul class="thumbs inline">
             <% @commodities.each do |commodity| %>
-              <li class="pull-left">
+              <li class="pull-left li-commodity">
                 <%= link_to commodity do %>
                   <%= image_tag commodity.picture.image.thumb %>
                 <% end -%>
               </li>
             <% end -%>
             <% if @commodities.count > 23 %>
-              <li class="pull-left">
+              <li class="pull-left li-commodity">
                 <%= link_to trader do %>
                   <%= image_tag 'view_more.jpg' %>
                 <% end -%>

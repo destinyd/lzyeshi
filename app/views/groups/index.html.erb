@@ -10,14 +10,14 @@
       </div>
       <ul class="thumbs inline">
         <% group.commodities.limit(13).each do |commodity| %>
-          <li class="pull-left">
+          <li class="pull-left li-commodity">
             <%= link_to commodity, target: '_blank' do %>
               <%= image_tag commodity.picture.image.thumb %>
             <% end -%>
           </li>
         <% end -%>
         <% if group.commodities.count > 13 %>
-          <li class="pull-left">
+          <li class="pull-left li-commodity">
             <%= link_to group, target: '_blank' do %>
               <%= image_tag 'view_more.jpg' %>
             <% end -%>

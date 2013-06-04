@@ -1,0 +1,59 @@
+#notice_ie6{
+  background-color: #FF8700;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px 0;
+  margin: 10px 0;
+}
+.commodity_image{
+  _width: auto;
+  _height: auto;
+}
+#footer{
+  font: 12px/1.5 Tahoma,Arial,"宋体b8b\4f53",sans-serif;
+  color: #999;
+  text-align: center;
+  margin-top: 20px;
+  width: 100%;
+  height: auto;
+}
+.footer-container{
+  text-align: center;
+  border-top: 1px solid #d4d4d4;
+  padding-top: 20px;
+  width: 100%;
+  height: auto;
+}
+.weixin_mp{
+  width: 120px;
+  height: 120px;
+}
+.icon-chevron-right {
+  float: right;
+  margin-top: 2px;
+  margin-right: -6px;
+  opacity: .25;
+}
+.li-commodity{
+  width: 132px\9;
+  height: 132px\9;
+}
+.commodity{
+  width: 120px\9;
+  height: 160px\9;
+}
+.clearfix{
+  +clear: both;
+}
+.span9{
+  +width: 680px;
+  _width: 620px;
+}
+.picture{
+  +width: 124px;
+  +height: 160px;
+}
+.bs-docs-sidenav-li{
+  _width: 220px;
+}

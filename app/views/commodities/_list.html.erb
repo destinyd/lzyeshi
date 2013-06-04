@@ -1,6 +1,6 @@
 <ul class="sw-layout-mod sw-mod-offerShopwindow4">
   <% commodities.each do |commodity| %>
-    <li class="sw-mod-offerShopwindow paGetId">
+    <li class="sw-mod-offerShopwindow paGetId commodities-commodity">
       <div class="photo-text-200">
         <%= link_to commodity, class: 'photo200-box', target: '_blank' do %>
           <%= image_tag commodity.picture.image.list.url %>

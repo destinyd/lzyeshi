@@ -4,12 +4,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= display_meta_tags default_meta_tags %>
     <%= stylesheet_link_tag "application", :media => "all" %>
-    <%= javascript_include_tag "application" ,"#{ENV['FAYE']}.js" %>
     <%= csrf_meta_tags %>
-    <!--[if IE 6]>
-    <%= javascript_include_tag "ie6png" %>
-    <%= stylesheet_link_tag "ie6", :media => "all" %>
-    <![endif]-->  
+    <%= javascript_include_tag "application" ,"#{ENV['FAYE']}.js" %>
+    <!--[if lte IE 6]>
+    <%= stylesheet_link_tag "bsie/bootstrap-ie6.min","bsie/ie", :media => "all" %>
+    <![endif]-->
     <%= yield(:head) %>
   </head>
   <body class="<%= controller_name %> <%= action_name %>" data-spy="scroll" data-target=".bs-docs-sidebar">
@@ -49,6 +48,20 @@
         </div>
       </div> <!--! end of .container -->
     </div> <!--! end of #main -->
+    <!--[if lte IE 6]>
+    <%= javascript_include_tag "ie6png", "bsie/bootstrap-ie" %>
+    <script type="text/javascript">
+      (function ($) {
+        $(document).ready(function() {
+          if ($.isFunction($.bootstrapIE6)) $.bootstrapIE6($(document));
+        });
+      })(jQuery);
+    </script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <%= stylesheet_link_tag "ie", :media => "all" %>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
     <% if current_user %>
       <script>
         $(function() {

@@ -7,7 +7,7 @@
     <%= csrf_meta_tags %>
     <%= javascript_include_tag "application" ,"#{ENV['FAYE']}.js" %>
     <!--[if lte IE 6]>
-    <%= stylesheet_link_tag "bsie/bootstrap-ie6.min", "ie6", :media => "all" %>
+    <%= stylesheet_link_tag "bsie/bootstrap-ie6.min", :media => "all" %>
     <![endif]-->
     <!--[if lte IE 7]>
     <%= stylesheet_link_tag "bsie/ie", :media => "all" %>
@@ -50,11 +50,6 @@
     </div> <!--! end of #main -->
     <!--[if lte IE 6]>
     <%= javascript_include_tag "ie6png", "bsie/bootstrap-ie" %>
-    <![endif]-->
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
     <script type="text/javascript">
       (function ($) {
         $(document).ready(function() {
@@ -62,6 +57,11 @@
         });
       })(jQuery);
     </script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <%= stylesheet_link_tag "ie", :media => "all" %>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
     <% if current_user %>
       <script>
         $(function() {

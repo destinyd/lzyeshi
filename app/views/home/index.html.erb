@@ -2,27 +2,27 @@
   <div class="span3 bs-docs-sidebar">
     <ul class="nav nav-list bs-docs-sidenav">
       <% @groups.each do |group| %>
-        <li><a href="#<%= group.id %>"><i class="icon-chevron-right"></i> <%= group.name %></a></li>
+        <li class="bs-docs-sidenav-li"><a href="#<%= group.id %>"><i class="icon-chevron-right"></i> <%= group.name %></a></li>
       <% end -%>
     </ul>
   </div>
   <div class="span9">
     <% @groups.each do |group| %>
-      <section id="<%= group.id %>">
+      <section id="<%= group.id %>" class="section">
         <div class="page-header">
           <h1><%= link_to group.name, group, target: '_blank' %></h1>
         </div>
         <div class="">
           <ul class="thumbs inline">
             <% group.commodities.limit(23).each do |commodity| %>
-              <li class="pull-left">
+              <li class="pull-left li-commodity">
                 <%= link_to commodity, target: '_blank' do %>
                   <%= image_tag commodity.picture.image.thumb %>
                 <% end -%>
               </li>
             <% end -%>
             <% if group.commodities.count > 23 %>
-              <li class="pull-left">
+              <li class="pull-left li-commodity">
                 <%= link_to group, target: '_blank' do %>
                   <%= image_tag 'view_more.jpg' %>
                 <% end -%>
@@ -32,6 +32,7 @@
           <div class="clearfix"></div>
         </div>  
       </section>
+      <div class="clearfix"></div>
     <% end -%>
   </div>
 </div>
