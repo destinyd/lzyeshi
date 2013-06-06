@@ -20,13 +20,16 @@ class Bill
   scope :month, where(:created_at.gte => Time.new.beginning_of_month)
   scope :year, where(:created_at.gte => Time.new.beginning_of_year)
 
-  before_validation :valid_reserve
+  before_validation :valid_commodity, :valid_reserve, on: :create
   before_create :give_trader
 
   after_create :minus_reserve
 
-  attr_accessible :price, :quantity, :total, :plus
-  attr_accessible :commodity_id, :as => :api
+  attr_accessible :price, :quantity, :total, :plus, :commodity_id
+
+  def valid_commodity
+    self.errors.add(:price, :not_yours) unless self.user and self.user.commodities.where(_id: commodity_id).first
+  end
 
   def valid_reserve
     unless self.commodity.reserve >= self.quantity

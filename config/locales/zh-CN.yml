@@ -177,6 +177,7 @@ zh-CN:
       no_this_user: 找不到此用户
       at_least: 至少要填写一样方便联系到您
       need_least_one_picture: 至少要上传一张图片
+      not_yours: 这商品不是您的
 
   helpers:
     select:
