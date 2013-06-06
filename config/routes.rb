@@ -32,7 +32,9 @@ Yeshi::Application.routes.draw do
     root :to => "home#index"
     get '/contact', :to => "home#contact", as: :system_contact
     get '/download', :to => "home#download", as: :download
-    devise_for :users
+    devise_for :users     , controllers: {
+      omniauth_callbacks: :authentications
+    }
   end
 
   constraints subdomain: ENV['TRADER_SUBDOMAIN'] do

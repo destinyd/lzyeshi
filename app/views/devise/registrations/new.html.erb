@@ -4,8 +4,10 @@
     <%= f.error_notification %>
     <%= display_base_errors resource %>
     <%= f.input :name, :autofocus => true %>
-    <%= f.input :password, :required => true %>
-    <%= f.input :password_confirmation, :required => true %>
+    <% if @user.password_required? %>
+      <%= f.input :password, :required => true %>
+      <%= f.input :password_confirmation, :required => true %>
+    <% end -%>
     <%= f.input :email %>
     <%= f.input :phone, hint: '邮箱和电话至少要填写一项' %>
     <%= f.input :is_trader,as: :boolean %>

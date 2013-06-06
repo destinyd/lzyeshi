@@ -7,7 +7,7 @@ class User
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:login]
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :authentication_keys => [:login]
 
   ## Database authenticatable
   field :email,              :type => String, :default => ""
@@ -93,6 +93,19 @@ class User
 
   def email_required?
     super && phone.blank?
+  end
+
+  def apply_omniauth(omniauth)
+    debugger
+    authentications.build(
+      provider: omniauth.provider, 
+      uid: omniauth.uid,
+      access_token: omniauth.credentials.token)
+  end
+
+  def password_required?
+    #(authentications.empty? || !password.blank?) && 
+    super
   end
 
   protected
