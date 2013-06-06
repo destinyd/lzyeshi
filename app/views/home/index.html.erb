@@ -14,7 +14,7 @@
         </div>
         <div class="">
           <ul class="thumbs inline">
-            <% group.commodities.limit(23).each do |commodity| %>
+            <% group.commodities.in_index.each do |commodity| %>
               <li class="pull-left li-commodity">
                 <%= link_to commodity, target: '_blank' do %>
                   <%= image_tag commodity.picture.image.thumb %>

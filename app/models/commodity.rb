@@ -33,6 +33,7 @@ class Commodity
   scope :opening, where(:reserve.gt => 0)
   scope :with_pic, includes(:picture)
   scope :with_group, includes(:group)
+  scope :in_index, opening.recent.limit(23)
 
 
   after_initialize do
