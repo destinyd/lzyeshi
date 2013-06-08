@@ -49,4 +49,6 @@ gem 'rspec-cells', :group => [:development, :test]
 gem "crummy", "~> 1.7.1"
 gem 'bootstrap-wysihtml5-rails'
 gem 'omniauth'
-gem 'omniauth-baidu', git: 'git://github.com/destinyd/omniauth-baidu.git'
+gem 'omniauth-oauth2', git: 'git://github.com/intridea/omniauth-oauth2.git'
+gem 'omniauth-baidu','1.0.3',
+  git: 'git://github.com/destinyd/omniauth-baidu-social-test.git'
