@@ -386,3 +386,11 @@ zh-CN:
 
   random:
     phone: 手机用户
+
+  devise:
+    failure:
+      user:
+        not_found_in_database: '登录失败,请检查您的登录名和密码是否正确.'
+    authentications:
+      user:
+        signed_in: 登录成功

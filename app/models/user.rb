@@ -113,12 +113,7 @@ class User
     super.tap do |user|
       if (omniauth = session['omniauth']) and session['omniauth'].info
         user.omniauth_session = session
-        user.name = omniauth.info.name
-        user.authentications.new(
-          provider: omniauth.info.media_type,
-          uid: omniauth.info.media_uid,
-          access_token: omniauth.credentials.token
-        )
+        user.name = omniauth.info.name if params[:name].blank?
       end
     end
   end
