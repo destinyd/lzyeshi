@@ -7,10 +7,10 @@
     <%= link_to '已读',read_notifications_path %>
   </li>
 </ul>
-<div class="row" id="notifications">
+<div class="row-fluid" id="notifications">
   <div class="span11">
     <% @notifications.each do |notification| %>
-      <div class="row" id="<%= notification.id%>">
+      <div class="row-fluid" id="<%= notification.id%>">
         <div class="span10">
           <%= render_cell :notification,notification.type_name, notification: notification %>
         </div>

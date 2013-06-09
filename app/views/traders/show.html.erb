@@ -1,7 +1,7 @@
 <h1><%= title @trader.name %></h1>
 
 <%= render_cell :trader,:nav, parent: @trader, c: controller_name, a: action_name %>
-<div class="row">
+<div class="row-fluid">
   <div class="span3 bs-docs-sidebar">
     <ul class="nav nav-list bs-docs-sidenav">
       <% @trader.groups.available.each do |group| %>
