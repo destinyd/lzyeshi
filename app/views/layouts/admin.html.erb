@@ -16,8 +16,7 @@
     <div class="navbar navbar-fixed-top">
       <nav class="navbar-inner">
         <div class="container">
-          <%= render "layouts/#{request.subdomains.first.to_s + "/" if !request.subdomains.blank? and request.subdomains.first != ENV['SUBDOMAIN']}navigation" %>
-          <%#= render 'layouts/navigation' %>
+          <%= render "layouts/admin/navigation" %>
         </div>
       </nav>
     </div>
@@ -32,17 +31,19 @@
       <div class="container">
         <div class="content">
           <div class="row">
-            <div class="span3 bs-docs-sidebar">
-              <ul class="nav nav-list bs-docs-sidenav">
-                <%= render_cell :layouts, :admin_nav, controller_name: controller_name, action_name: action_name %>
-              </ul>
-            </div>
-
-            <div class="span9" id="mh-300">
-              <%= render 'layouts/messages' %>
-              <%= yield %>
+            <div class="span">
+              <div class="tabbable tabs-left">
+                <ul class="nav nav-tabs">
+                  <%= render_cell :layouts, :admin_nav, controller_name: controller_name, action_name: action_name %>
+                </ul>
+                <div class="tab-content">
+                  <%= render 'layouts/messages' %>
+                  <%= yield %>
+                </div>
+              </div>
             </div>
           </div>
+
           <footer id="footer">
             <%= render_cell :layouts, :footer %>
           </footer>
