@@ -28,3 +28,9 @@
   margin-bottom: 15px;
   padding: 7px 9px;
 }
+
+.reg_right{
+  border-left:solid 1px #ddd;
+  height: 620px;
+  padding: 280px 0 0 20px;
+}
