@@ -35,10 +35,10 @@
         <div class="content">
            <div class="row">
             <div class="span12">
+              <%= render 'layouts/messages' %>
               <div class="breadcrumb">
                 <%= render_crumbs separator: ' > ' %>
               </div>
-              <%= render 'layouts/messages' %>
               <%= yield %>
             </div>
           </div>
