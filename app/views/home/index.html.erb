@@ -1,4 +1,4 @@
-<div class="row-fluid">
+<div class="row">
   <div class="span3 bs-docs-sidebar">
     <ul class="nav nav-list bs-docs-sidenav">
       <% @groups.each do |group| %>
@@ -8,7 +8,7 @@
   </div>
   <div class="span9">
     <% @groups.each do |group| %>
-      <section id="<%= group.id %>" class="section">
+      <section id="<%= group.id %>">
         <div class="page-header">
           <h1><%= link_to group.name, group, target: '_blank' %></h1>
         </div>

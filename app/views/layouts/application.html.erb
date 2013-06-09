@@ -30,24 +30,26 @@
     </div>
     <![endif]-->  
 
-    <div id="main" role="main">
-      <div class="container">
-        <div class="content">
-           <div class="row">
-            <div class="span12">
-              <%= render 'layouts/messages' %>
-              <div class="breadcrumb">
-                <%= render_crumbs separator: ' > ' %>
-              </div>
-              <%= yield %>
-            </div>
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+
+          <%= render 'layouts/messages' %>
+          <div class="breadcrumb">
+            <%= render_crumbs separator: ' > ' %>
           </div>
-          <footer id="footer">
-            <%= render_cell :layouts, :footer %>
-          </footer>
         </div>
-      </div> <!--! end of .container -->
-    </div> <!--! end of #main -->
+      </div>
+
+      <div class="row">
+        <div class="span12">
+          <%= yield %>
+        </div>
+      </div>
+    </div> <!--! end of .container -->
+    <footer id="footer" class="footer">
+      <%= render_cell :layouts, :footer %>
+    </footer>
     <!--[if lte IE 6]>
     <%= javascript_include_tag "ie6png", "bsie/bootstrap-ie" %>
     <script type="text/javascript">
