@@ -1,19 +1,9 @@
+$hack_ie6:'_';
+$hack_ie7:'+';
 .commodity_image{
-  _width: auto;
-  _height: auto;
+  #{$hack_ie6}width: auto;
+  #{$hack_ie6}height: auto;
 }
-/*#footer{
-  font: 12px/1.5 Tahoma,Arial,"宋体b8b\4f53",sans-serif;
-  color: #999;
-  text-align: center;
-  margin-top: 20px;
-  width: 100%;
-  height: auto;
-  text-align: center;
-  padding: 30px 0;
-  margin-top: 70px;
-  border-top: 1px solid #e5e5e5;
-}*/
 .footer-container{
   border-top: 1px solid #e5e5e5;
   text-align: center;
@@ -37,26 +27,26 @@
   display: inline-block;
   width: 130px\9;
   height: 130px\9;
-  _width: 132px;
-  _height: 132px;
-  _padding-left: 5px;
-  _padding-right: 5px;
+  #{$hack_ie6}width: 132px;
+  #{$hack_ie6}height: 132px;
+  #{$hack_ie6}padding-left: 5px;
+  #{$hack_ie6}padding-right: 5px;
 }
 .commodity{
   width: 120px\9;
   height: 160px\9;
 }
 .clearfix{
-  +clear: both;
+  #{$hack_ie7}clear: both;
 }
 .span9{
-  _width: 620px;
+  #{$hack_ie6}width: 620px;
 }
 .picture{
-  +width: 124px;
-  +height: 160px;
+  #{$hack_ie7}width: 124px;
+  #{$hack_ie7}height: 160px;
 }
 .bs-docs-sidenav-li{
-  _width: 236px;
-  _padding: 0 10px;
+  #{$hack_ie6}width: 236px;
+  #{$hack_ie6}padding: 0 10px;
 }
