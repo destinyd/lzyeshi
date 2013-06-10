@@ -1,3 +1,9 @@
+<a class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+  <span class="icon-bar"></span>
+  <span class="icon-bar"></span>
+  <span class="icon-bar"></span>
+</a>
+
 <%= link_to t('title') + "商家版", root_url(subdomain: ENV['TRADER_SUBDOMAIN']), :class => 'brand' %>
 <div class="nav-collapse collapse">
   <ul class="nav pull-right">
@@ -6,7 +12,7 @@
         <%= link_to current_user,edit_user_registration_url(subdomain: ENV['SUBDOMAIN']) %>
       </li>
       <li>
-        <%= link_to current_user.got_chat_messages.unread.count, chat_messages_url(subdomain: ENV['SUBDOMAIN']), title:'未读消息', id: 'unread_messages_count' %>
+        <%= link_to current_user.got_chat_messages.nav.count, got_chat_messages_url(subdomain: ENV['SUBDOMAIN']), title:'未读消息', id: 'unread_messages_count' %>
       </li>
       <li>
         <%= link_to '退出', destroy_user_session_url(subdomain: ENV['SUBDOMAIN']), :method=>'delete' %>
