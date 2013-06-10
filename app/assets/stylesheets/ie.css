@@ -10,20 +10,26 @@
   _width: auto;
   _height: auto;
 }
-#footer{
+/*#footer{
   font: 12px/1.5 Tahoma,Arial,"宋体b8b\4f53",sans-serif;
   color: #999;
   text-align: center;
   margin-top: 20px;
   width: 100%;
   height: auto;
-}
-.footer-container{
   text-align: center;
-  border-top: 1px solid #d4d4d4;
+  padding: 30px 0;
+  margin-top: 70px;
+  border-top: 1px solid #e5e5e5;
+}*/
+.footer-container{
+  border-top: 1px solid #e5e5e5;
+  text-align: center;
   padding-top: 20px;
   width: 100%;
   height: auto;
+  background-color: #f5f5f5;
+  margin-top: 30px\9;
 }
 .weixin_mp{
   width: 120px;
@@ -36,8 +42,13 @@
   opacity: .25;
 }
 .li-commodity{
-  width: 132px\9;
-  height: 132px\9;
+  display: inline-block;
+  width: 130px\9;
+  height: 130px\9;
+  _width: 132px;
+  _height: 132px;
+  _padding-left: 5px;
+  _padding-right: 5px;
 }
 .commodity{
   width: 120px\9;
@@ -47,7 +58,6 @@
   +clear: both;
 }
 .span9{
-  +width: 680px;
   _width: 620px;
 }
 .picture{
@@ -55,5 +65,6 @@
   +height: 160px;
 }
 .bs-docs-sidenav-li{
-  _width: 220px;
+  _width: 236px;
+  _padding: 0 10px;
 }
