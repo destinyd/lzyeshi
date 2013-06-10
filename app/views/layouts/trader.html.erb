@@ -9,6 +9,9 @@
     <!--[if lte IE 6]>
     <%= stylesheet_link_tag "bsie/bootstrap-ie6.min","bsie/ie", :media => "all" %>
     <![endif]-->
+    <!--[if lte IE 7]>
+    <%= stylesheet_link_tag "bsie/ie", :media => "all" %>
+    <![endif]-->
     <%= yield(:head) %>
   </head>
   <body class="<%= controller_name %> <%= action_name %>" data-spy="scroll" data-target=".bs-docs-sidebar">
@@ -20,28 +23,25 @@
       </nav>
     </div>
 
-    <div id="main" role="main">
-      <div class="container">
-        <div class="content">
-          <div class="row">
-            <div class="span12">
-              <div class="tabbable tabs-left">
-                <ul class="nav nav-tabs">
-                  <%= render_cell :layouts, :trader_nav, controller_name: controller_name, action_name: action_name %>
-                </ul>
-                <div class="tab-content">
-                  <%= render 'layouts/messages' %>
-                  <%= yield %>
-                </div>
-              </div>
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <div class="tabbable tabs-left">
+            <ul class="nav nav-tabs">
+              <%= render_cell :layouts, :trader_nav, controller_name: controller_name, action_name: action_name %>
+            </ul>
+            <div class="tab-content">
+              <%= render 'layouts/messages' %>
+              <%= yield %>
             </div>
           </div>
-          <footer id="footer">
-            <%= render_cell :layouts, :footer %>
-          </footer>
         </div>
-      </div> <!--! end of .container -->
-    </div> <!--! end of #main -->
+      </div>
+    </div> <!--! end of .container -->
+
+    <footer id="footer" class="footer">
+      <%= render_cell :layouts, :footer %>
+    </footer>
     <!--[if lte IE 6]>
     <%= javascript_include_tag "ie6png", "bsie/bootstrap-ie" %>
     <script type="text/javascript">
