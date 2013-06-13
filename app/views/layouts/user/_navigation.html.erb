@@ -4,7 +4,7 @@
   <span class="icon-bar"></span>
 </a>
 
-<%= link_to t('title') + "商家版", root_url(subdomain: ENV['TRADER_SUBDOMAIN']), :class => 'brand' %>
+<%= link_to t('title') + "用户中心", root_url(subdomain: ENV['USER_SUBDOMAIN']), :class => 'brand' %>
 <div class="nav-collapse collapse">
   <ul class="nav pull-right">
     <%= render_cell :layouts, :login, user: current_user %>
@@ -14,11 +14,9 @@
     <li>
       <%= link_to '柳州夜市', root_url(subdomain: ENV['SUBDOMAIN']) %>
     </li>
-    <% if current_user.trader.try(:name) %>
-      <li>
-        <%= link_to '自家摊位', trader_url(current_trader,subdomain: ENV['SUBDOMAIN']) %>
-      </li>
-    <% end %>
+    <li>
+      <%= link_to '联系方式', system_contact_url(subdomain: ENV['SUBDOMAIN']) %>
+    </li>
     <li>
       <%= link_to '应用下载', download_url(subdomain: ENV['SUBDOMAIN']) %>
     </li>

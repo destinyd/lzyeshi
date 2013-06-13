@@ -241,7 +241,9 @@ zh-CN:
     login: 登录名
     phone: 手机号码
     category_list: 类别
-
+    sign_in_count: 登录次数
+    last_sign_in_at: 上次登录时间
+    last_sign_in_ip: 上次登录IP
 
 
   labels:

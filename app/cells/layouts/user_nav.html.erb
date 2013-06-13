@@ -1,0 +1,20 @@
+<li class="<%= 'active' if @controller_name == 'home' and @action_name == "index" %>"> 
+  <%= link_to user_home_url(subdomain: ENV['USER_SUBDOMAIN']) do %>
+    用户中心
+  <% end -%>
+</li>
+<li class="<%= 'active' if @controller_name == 'registrations' and @action_name == "edit" %>"> 
+  <%= link_to edit_user_registration_url(subdomain: ENV['USER_SUBDOMAIN']) do %>
+    修改资料
+  <% end -%>
+</li>
+<li class="<%= 'active' if @controller_name == 'got_chat_messages' %>"> 
+  <%= link_to user_got_chat_messages_path do %>
+    短信息箱
+  <% end -%>
+</li>
+<li class="<%= 'active' if @controller_name == 'chat_messages' %>"> 
+  <%= link_to new_user_chat_message_path do %>
+    发短信息
+  <% end -%>
+</li>

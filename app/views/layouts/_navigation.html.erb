@@ -7,51 +7,21 @@
 <%= link_to t('title'), root_url(subdomain: ENV['SUBDOMAIN']), :class => 'brand' %>
 <div class="nav-collapse collapse">
   <ul class="nav pull-right">
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to current_user, edit_user_registration_url(subdomain: ENV['SUBDOMAIN']) %>
-      </li>
-      <li>
-        <%= link_to current_user.got_chat_messages.nav.count, got_chat_messages_url(subdomain: ENV['SUBDOMAIN']), title:'未读消息', id: 'unread_messages_count' %>
-      </li>
-      <li>
-        <%= link_to '退出', destroy_user_session_url(subdomain: ENV['SUBDOMAIN']), :method=>'delete' %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to '登录', new_user_session_url(subdomain: ENV['SUBDOMAIN']) %>
-      </li>
-    <% end %>
-    <% if user_signed_in? %>
-      <% if current_user.has_role? :trader %>
-        <li>
-          <%= link_to '切换到商家版', root_url(subdomain: ENV['TRADER_SUBDOMAIN']) %>
-        </li>
-      <% end %>
-      <% if current_user.has_role? :admin %>
-        <li>
-          <%= link_to 'Admin', users_url(subdomain: ENV['ADMIN_SUBDOMAIN']) %>
-        </li>
-        <% end if nil %>
-      <% else %>
-        <li>
-          <%= link_to '注册', new_user_registration_url(subdomain: ENV['SUBDOMAIN']) %>
-        </li>
-      <% end %>
-    </ul>
+    <%= render_cell :layouts, :login, user: current_user %>
+  </ul>
 
-    <ul class="nav">
-      <li>
-        <%= link_to '最新商品', commodities_url(subdomain: ENV['SUBDOMAIN']) %>
-      </li>
-      <li>
-        <%= link_to '商家摊位', traders_url(subdomain: ENV['SUBDOMAIN']) %>
-      </li>
-      <li>
-        <%= link_to '联系方式', system_contact_url(subdomain: ENV['SUBDOMAIN']) %>
-      </li>
-      <li>
-        <%= link_to '应用下载', download_url(subdomain: ENV['SUBDOMAIN']) %>
-      </li>
-    </ul>
-  </div>
+  <ul class="nav">
+    <li>
+      <%= link_to '最新商品', commodities_url(subdomain: ENV['SUBDOMAIN']) %>
+    </li>
+    <li>
+      <%= link_to '商家摊位', traders_url(subdomain: ENV['SUBDOMAIN']) %>
+    </li>
+    <li>
+      <%= link_to '联系方式', system_contact_url(subdomain: ENV['SUBDOMAIN']) %>
+    </li>
+    <li>
+      <%= link_to '应用下载', download_url(subdomain: ENV['SUBDOMAIN']) %>
+    </li>
+  </ul>
+</div>

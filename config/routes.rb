@@ -32,9 +32,18 @@ Yeshi::Application.routes.draw do
     root :to => "home#index"
     get '/contact', :to => "home#contact", as: :system_contact
     get '/download', :to => "home#download", as: :download
-    devise_for :users     , controllers: {
-      omniauth_callbacks: :authentications
+  end
+
+  constraints subdomain: ENV['USER_SUBDOMAIN'] do
+    devise_for :users, controllers: {
+      omniauth_callbacks: :authentications,
+      registrations: 'users/registrations'
     }
+    scope module: 'user' do
+      root to: 'home#index', as: :user_home
+      resources :chat_messages, only: [:new, :create], as: :user_chat_messages
+      resources :got_chat_messages, only: [:index, :show, :destroy], as: :user_got_chat_messages
+    end
   end
 
   constraints subdomain: ENV['TRADER_SUBDOMAIN'] do
@@ -55,7 +64,7 @@ Yeshi::Application.routes.draw do
       resources :commodities, except: [:new] do
         resources :bills, only: [:index, :new]
       end
-      root :to => 'home#index'
+      root :to => 'home#index', as: :trader_home
       get '/dashboard' => 'bills#dashboard'
     end
   end

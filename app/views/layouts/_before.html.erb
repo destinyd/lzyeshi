@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= display_meta_tags default_meta_tags %>
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= csrf_meta_tags %>
+    <%= javascript_include_tag "application" ,"#{ENV['FAYE']}.js" %>
+    <!--[if lte IE 6]>
+    <%= stylesheet_link_tag "bsie/bootstrap-ie6.min","bsie/ie", :media => "all" %>
+    <![endif]-->
+    <!--[if lte IE 7]>
+    <%= stylesheet_link_tag "bsie/ie", :media => "all" %>
+    <![endif]-->
+    <%= yield(:head) %>
+  </head>
+  <body class="<%= controller_name %> <%= action_name %>" data-spy="scroll" data-target=".bs-docs-sidebar">
+    <div class="navbar navbar-fixed-top">
+      <nav class="navbar-inner">
+        <div class="container">
+          <%= render "layouts/navigation" if request.subdomains.first == ENV['SUBDOMAIN'] %>
+          <%= render "layouts/#{request.subdomains.first}/navigation" unless request.subdomains.first == ENV['SUBDOMAIN'] %>
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">

@@ -1,69 +1,17 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%= display_meta_tags default_meta_tags %>
-    <%= stylesheet_link_tag "application", :media => "all" %>
-    <%= csrf_meta_tags %>
-    <%= javascript_include_tag "application" ,"#{ENV['FAYE']}.js" %>
-    <!--[if lte IE 6]>
-    <%= stylesheet_link_tag "bsie/bootstrap-ie6.min", :media => "all" %>
-    <![endif]-->
-    <!--[if lte IE 7]>
-    <%= stylesheet_link_tag "bsie/ie", :media => "all" %>
-    <![endif]-->
-    <%= yield(:head) %>
-  </head>
-  <body class="<%= controller_name %> <%= action_name %>" data-spy="scroll" data-target=".bs-docs-sidebar">
-    <div class="navbar navbar-fixed-top">
-      <nav class="navbar-inner">
-        <div class="container">
-          <%= render "layouts/navigation" %>
-        </div>
-      </nav>
+<%= render "layouts/before" %>
+<div class="row">
+  <div class="span12">
+
+    <%= render 'layouts/messages' %>
+    <div class="breadcrumb">
+      <%= render_crumbs separator: ' > ' %>
     </div>
+  </div>
+</div>
 
-    <div class="container">
-      <div class="row">
-        <div class="span12">
-
-          <%= render 'layouts/messages' %>
-          <div class="breadcrumb">
-            <%= render_crumbs separator: ' > ' %>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="span12">
-          <%= yield %>
-        </div>
-      </div>
-    </div> <!--! end of .container -->
-
-    <footer id="footer" class="footer">
-      <%= render_cell :layouts, :footer %>
-    </footer>
-    <!--[if lte IE 6]>
-    <%= javascript_include_tag "ie6png", "bsie/bootstrap-ie" %>
-    <script type="text/javascript">
-      (function ($) {
-        $(document).ready(function() {
-          if ($.isFunction($.bootstrapIE6)) $.bootstrapIE6($(document));
-        });
-      })(jQuery);
-    </script>
-    <![endif]-->
-    <!--[if lt IE 9]>
-    <%= stylesheet_link_tag "ie", :media => "all" %>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <% if current_user %>
-      <script>
-        $(function() {
-          init_faye('<%= ENV['FAYE'] %>','<%= current_user.name %>')
-        });
-      </script>
-    <% end -%>
-  </body>
-</html>
+<div class="row">
+  <div class="span12">
+    <%= yield %>
+  </div>
+</div>
+<%= render "layouts/after" %>

@@ -1,0 +1,28 @@
+</div> <!--! end of .container -->
+
+<footer id="footer" class="footer">
+  <%= render_cell :layouts, :footer %>
+</footer>
+<!--[if lte IE 6]>
+<%= javascript_include_tag "ie6png", "bsie/bootstrap-ie" %>
+<script type="text/javascript">
+  (function ($) {
+    $(document).ready(function() {
+      if ($.isFunction($.bootstrapIE6)) $.bootstrapIE6($(document));
+    });
+  })(jQuery);
+</script>
+<![endif]-->
+<!--[if lt IE 9]>
+<%= stylesheet_link_tag "ie", :media => "all" %>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<% if current_user %>
+  <script>
+    $(function() {
+      init_faye('<%= ENV['FAYE'] %>','<%= current_user.name %>')
+    });
+  </script>
+<% end -%>
+  </body>
+</html>
