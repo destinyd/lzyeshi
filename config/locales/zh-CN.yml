@@ -325,6 +325,7 @@ zh-CN:
     bills: 帐目
     authentications: 同步分享
     apks: 应用
+    passwords: 密码管理
   action:
     prices:
       new: 记账
