@@ -5,7 +5,7 @@
 </li>
 <li class="<%= 'active' if @controller_name == 'registrations' and @action_name == "edit" %>"> 
   <%= link_to edit_user_registration_url(subdomain: ENV['USER_SUBDOMAIN']) do %>
-    修改资料
+    修改密码
   <% end -%>
 </li>
 <li class="<%= 'active' if @controller_name == 'got_chat_messages' %>"> 
