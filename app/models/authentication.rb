@@ -5,7 +5,7 @@ class Authentication
   field :uid, type: String
   field :uname, type: String
   field :access_token, type: String
-  field :is_share, type: Boolean
+  field :is_share, type: Boolean, default: true
 
   belongs_to :user
 
