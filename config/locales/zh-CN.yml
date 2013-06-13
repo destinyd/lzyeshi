@@ -306,6 +306,8 @@ zh-CN:
   title: 柳州夜市
   desc: '柳州夜市网站记录有柳州当地夜市各种商品、小吃信息，让您能在拥挤的人群之外，找到您心仪的商品。'
   keywords: '柳州夜市,夜市,路边摊,衣服,小吃'
+  trader_title: 商家中心
+  user_title: 用户中心
 
   controller:
     groups: 商品分组
@@ -322,6 +324,7 @@ zh-CN:
     notifications: 通知
     bills: 帐目
     authentications: 同步分享
+    apks: 应用
   action:
     prices:
       new: 记账

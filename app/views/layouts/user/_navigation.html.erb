@@ -4,7 +4,7 @@
   <span class="icon-bar"></span>
 </a>
 
-<%= link_to t('title') + "用户中心", root_url(subdomain: ENV['USER_SUBDOMAIN']), :class => 'brand' %>
+<%= link_to t('user_title'), user_home_path, :class => 'brand' %>
 <div class="nav-collapse collapse">
   <ul class="nav pull-right">
     <%= render_cell :layouts, :login, user: current_user %>

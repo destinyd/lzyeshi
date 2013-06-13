@@ -1,5 +1,6 @@
 class Trader::HomeController < ApplicationController
   layout 'trader'
+  layout 'application', only: :index
   def index
     if user_signed_in?
       redirect_to dashboard_path
