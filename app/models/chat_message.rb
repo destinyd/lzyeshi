@@ -20,7 +20,8 @@ class ChatMessage
   scope :recent, desc(:created_at)
   scope :ounread, order_by(:read_at => 0)
   scope :nav, undelete.unread
-  scope :s_index, undelete.recent.ounread
+  scope :o_index, order_by(:read_at => 0, :created_at => -1)
+  scope :s_index, undelete.o_index
   default_scope includes(:user)
 
   def read

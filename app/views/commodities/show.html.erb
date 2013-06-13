@@ -5,7 +5,7 @@
   </dt>
   <dd>
   <%= link_to @commodity.trader, @commodity.trader %>
-  <%= link_to new_commodity_chat_message_path(@commodity, chat_message: {name: @commodity.try(:user).try(:name) || @commodity.try(:trader).try(:user).try(:name)}), target: '_blank' do %>
+  <%= link_to new_commodity_chat_message_url(@commodity, chat_message: {name: @commodity.try(:user).try(:name) || @commodity.try(:trader).try(:user).try(:name)}, subdomain: ENV['USER_SUBDOMAIN']), target: '_blank' do %>
     <%= image_tag "chat_32x32.png", title: "联系#{@commodity}", alt: "联系#{@commodity}" %>
     <% end -%>
   </dd>

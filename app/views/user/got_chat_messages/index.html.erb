@@ -1,0 +1,35 @@
+<h1>短信息</h1>
+<% if @got_chat_messages.any? %>
+  <table class="table">
+    <tr>
+      <th>来自</th>
+      <th>内容</th>
+      <th>谈论</th>
+      <th>操作</th>
+    </tr>
+    <% @got_chat_messages.each do |chat_message| %>
+      <tr class="<%= "info" unless chat_message.is_read? %>">
+        <td>
+          <%= chat_message.user %>
+        </td>
+        <td>
+          <%= link_to chat_message.content, user_got_chat_message_path(chat_message) %>
+        </td>
+        <td>
+          <%= link_to chat_message.chatable, commodity_url(chat_message.chatable, subdomain: ENV['SUBDOMAIN']) if chat_message.chatable %>
+        </td>
+        <td>
+          <%= link_to '回复', new_user_chat_message_path(chat_message: {name: chat_message.user.name}) %>
+          <%= link_to '删除', user_got_chat_message_path(chat_message), method: :delete, data: { confirm: '你确定?' } unless chat_message.is_delete? %>
+        </td>
+      </tr>
+    <% end -%>
+  </table>
+<% else %>
+  <p> 暂时没收到短信息 </p>
+<% end -%>
+<div class="clearfix"></div>
+<div class="pull-right">
+  <%= paginate @got_chat_messages %>
+</div>
+<%= link_to '写短信息', new_user_chat_message_path %>

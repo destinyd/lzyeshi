@@ -23,9 +23,9 @@ Yeshi::Application.routes.draw do
     end
     #resources :pictures
     resources :locations, only: [:index]
-    resources :commodities, only: [:index, :show] do
-      resources :chat_messages, only: [:new, :create]
-    end
+    resources :commodities, only: [:index, :show]# do
+      #resources :chat_messages, only: [:new, :create]
+    #end
     authenticated :user do
       root :to => 'home#index'
     end
@@ -45,6 +45,9 @@ Yeshi::Application.routes.draw do
       resources :authentications
       resources :chat_messages, only: [:new, :create], as: :user_chat_messages
       resources :got_chat_messages, only: [:index, :show, :destroy], as: :user_got_chat_messages
+      resources :commodities, only: [:index, :show] do
+        resources :chat_messages, only: [:new, :create]
+      end
     end
   end
 
