@@ -18,3 +18,8 @@
     发短信息
   <% end -%>
 </li>
+<li class="<%= 'active' if @controller_name == 'authentications' %>"> 
+  <%= link_to authentications_path do %>
+    同步分享
+  <% end -%>
+</li>

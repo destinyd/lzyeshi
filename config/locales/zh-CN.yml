@@ -308,19 +308,20 @@ zh-CN:
   keywords: '柳州夜市,夜市,路边摊,衣服,小吃'
 
   controller:
-    groups: 商品分类
+    groups: 商品分组
     commodities: 商品
     pictures: 图片
     locations: 摊位定位
     traders: 商家摊位
     contacts: 联系方式
-    registrations: 注册
+    registrations: 用户中心
     home: '主页'
     sessions: 登录
     chat_messages: 短信息
     got_chat_messages: 短信息
     notifications: 通知
     bills: 帐目
+    authentications: 同步分享
   action:
     prices:
       new: 记账
@@ -396,3 +397,11 @@ zh-CN:
     authentications:
       user:
         signed_in: 登录成功
+        add_provider_success: 绑定成功
+  
+  socials:
+    sinaweibo: 新浪微博
+    qqdenglu: QQ
+    baidu: 百度
+    qqweibo: 腾讯微博
+    kaixin: 开心网

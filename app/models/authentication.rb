@@ -5,13 +5,15 @@ class Authentication
   field :uid, type: String
   field :uname, type: String
   field :access_token, type: String
+  field :is_share, type: Boolean
 
   belongs_to :user
 
   validates :provider, :uid, :access_token, presence: true
   validates :provider, uniqueness: { scope: :user_id }
 
-  attr_accessible :user_id, :provider, :uid, :access_token, :uname
+  attr_accessible :user_id, :provider, :uid, :access_token, :uname, :is_share, on: :create
+  attr_accessible :is_share, :access_token, on: :update
 
   def self.create_from_hash(user_id, omniauth)
     self.create!(
@@ -23,4 +25,7 @@ class Authentication
     )
   end
 
+  def is_share?
+    is_share
+  end
 end

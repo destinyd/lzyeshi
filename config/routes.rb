@@ -41,6 +41,8 @@ Yeshi::Application.routes.draw do
     }
     scope module: 'user' do
       root to: 'home#index', as: :user_home
+      #get 'authentications', to: 'home#authentications', as: :user_authentications
+      resources :authentications
       resources :chat_messages, only: [:new, :create], as: :user_chat_messages
       resources :got_chat_messages, only: [:index, :show, :destroy], as: :user_got_chat_messages
     end

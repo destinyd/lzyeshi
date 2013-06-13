@@ -3,4 +3,8 @@ class User::HomeController < ApplicationController
   def index
     
   end
+
+  def authentications
+    @authentications = current_user.authentications
+  end
 end

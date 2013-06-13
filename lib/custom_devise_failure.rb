@@ -1,7 +1,7 @@
 class CustomDeviseFailure < Devise::FailureApp
   def redirect_url
     #return super unless [:worker, :employer, :user].include?(scope) #make it specific to a scope
-     new_user_session_url(subdomain: ENV['SUBDOMAIN'] )
+     new_user_session_url(subdomain: ENV['USER_SUBDOMAIN'] )
   end
 
   # You need to override respond to eliminate recall

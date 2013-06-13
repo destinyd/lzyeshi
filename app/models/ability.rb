@@ -5,11 +5,14 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.has_role? :admin
       can :manage, :all
-    elsif user.has_role? :trader
+    end
+    if user.has_role? :trader
       can :manage, [Group, Commodity, Picture, Bill, Contact::Base, Contact::Picture, Contact::Link], user_id: user.id
-    elsif user.has_role? :user
+    end
+    if user.has_role? :user
       can :read, Commodity
       can :manage, ChatMessage, to_id: user.id
+      can :manage, Authentication, user_id: user.id
       can [:new, :create], ChatMessage
     end
     # Define abilities for the passed in user here. For example:

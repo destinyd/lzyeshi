@@ -1,0 +1,27 @@
+<table class="table">
+  <tr>
+    <th>渠道</th>
+    <th>绑定状态</th>
+  </tr>
+  <% ENV['SOCIALS'].split(',').each do |social| %>
+    <tr>
+      <td>分享到： <%= t('socials.' + social) %></td>
+      <td>
+        <% if authentication = @authentications.where(provider: social).first %>
+          <%= form_for authentication do |f| -%>
+            <%= f.check_box :is_share, class: 'cb_is_share' %>同步分享
+          <% end -%>
+        <% else %>
+          <div class="acc-item tsina" style="background-position:0 -0px;">
+            <a href="http://openapi.baidu.com/social/oauth/2.0/authorize?media_type=<%= social %>&client_id=EYlg2YCjG71PgrfKwuxf5kMS&state=&response_type=code&redirect_uri=<%= j ENV['REDIRECT_URL'] %>&display=page&client_type=web" target="_blank" class="" title="绑定">绑定</a>
+          </div>
+        <% end %>
+      </td>
+    </tr>
+  <% end -%>
+</table>
+<script type="text/javascript">
+  $('.cb_is_share').click(function(event){
+    $(this).parent().submit();
+  })
+</script>

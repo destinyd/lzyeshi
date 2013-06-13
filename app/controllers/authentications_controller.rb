@@ -16,7 +16,7 @@ class AuthenticationsController < Devise::OmniauthCallbacksController
     elsif current_user
       authentication = Authentication.create_from_hash(current_user.id, omniauth)
       set_flash_message(:notice, :add_provider_success)
-      redirect_to authentications_path
+      redirect_to user_authentications_path
     else
       session[:omniauth] = omniauth.except("extra")
       set_flash_message(:notice, :fill_your_info)
