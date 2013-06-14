@@ -73,4 +73,13 @@ class Commodity
   def update_trader_count
     self.trader.update_attribute :commodities_count, self.trader.commodities.count if self.trader
   end
+
+  def share(p_args)
+    share = Share.new user: self.user
+    args = {
+      content: I18n.t('share.commodity', name: self.name, reserve: self.reserve)
+    }
+    args.merge! p_args
+    share.share_batch(args)
+  end
 end

@@ -5,7 +5,12 @@ class Trader::CommoditiesController < InheritedResources::Base
   load_and_authorize_resource :group
   load_and_authorize_resource :commodity, through: :group,except: :index
   def create
-    create!{@group}
+    create! do |success, failure|
+      success.html{
+        @commodity.share url: commodity_url(@commodity,subdomain: ENV['SUBDOMAIN']), pic_url: @commodity.picture.image_url
+        redirect_to @group
+      }
+    end
   end
 
   def destroy
