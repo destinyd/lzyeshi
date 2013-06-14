@@ -25,6 +25,7 @@ class Trader::GroupsController < InheritedResources::Base
     @group = current_user.groups.find params[:id]
     @group.update_attributes params[:group]
     if @group.bulk_add
+      @group.share url: group_url(@group,subdomain: ENV['SUBDOMAIN'])
       redirect_to @group
     else
       render :bulk_add

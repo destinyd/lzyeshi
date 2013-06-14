@@ -71,6 +71,16 @@ class Group
     self.save
   end
 
+  def share(p_args)
+    share = Share.new user: self.user
+    args = {
+      content: I18n.t('share.group_bulk_add', count: self.pictures_ids.split(',').count, name: self.name)
+    }
+    args.merge! p_args
+    share.share_batch(args)
+  end
+
+
   protected
   before_create :give_trader
 
