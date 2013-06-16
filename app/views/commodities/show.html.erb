@@ -29,4 +29,11 @@
   </ul>
   <div class="clearfix"></div>
   </dd>
+  <% @comments = @commodity.comments.recent.page(params[:comment_page]) %>
+  <dt>我也来说两句</dt>
+  <dd><%= render "comments/form", parent: @commodity, comment: @commodity.comments.new, any_comments: @comments.any? %></dd>
+  <dt>评论</dt>
+  <dd>
+    <%= render 'comments/comments', comments: @comments %>
+  </dd>
 <% end -%>

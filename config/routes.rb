@@ -20,12 +20,13 @@ Yeshi::Application.routes.draw do
     end
     resources :groups, only: [:index, :show] do
       resources :commodities, only: [:index]
+      resources :comments, only: [:index,:create]
     end
-    #resources :pictures
+
     resources :locations, only: [:index]
-    resources :commodities, only: [:index, :show]# do
-      #resources :chat_messages, only: [:new, :create]
-    #end
+    resources :commodities, only: [:index, :show] do
+      resources :comments, only: [:index,:create]
+    end
     authenticated :user do
       root :to => 'home#index'
     end
@@ -48,6 +49,9 @@ Yeshi::Application.routes.draw do
       resources :commodities, only: [:index, :show] do
         resources :chat_messages, only: [:new, :create]
       end
+
+      resources :comments, only: [:index, :destroy]
+
     end
   end
 

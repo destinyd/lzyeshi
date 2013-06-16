@@ -1,0 +1,8 @@
+<ul class="unstyled ul-comments" id="comments">
+  <%= render comments %>
+</ul>
+<% unless comments.any? %>
+  <div id="no_comment">
+    暂时还没评论，还不快来抢沙发。
+  </div>
+<% end %>

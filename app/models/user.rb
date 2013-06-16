@@ -64,6 +64,7 @@ class User
   has_many :got_chat_messages, class_name: 'ChatMessage', inverse_of: :to
   has_many :bills
   has_many :authentications
+  has_many :comments
   #embeds_many :notifications, :class_name => 'Notification::Base'
   #embeds_one :trader
   has_one :trader

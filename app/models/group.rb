@@ -13,6 +13,7 @@ class Group
 
   has_many :commodities, dependent: :destroy
   has_many :pictures, dependent: :destroy
+  has_many :comments, as: :commentable
 
   attr_accessor :pictures_ids, :commodity_name, :is_custom_code
   attr_accessible :name, :price, :reserve,  :pictures_ids, :text, :category_list, :commodity_name, :is_custom_code

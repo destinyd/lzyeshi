@@ -16,6 +16,14 @@
   </ul>
   <div class="clearfix"></div>
   </dd>
+  <% @comments = @group.comments.recent.page(params[:comment_page]) %>
+  <dt>我也来说两句</dt>
+  <dd><%= render "comments/form", parent: @group, comment: @group.comments.new, any_comments: @comments.any? %></dd>
+  <dt>评论</dt>
+  <dd>
+    <%= render 'comments/comments', comments: @comments %>
+  </dd>
+
 <% end -%>
 <div class="clearfix"></div>
 <div class="pull-right">

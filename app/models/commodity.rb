@@ -16,6 +16,7 @@ class Commodity
   has_one :picture
 
   has_many :chat_messages, as: :chatable
+  has_many :comments, as: :commentable
   has_many :bills
 
   validates :name, presence: true, length: 2..64
