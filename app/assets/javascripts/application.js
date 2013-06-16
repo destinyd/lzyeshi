@@ -25,12 +25,12 @@
 //= require traders
 //= require chat_messages
 // require_tree .
-humane.timeout = 10000;
-humane.waitForMove = true;
-humane.clickToClose = true;
-humane.alter = humane.spawn({ addnCls: 'humane-libnotify-info'})
-humane.success = humane.spawn({ addnCls: 'humane-libnotify-success'})
-humane.error = humane.spawn({ addnCls: 'humane-libnotify-error'})
+humane.timeout = 5000;
+//humane.waitForMove = true;
+//humane.clickToClose = true;
+humane.alter = humane.spawn({ addnCls: 'humane-libnotify-info', clickToClose: true, waitForMove: true})
+humane.success = humane.spawn({ addnCls: 'humane-boldlight-success'})
+humane.error = humane.spawn({ addnCls: 'humane-boldlight-error'})
 
 $(document).ready(function(){
   var $window = $(window)

@@ -1,0 +1,13 @@
+<% flash.each do |name, msgs| %>
+  <% if name == :error %>
+    <% if msgs.is_a?(Array) %>
+      var arr = new Array();
+      <% msgs.each do |msg| %>
+        arr.push('<%= j msg %>');
+      <% end -%>
+      humane.error(arr);
+    <% elsif msgs.is_a?(String) %>
+      humane.error(msgs)
+    <% end %>
+  <% end %>
+<% end %>

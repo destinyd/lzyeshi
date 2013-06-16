@@ -7,4 +7,6 @@ class Comment
   attr_accessible :content
 
   scope :recent, desc(:created_at)
+
+  validates :content, length: 1..300
 end

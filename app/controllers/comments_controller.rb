@@ -11,6 +11,10 @@ class CommentsController < InheritedResources::Base
         @comment.user = current_user
         @comment.save
       }
+      f.js{
+        flash[:error] = @comment.errors.full_messages
+        render 'application/failure'
+      }
     end
   end
 
