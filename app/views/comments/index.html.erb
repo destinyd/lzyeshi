@@ -1,1 +1,6 @@
-<%= render "comments", comments: @comments %>
+<h1>
+  <%= title "#{parent.to_s}的评论 第#{params[:cpage] || 1}页" %>
+</h1>
+<div id="div_comments">
+  <%= render "comments", comments: @comments, parent: nil %>
+</div>

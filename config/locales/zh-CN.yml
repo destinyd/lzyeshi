@@ -326,6 +326,7 @@ zh-CN:
     authentications: 同步分享
     apks: 应用
     passwords: 密码管理
+    comments: 评论
   action:
     prices:
       new: 记账

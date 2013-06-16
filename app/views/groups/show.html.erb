@@ -21,7 +21,9 @@
   <dd><%= render "comments/form", parent: @group, comment: @group.comments.new, any_comments: @comments.any? %></dd>
   <dt>评论</dt>
   <dd>
-    <%= render 'comments/comments', comments: @comments %>
+    <div id="div_comments">
+      <%= render 'comments/comments', comments: @comments, parent: @group %>
+    </div>
   </dd>
 
 <% end -%>
