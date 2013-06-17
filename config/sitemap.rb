@@ -2,7 +2,6 @@
 SitemapGenerator::Sitemap.default_host = 'http://ysdev.realityandapp.com'
 
 SitemapGenerator::Sitemap.create do
-  add root_path, priority: 1
   Commodity.all.each do |c|
     add commodity_path(c), lastmod: (c.updated_at || c.created_at), :priority => 0.9
   end
