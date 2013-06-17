@@ -211,6 +211,10 @@ zh-CN:
       group:
         is_custom_code: 自动生成编号
         commodity_name: 商品名称
+        name: 预设名称
+        reserve: 预设库存
+        price: 预设价格
+        text: 预设描述
 
   attributes:
     created_at: 创建于
