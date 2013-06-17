@@ -17,3 +17,44 @@
     <%= f.button :submit %>
   </div>
 <% end %>
+<script type="text/javascript">
+  var dom_price, dom_quantity, dom_total;
+  function get_values(){
+    dom_price = $('#bill_price');
+    dom_quantity = $('#bill_quantity');
+    dom_total = $('#bill_total');
+  }
+  get_values();
+  if(dom_total.val() == ''){
+    dom_total.val(Number(dom_price.val())* Number(dom_quantity.val()));
+  }
+
+  dom_price.blur(function(){
+    get_values();
+    if(dom_quantity.val() != ''){
+      dom_total.val(Number(dom_price.val())* Number(dom_quantity.val()));
+    }
+    else if(dom_total.val() != ''){
+      dom_quantity.val(parseInt((Number(dom_total.val()) / Number(dom_quantity.val()))));
+    }
+  });
+
+  dom_quantity.blur(function(){
+    get_values();
+    if(dom_price.val() != ''){
+      dom_total.val(Number(dom_price.val())* Number(dom_quantity.val()));
+    }else if(dom_total.val() != ''){
+      dom_price.val(Number(dom_total.val()) / Number(dom_quantity.val()));
+    }
+  });
+
+  dom_total.blur(function(){
+    get_values();
+    if(dom_price.val() != ''){
+      dom_quantity.val(parseInt(Number(dom_total.val())/ Number(dom_quantity.val())));
+    }
+    else if(dom_quantity.val() != ''){
+      dom_price.val(parseInt((Number(dom_total.val()) / Number(dom_quantity.val()))));
+    }
+  });
+</script>

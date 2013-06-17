@@ -2,7 +2,7 @@ class Bill
   include Mongoid::Document
   include Mongoid::Timestamps
   field :price, type: Money
-  field :quantity, type: Integer
+  field :quantity, type: Integer, default: 1
   field :total, type: Money
   field :plus, type: String, default: ''
   belongs_to :user
