@@ -55,3 +55,6 @@ gem 'omniauth-baidu-social','>= 0.0.1',
 
 # for lib
 gem 'httparty'
+
+# sitemap
+gem 'sitemap_generator'

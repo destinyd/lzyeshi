@@ -83,5 +83,6 @@ public/uploads/
 config/mongoid.yml
 public/assets/
 public/apk/
+public/sitemap.xml*
 
 Gemfile.lock
