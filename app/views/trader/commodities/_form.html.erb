@@ -3,12 +3,12 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :category_list,hint: '请使用半角,分割。如:夜市,T恤', input_html: { value: @commodity.category_list.blank? ? @group.category_list : @commodity.category_list } %>
+    <%= f.input :category_list,hint: '请使用半角,分割。如:夜市,T恤', input_html: { value: @commodity.category_list.blank? ? @group.try(:category_list) : @commodity.category_list } %>
     <%#= f.input :group,collection: current_user.groups %>
-    <%= f.input :name, input_html: { value: @commodity.name.blank? ? @group.name : @commodity.name } %>
-    <%= f.input :price, input_html: { value: @commodity.price.blank? ? @group.price : @commodity.price } %>
-    <%= f.input :reserve, input_html: { value: @commodity.reserve.blank? ? @group.reserve : @commodity.reserve } %>
-    <%= f.input :text,as: :text, input_html: { value: @commodity.text.blank? ? @group.text : @commodity.text } %>
+    <%= f.input :name, input_html: { value: @commodity.name.blank? ? @group.try(:name) : @commodity.name } %>
+    <%= f.input :price, input_html: { value: @commodity.price.blank? ? @group.try(:price) : @commodity.price } %>
+    <%= f.input :reserve, input_html: { value: @commodity.reserve.blank? ? @group.try(:reserve) : @commodity.reserve } %>
+    <%= f.input :text,as: :text, input_html: { value: @commodity.text.blank? ? @group.try(:text) : @commodity.text } %>
     <%= f.simple_fields_for :picture do |fs| %>
       <%= fs.input :image,label: t('attributes.image') %>
     <% end -%>
