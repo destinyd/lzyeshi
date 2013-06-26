@@ -4,6 +4,11 @@ class Trader::CommoditiesController < InheritedResources::Base
   belongs_to :group, optional: true
   load_and_authorize_resource :group
   load_and_authorize_resource :commodity, through: :group,except: :index
+
+  def update
+    update!{@commodity}
+  end
+
   def create
     create! do |success, failure|
       success.html{
