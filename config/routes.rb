@@ -84,6 +84,7 @@ Yeshi::Application.routes.draw do
         get :updated_version, on: :member
       end
       resources :users
+      resources :ads
     end
   end
 

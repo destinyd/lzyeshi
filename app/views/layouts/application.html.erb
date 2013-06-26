@@ -1,6 +1,11 @@
 <%= render "layouts/before" %>
 <div class="row">
   <div class="span12">
+    <% if @ads.home_top.first %>
+      <div class="text-center">
+        <%= @ads.home_top.first.content.html_safe %>
+      </div>
+    <% end %>
 
     <%= render 'layouts/messages' %>
     <div class="breadcrumb">

@@ -201,6 +201,7 @@ zh-CN:
         link: 链接联系方式
       chat_message: 短信息
       bill: 账单
+      ad: 广告
     attributes:
       trader:
         address: 常驻地点
@@ -215,6 +216,9 @@ zh-CN:
         reserve: 预设库存
         price: 预设价格
         text: 预设描述
+      ad:
+        type: 类型
+        url: 链接
 
   attributes:
     created_at: 创建于
@@ -331,6 +335,7 @@ zh-CN:
     apks: 应用
     passwords: 密码管理
     comments: 评论
+    ads: 广告
   action:
     prices:
       new: 记账
