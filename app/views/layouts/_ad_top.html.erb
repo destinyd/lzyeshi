@@ -1,0 +1,7 @@
+<% @ad_top = @ads.home_top.first %>
+<% if @ad_top %>
+  <div class="text-center">
+    <%= @ad_top.content.html_safe %>
+  </div>
+<% end %>
+
