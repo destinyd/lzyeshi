@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
     <%= display_meta_tags default_meta_tags %>
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= csrf_meta_tags %>
@@ -12,6 +13,7 @@
     <!--[if lte IE 7]>
     <%= stylesheet_link_tag "bsie/ie", :media => "all" %>
     <![endif]-->
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
     <%= yield(:head) %>
   </head>
   <body class="<%= controller_name %> <%= action_name %>" data-spy="scroll" data-target=".bs-docs-sidebar">
