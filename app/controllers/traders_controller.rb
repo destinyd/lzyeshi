@@ -1,4 +1,5 @@
 class TradersController < InheritedResources::Base
+  layout 'span12', only: [:index, :show]
   actions :index, :show, :create
   respond_to :json, only: [:show]
 

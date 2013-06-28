@@ -1,0 +1,16 @@
+<div class="sidebar">
+  <h3 class="pull-left"><%= link_to '最新商品', commodities_path %></h3>
+  <div class="clearfix"></div>
+  <div class="recent-commodities">
+    <% @commodities.each do |commodity| %>
+      <div class="recent-commodity">
+        <%= link_to commodity, title: commodity.name do %>
+          <%= image_tag commodity.picture.image.thumb.url, alt: commodity.name, class: 'recent-commodity-image' %>
+        <% end -%>
+        <p class="recent-commodity-title"><%= link_to commodity.name, commodity, title: commodity.name %></p>
+      </div>
+    <% end -%>
+    <div class="clearfix"></div>
+  </div>
+</div>
+

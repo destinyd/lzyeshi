@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  layout 'span12', only: [:index, :download]
   def index
     @groups = Group.home_index
   end

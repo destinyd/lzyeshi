@@ -38,7 +38,8 @@ Yeshi::Application.routes.draw do
   constraints subdomain: ENV['USER_SUBDOMAIN'] do
     devise_for :users, controllers: {
       omniauth_callbacks: :authentications,
-      registrations: 'users/registrations'
+      registrations: 'users/registrations',
+      sessions: 'users/sessions'
     }
     scope module: 'user' do
       root to: 'home#index', as: :user_home
