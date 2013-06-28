@@ -1,0 +1,14 @@
+<% @ad_first = Ad.sidebar_first.first %>
+<% if @ad_first %>
+  <div class="sidebar text-center">
+    <% if @ad_first.content.blank? %>
+      <%= link_to @ad_first.url, rel: 'external nofollow' do %>
+        <%= image_tag @ad_first.image %>
+      <% end -%>
+    <% else %>
+      <%= @ad_first.content.html_safe %>
+    <% end -%>
+  </div>
+<% end %>
+
+

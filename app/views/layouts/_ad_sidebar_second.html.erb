@@ -1,0 +1,8 @@
+<% @ad_second = Ad.sidebar_second.first %>
+<% if @ad_second %>
+  <div class="sidebar text-center">
+    <%= @ad_second.content.html_safe %>
+  </div>
+<% end %>
+
+

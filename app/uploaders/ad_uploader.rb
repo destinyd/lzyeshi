@@ -4,7 +4,7 @@ class AdUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
 
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
   # include Sprockets::Helpers::RailsHelper
@@ -17,7 +17,7 @@ class AdUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "uploads/a/#{model.created_at.strftime '%Y%m'}"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -52,4 +52,10 @@ class AdUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
+  def default_url
+    ["noface",version_name
+    ].compact.join('_') + ".gif"
+  end
+
+  process :resize_to_fill => [300, 300]
 end

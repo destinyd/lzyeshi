@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :get_ads
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_path, :alert => exception.message
@@ -48,9 +47,4 @@ class ApplicationController < ActionController::Base
   def not_found
     raise ActionController::RoutingError.new('Not Found')
   end
-
-  def get_ads
-    @ads = Ad.running
-  end
-
 end
