@@ -12,3 +12,24 @@ class String
     self
   end
 end
+
+class Time
+  def self.cc_time(tar)
+    t,bt = tar,Time.now-tar
+    ys = t-Time.now.beginning_of_year
+    case bt
+    when 0..3600
+      "#{bt / 60} 分钟前"
+    when 3600..3600*24
+      "#{bt / 3600} 小时前"
+    when 3600*24..3600*24*2
+      "昨日 #{t.strftime('%H:%M')}"
+    when 3600*24*2..3600*24*7
+      "#{bt / 86400} 天前"
+    when 3600*24*7..ys
+      t.strftime('%m-%d')
+    else
+      t.strftime('%Y-%m-%d')
+    end
+  end
+end

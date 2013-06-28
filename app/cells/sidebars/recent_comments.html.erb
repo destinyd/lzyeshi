@@ -1,0 +1,26 @@
+<div class="sidebar">
+  <h3>最新评论</h3>
+  <div class="recent-comments">
+    <% if @comments.any? %>
+      <% @comments.each do |comment| %>
+        <div class="recent-comment">
+          <div class="recent-comment-meta">
+            <%= comment.user %> <%= Time.cc_time comment.created_at %>
+          </div>
+          <div class="recent-comment-title">
+            在 <%= link_to comment.commentable, comment.commentable %> 中评论
+          </div>
+          <div class="recent-comment-comment">
+            <%= comment.content %>
+          </div>
+
+        </div>
+      <% end -%>
+    <% else %>
+      <p>暂无评论,还不快去抢沙发! </p>
+    <% end %>
+  </div>
+  <div class="clearfix"></div>
+</div>
+
+

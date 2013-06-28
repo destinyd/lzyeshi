@@ -10,14 +10,8 @@
 </div>
 
 <div class="row">
-  <div class="span8">
+  <div class="span12">
     <%= yield %>
-  </div>
-
-  <div class="span4">
-    <%= yield(:sidebar) %>
-    <%= render_cell :sidebars, :recent_commodities %>
-    <%= render_cell :sidebars, :recent_comments %>
   </div>
 </div>
 <%= render "layouts/after" %>
