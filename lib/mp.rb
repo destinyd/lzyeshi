@@ -1,4 +1,5 @@
 class Mp
+  include Rails.application.routes.url_helpers
   def initialize(params)
     valid_mp
     MpContent.create params[:xml]
@@ -51,6 +52,9 @@ class Mp
       when /^留言 ?(?<page>\d+)?/
         page = $~[:page]
         get_comments page
+      when /^最新 ?(?<page>\d+)?/
+        page = $~[:page]
+        get_commodities page
       else
         @result[:xml][:Content] = I18n.t('mp.admin_help')
         @result[:xml][:MsgType] = 'text'
@@ -70,6 +74,9 @@ class Mp
         is_login
       when /^留言 (?<content>\d+)?/
         comment
+      when /^最新 ?(?<page>\d+)?/
+        page = $~[:page]
+        get_commodities page
       else
         @result[:xml][:Content] = I18n.t('mp.trader_help')
         @result[:xml][:MsgType] = 'text'
@@ -88,6 +95,9 @@ class Mp
         is_login
       when /^留言 (?<content>\d+)?/
         comment
+      when /^最新 ?(?<page>\d+)?/
+        page = $~[:page]
+        get_commodities page
       else
         @result[:xml][:Content] = I18n.t('mp.user_help')
         @result[:xml][:MsgType] = 'text'
@@ -106,6 +116,9 @@ class Mp
         login
       when /^留言 (?<content>\d+)?/
         comment
+      when /^最新 ?(?<page>\d+)?/
+        page = $~[:page]
+        get_commodities page
       else
         @result[:xml][:Content] = I18n.t('mp.help')
         @result[:xml][:MsgType] = 'text'
@@ -159,5 +172,25 @@ class Mp
       @result[:xml][:Content] += "#{content}\n"
       end
     @result[:xml][:MsgType] = 'text'
+  end
+
+  def get_commodities(page = 1)
+    commodities = Commodity.opening.recent.page(page).per(1)
+    @result[:xml][:ArticleCount] = commodities.to_a.count
+    commodity = commodities.first
+    @result[:xml][:Articles] = #[]
+      #   commodities.each do |commodity|
+      #     @result[:xml][:Articles].push(
+      {
+      item:{
+      Title: commodity.name,
+      Description: commodity.text,
+      PicUrl: ENV['DOMAIN'] + commodity.picture.image.list.url,
+      Url: commodity_url(commodity, host: ENV['DOMAIN_WITHOUT_HTTP']),
+    }
+    }
+    #)
+    #   end
+    @result[:xml][:MsgType] = 'news'    
   end
 end
