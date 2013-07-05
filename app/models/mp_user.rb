@@ -8,6 +8,7 @@ class MpUser
   validates :OpenID, presence: true, uniqueness: true
   #validates :shortOpenID, presence: true, uniqueness: true
   belongs_to :user
+  attr_accessible :OpenID, :shortOpenID
 
   before_create do 
     short_start_length = SHORT_START_LENGTH

@@ -23,3 +23,8 @@
     同步分享
   <% end -%>
 </li>
+<li class="<%= 'active' if @controller_name == 'mp_users' %>"> 
+  <%= link_to mp_users_path do %>
+    微信绑定
+  <% end -%>
+</li>

@@ -1,0 +1,6 @@
+<h1>微信绑定</h1>
+
+<p>已绑定成功</p>
+<% @mp_users.each do |mp_user| %>
+<%= link_to '解绑', mp_user, method: :delete, data:{ confirm: '你确定?'} %>
+<% end -%>

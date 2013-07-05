@@ -52,6 +52,7 @@ Yeshi::Application.routes.draw do
       end
 
       resources :comments, only: [:index, :destroy]
+      resources :mp_users
 
     end
   end

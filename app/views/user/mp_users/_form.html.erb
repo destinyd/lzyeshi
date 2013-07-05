@@ -1,0 +1,11 @@
+<%= simple_form_for(@mp_user) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :shortOpenID, hint: '向我们的公众威信发送"登录",即可获得' %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
