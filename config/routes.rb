@@ -124,4 +124,11 @@ Yeshi::Application.routes.draw do
     end
   end
 
+  constraints subdomain: ENV['MP_SUBDOMAIN'] do
+    scope module: 'mp' do
+      root to: 'home#index', as: :mp, via: [:get]
+      post '/' => "home#create"
+    end
+  end
+
 end
