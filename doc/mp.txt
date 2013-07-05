@@ -1,0 +1,8 @@
+判断是否已绑定
+  是 判断是否是 admin FromUserName
+    是 admin操作
+    判断是否trader
+       是 常规 + trader + user 操作
+       否 常规 + user操作
+  否 常规 + 登录 操作
+

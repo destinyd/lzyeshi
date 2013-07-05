@@ -26,3 +26,4 @@ BD_LBS_KEY: 40c0fbba05f274067d7a07a8aa3bb578
 SOCIALS: sinaweibo,qqdenglu,baidu,qqweibo,kaixin
 REDIRECT_URL: 'http://user.ysdev.realityandapp.com/users/auth/baidu/callback'
 DOMAIN: http://ysdev.realityandapp.com
+MP_ADMINS: oHbicjplI1n69KrrakZ63ehgZgKM

@@ -17,4 +17,7 @@ class MpContent
   field :Url, type: String
   field :Event, type: String
   field :EventKey, type: String
+
+  scope :recent, desc(:created_at)
+  scope :not_user, lambda{|user_name| not_in(FromUserName: user_name)}
 end
