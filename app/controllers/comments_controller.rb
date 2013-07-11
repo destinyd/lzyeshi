@@ -1,5 +1,5 @@
 class CommentsController < InheritedResources::Base
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: [:index, :show]
   respond_to :js
   belongs_to :commodity, optional: true
   belongs_to :group, optional: true
@@ -17,9 +17,13 @@ class CommentsController < InheritedResources::Base
 
   def create
     create! do |s,f|
+      s.html{
+        redirect_to parent? ? parent : system_contact_path
+      }
       s.js{
         @comment.user = current_user
         @comment.save
+        flash[:notice] = '提交成功'
       }
       f.js{
         flash[:error] = @comment.errors.full_messages

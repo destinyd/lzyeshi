@@ -2,6 +2,7 @@ Yeshi::Application.routes.draw do
   use_doorkeeper
 
   constraints subdomain: ENV['SUBDOMAIN'] do
+    resources :comments, only: [:index, :show, :create]
     resources :notifications ,except: [:edit,:update,:new,:create] do
       get :read,on: :collection
       #member do 

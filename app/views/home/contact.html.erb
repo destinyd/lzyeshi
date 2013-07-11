@@ -4,4 +4,8 @@
   <% @contacts.each do |contact| %>
     <%= d_contact contact %>
   <% end -%>
+  <dt>
+    留言板
+  </dt>
+  <dd><%= render "comments/form", parent: nil, comment: Comment.new, any_comments: @comments.any? %></dd>
 </dl>
