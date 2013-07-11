@@ -88,6 +88,7 @@ Yeshi::Application.routes.draw do
       end
       resources :users
       resources :ads
+      resources :comments
     end
   end
 

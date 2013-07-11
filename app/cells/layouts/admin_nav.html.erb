@@ -1,5 +1,9 @@
-<li class="<%= 'active' if @controller_name == 'apks' %>"> 
-  <%= link_to dashboard_bills_path do %>
-    应用
-  <% end -%>
-</li>
+<%= content_tag 'li', class: @controller_name == 'apks' ? 'active' : nil do -%>
+  <%= link_to '应用', apks_path %>
+<% end -%>
+<%= content_tag 'li', class: @controller_name == 'ads' ? 'active' : nil do -%>
+  <%= link_to '广告', ads_path %>
+<% end -%>
+<%= content_tag 'li', class: @controller_name == 'comments' ? 'active' : nil do -%>
+  <%= link_to '留言', comments_path %>
+<% end -%>
