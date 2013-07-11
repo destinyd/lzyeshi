@@ -2,6 +2,7 @@ Yeshi::Application.routes.draw do
   use_doorkeeper
 
   constraints subdomain: ENV['SUBDOMAIN'] do
+    resources :posts, only: [:index, :show]
     resources :comments, only: [:index, :show, :create]
     resources :notifications ,except: [:edit,:update,:new,:create] do
       get :read,on: :collection
@@ -45,6 +46,7 @@ Yeshi::Application.routes.draw do
     scope module: 'user' do
       root to: 'home#index', as: :user_home
       #get 'authentications', to: 'home#authentications', as: :user_authentications
+      resources :posts
       resources :authentications
       resources :chat_messages, only: [:new, :create], as: :user_chat_messages
       resources :got_chat_messages, only: [:index, :show, :destroy], as: :user_got_chat_messages

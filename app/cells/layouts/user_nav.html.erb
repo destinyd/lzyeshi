@@ -3,6 +3,11 @@
     用户中心
   <% end -%>
 </li>
+<li class="<%= 'active' if @controller_name == 'posts' %>"> 
+  <%= link_to posts_url(subdomain: ENV['USER_SUBDOMAIN']) do %>
+    夜市秀
+  <% end -%>
+</li>
 <li class="<%= 'active' if @controller_name == 'registrations' and @action_name == "edit" %>"> 
   <%= link_to edit_user_registration_url(subdomain: ENV['USER_SUBDOMAIN']) do %>
     修改密码
