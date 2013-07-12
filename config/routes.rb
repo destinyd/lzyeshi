@@ -2,7 +2,9 @@ Yeshi::Application.routes.draw do
   use_doorkeeper
 
   constraints subdomain: ENV['SUBDOMAIN'] do
-    resources :posts, only: [:index, :show]
+    resources :posts, only: [:index, :show] do
+      get :ajax, on: :collection
+    end
     resources :comments, only: [:index, :show, :create]
     resources :notifications ,except: [:edit,:update,:new,:create] do
       get :read,on: :collection
