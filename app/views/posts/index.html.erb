@@ -1,0 +1,108 @@
+<div id="wrap" class="wrap" style="height: 4132px;">
+  <%= render @posts %>
+</div>
+
+<div class="pageMore" id="loadTip" style="display: none;">
+  <%= image_tag asset_path('pin/loading.gif') %>
+  加载中 ...</div>
+<div class="pageMore" id="endTip" style="display:none">
+  <%= image_tag asset_path('pin/icon12.gif') %>
+  亲，目前一次只能看这么多图哦～
+</div>
+<script type="text/javascript">
+  var shownum=20
+  var start_num = 20;
+  var g_tid = 0;
+  var g_city = 11;
+  var g_dis = "";
+  var g_loading = false;
+  var pin_page = 1;
+  var finish = false;
+
+  //初始化
+  /*$(document).ready(function(){
+    getFoodList(g_tid,start_num,10);
+    });
+   */
+  //滚轴
+  $(window).bind("scroll",function(){
+    // 判断窗口的滚动条是否接近页面底部
+    if( $(document).scrollTop() + $(window).height() > $(document).height() - 210 ) {
+      if (!g_loading) {
+        getFoodList(g_tid,g_city,g_dis,start_num,shownum);
+      }
+    }
+  });
+
+buildWaterFall('wrap', 5);
+$("img").load(function(){
+  buildWaterFall('wrap', 5);
+});
+
+function getFoodList(tid,city,dis,start,num)
+{
+  if (start >= 100 || finish) {
+    $("#endTip").show();
+    return;
+  }
+  g_loading = true;
+  $("#loadTip").show();
+  start_num = start_num + num;
+  pin_page += 1;
+  $.ajax( {
+    type:'GET',
+    url:"/posts/ajax",
+    <%#data:"_a=index&start="+start+"&num="+num+"&tid="+tid+"&city="+city+"&dis="+dis+"&rand="+parseInt(Math.random()*999999),%>
+    data:"page=" + pin_page,
+    success: function(msg) {
+      eval('var r = '+msg+';');
+      if(r['status'] == "success"){
+        var getdata = r['data'];
+        // No results
+        if (getdata == '') {
+          $("#endTip").show();
+          start_num = start;
+          return;
+        }
+
+        $("#wrap").append(getdata);
+        buildWaterFall('wrap', 5);
+
+        $(".pinItem .pinImg").hover(
+            function () {		 
+              if(!$(this).children(".pinBtn").is(":animated")){//判断是否处于动画
+                $(this).children(".pinBtn").fadeIn(200);
+                $(this).children(".pinTag").fadeOut(0);
+              }			 
+            },function() { 
+              $(this).children(".pinBtn").fadeOut(0);
+              $(this).children(".pinTag").fadeIn(200);
+            });
+
+        // Wait for image to finish load
+        $("img").load(function(){
+          buildWaterFall('wrap', 5);
+        });
+      }else{
+        //失败
+        //alert(r['desc']);
+        start_num = start;
+        if(r['desc'] == 'finish'){
+          finish = true;
+        }
+      }
+      g_loading = false;
+    },
+    error: function() {
+      start_num = start;
+      if(pin_page > 1)
+        pin_page -= 1;
+    },
+    complete: function() {
+      $("#loadTip").hide();
+      g_loading = false;
+    }
+  });
+}
+
+</script>

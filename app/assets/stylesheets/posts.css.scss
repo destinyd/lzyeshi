@@ -1,0 +1,146 @@
+.fx-list {
+  background: #fff;
+  border: 1px solid #e3e3e3;
+  width: 73px;
+  position: absolute;
+  left: 0;
+  top: 26px;
+  display: none;
+}
+.fx-list li a{
+  width: 73px;
+  display: block;
+  height: 22px;
+  text-indent: 24px;
+  position: relative;
+}
+.fx-list li a:hover{
+  background:#e5e5e5;
+  text-decoration: none;
+}
+.fx-list li a i{
+  position:absolute;
+  left:0;
+  top:0;
+  overflow: hidden;
+  padding:0;
+}
+.fx-list li  .ico-wb{
+  background: url(pin/fx.png) no-repeat 0px 0px;
+  float: left;
+  width: 20px;
+  height: 22px;
+}
+.fx-list li .ico-qq{
+  background: url(pin/fx.png) no-repeat -21px 0;
+  float: left;
+  width: 20px;
+  height: 22px;
+}
+.fx-list li .ico-db{
+  background: url(pin/fx.png) no-repeat -65px 0;
+  float: left;
+  width: 20px;
+  height: 22px;
+}
+.fx-list li .ico-rr{
+  background: url(pin/fx.png) no-repeat -42px 0;
+  float: left;
+  width: 20px;
+  height: 22px;
+}
+.btn01 {
+  background: url(pin/btn02.png) no-repeat;
+  width: 52px;
+  height: 26px;
+  line-height: 26px;
+  display: inline-block;
+  padding: 0 0 0 8px;
+  text-align: left;
+}
+.btn01:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn01 i {
+  background: url(pin/icon02.png) no-repeat 0 0px;
+  display: inline-block;
+  zoom: 1;
+  padding: 0 0 0 18px;
+  height: 26px;
+}
+.btn01 i.i1 {
+  background-position: 0 -26px;
+}
+.btn01 i.i2 {
+  background-position: 0 -52px;
+}
+.pp:after,.pt:after,.area:after,.clear:after{content:".";display:block;visibility:hidden;height:0;clear:both;}
+.pt{text-align:left;line-height:21px;}
+.pt div{float:left;margin:0 10px 0 0;}
+.pt div img{display:block}
+.pt p{clear:none}
+.pt strong{font-weight:normal}
+.pt strong a,.pt strong a:hover{color:#535a46}
+.wrap{position:relative;margin:0 auto; font-size: 12px;}
+.pinItem{background:url(pin/bgy04.png) repeat-y;width:227px;margin:9px 0 0 0;display:block; position:absolute;display:none;}
+.pinItem .t,.pinItem .b{background:url(pin/bg08.png) no-repeat 0 0;height:2px;font-size:1px;overflow:hidden}
+.pinItem .b{ background-position:0 -2px;height:12px;font-size:1px;overflow:hidden}
+.tagBox{padding:6px 10px 19px 19px;width:198px;}
+.tagBox a{margin:4px 3px 0 0;background:url(pin/tagbg.png) no-repeat 100% 0;padding:0 11px 0 0;height:30px;line-height:30px;display:inline-block;color:#898989;font-size:14px;}
+.tagBox a i{display:inline-block;padding:0 0 0 11px; background:url(pin/tagbg.png) no-repeat 0 0; cursor:pointer;}
+.tagBox a:hover,.tagBox .cur{text-decoration: none;background-position:100% -30px;color: #b43214;}
+.tagBox a:hover i,.tagBox .cur i{background-position:0 -30px;}
+.tagBox h6{padding-left: 3px;margin-bottom: 5px;font-size: 13px;font-weight: bold;color: #000;margin-top: 10px;}
+.tagBox .inner-top{border-bottom:1px dashed #ccc;padding-bottom: 15px;}
+.tagBox .tagtop{border-bottom:1px dashed #ccc;padding:10px 0;margin-bottom: 5px;}
+.tagBox .tagtop span{color: #cc3300;font-size:13px;margin-right:10px;}
+.dnum{vertical-align:top;display:inline-block;*display:inline;zoom:1;width: 16px;height: 16px;background: url(pin/d.png) no-repeat right 2px;}
+.dnum.d2{background: url(pin/dnum.png) no-repeat 0 -18px;}
+.dnum.d3{background: url(pin/dnum.png) no-repeat 0 -34px;}
+.dnum.d4{background: url(pin/dnum.png) no-repeat -52px;}
+.dnum.d5{background: url(pin/dnum.png) no-repeat 0 -72px;}
+.pinItem .pinInfo{width:200px;margin:13px auto 0;}
+.pinItem .pinInfo h5{height:23px;line-height:23px;margin:0 4px}
+.pinItem .pinInfo h5 a,.pinItem .pinInfo h5 a:hover{color:#000; font-weight: normal;font-size: 12px;}
+.pinItem .pinInfo .nn{margin:2px 4px 0;height:18px;line-height:18px;background:url(pin/icon02.gif) no-repeat 1px 0;padding:0 0 0 16px}
+.pinItem .pinInfo .conts{height:21px;line-height:21px;color:#535a46;margin:0 4px}
+.pinItem .pinInfo p{margin:7px 4px 0;line-height:20px;padding-bottom:9px;}
+.pinItem .pinInfo .btn01{position:relative; }
+.pinItem .pinTxt{width:224px;margin:0 3px 0 0;background:url(pin/bg11.png);text-align:left}
+.pinItem .pinTxt .icon{background:url(pin/bg10.png) no-repeat 21px 0 #fff;height:6px;font-size:1px;overflow:hidden;margin:0 0 0 2px}
+.pinItem .pinTxt .pt{padding:13px 0 14px 15px;width:200px;margin:0 }
+.pinItem .pinTxt .pt div{padding:3px 0;margin-right:5px;}
+.pinItem .pinTxt .pt .txt{width:160px;margin:0;padding:0}
+.pinItem .pinTxt .pt .txt p img{width:20px;height:20px;display:inline;vertical-align:middle;}
+.pinItem .pinTxt .pt p{line-height:18px;word-break:break-all;word-warp:warp-all;overflow:hidden}
+.pinItem .pinTxt .pt p.p1,.pinItem .pinTxt .pt p b,.pinItem .pinTxt .pt p b a,.pinItem .pinTxt .pt p b a:hover{color:#535a46}
+.pinItem .pinTxt .pt .inputBg{margin:3px 0 0 0}
+.pinItem .pinTxt .pt .inputBg i input{width:140px;margin:4px 0 0 0}
+.pinItem .pinTxt .pt .userComment{margin:8px 0 0;text-align:right;width:100%} 
+.pinItem .pinTxt .pt .userComment .right{float:right}
+.pinItem .pinTxt .pt .userComment .btn{background:url(pin/btn20.png) no-repeat 100% 0;width:75px;height:23px;line-height:23px;text-align:center;display:inline-block;float:left;margin:0 4px 0 0;}
+.pinItem .pinTxt .pt .userComment .btn:hover{ text-decoration:none}
+.pinItem .pinTxt .pt .userComment .faceBtn{width:auto;padding:0 5px 0 0;line-height:normal}
+.pinItem .pinTxt .pt .userComment .faceBtn span{background:url(pin/btn20.png) no-repeat 0 0;padding:4px 0 0 6px;display:inline-block;height:19px;}
+.pinItem .pinTxt .pt .userComment .faceBtn span img{display:inline-block;}
+.pinItem .pinTxt .pt .userComment .faceBtn span em{float:left;line-height:15px;display:inline-block;margin:0 5px 0 0}
+.pinItem .pinTxt .line{background:url(pin/bgx02.png) repeat-x 0 0;height:2px;font-size:1px;overflow:hidden}
+.pinItem .pinTxt a.more{height:34px;line-height:34px;text-align:center;color:#313131;display:inline-block;width:100%}
+.pinItem .pinImg{position:relative;text-align:center;width:100%}
+.pinItem .pinBtn{position:absolute;left:-3px;top:-5px;width:209px;text-align:right;display:none}
+.pinItem .pinBtn span{float:left}
+.pinItem .pinTag{background:url(pin/tag.png) no-repeat left top;width:43px;height: 43px;position: absolute;right:-8px;top:-8px;}
+.pinItem .pinImg:hover .pinTag{display:none;}
+.pageMore{background:url(pin/bgx02.png) repeat-x 0 0;width:100%;height:75px;line-height:75px;text-align:center;font-size:24px;margin:40px 0 0 0}
+
+.nn a{
+  color: #898989;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.nn a:hover{
+  color: #898989;
+  text-decoration: underline;
+}

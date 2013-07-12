@@ -13,6 +13,7 @@ class Ability
       can :read, Commodity
       can :manage, ChatMessage, to_id: user.id
       can :manage, Authentication, user_id: user.id
+      can :manage, Post, user_id: user.id
       can [:new, :create], ChatMessage
     end
     # Define abilities for the passed in user here. For example:
