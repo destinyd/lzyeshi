@@ -3,7 +3,12 @@
     用户中心
   <% end -%>
 </li>
-<li class="<%= 'active' if @controller_name == 'posts' %>"> 
+<li class="<%= 'active' if @controller_name == 'posts' and @action_name == 'new' %>"> 
+  <%= link_to new_post_url(subdomain: ENV['USER_SUBDOMAIN']) do %>
+    发夜市秀
+  <% end -%>
+</li>
+<li class="<%= 'active' if @controller_name == 'posts' and @action_name != 'new' %>"> 
   <%= link_to posts_url(subdomain: ENV['USER_SUBDOMAIN']) do %>
     夜市秀
   <% end -%>
