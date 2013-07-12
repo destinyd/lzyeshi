@@ -66,6 +66,7 @@ class User
   has_many :authentications
   has_many :comments
   has_many :mp_users
+  has_many :posts
   #embeds_many :notifications, :class_name => 'Notification::Base'
   #embeds_one :trader
   has_one :trader

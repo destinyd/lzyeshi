@@ -1,25 +1,156 @@
-<h1>Listing posts</h1>
+<div id="wrap" class="wrap" style="height: 4132px;">
+  <% @posts.each do |post| %>
+  <div class="pinItem" id="1" style="left: 237px; top: 0px; display: block;">
+    <div class="t"></div>
+    <div class="pinInfo">
+      <div class="pinImg">
+        <%#<a onclick="return openBoard(155174);" target="_blank" href="/show_155174.html">%>
+        <%= link_to post do %>
+          <%= image_tag post.picture.image.pin, alt: "夜市秀-#{post.id}" %>
+        <% end -%>
+        <div class="pinBtn" style="display: none;">
+          <span> 
+            <a href="javascript:;" onclick="return false;like('<%= post.id %>');" class="btn01 like_btn_<%= post.id %> "><i>喜欢</i></a>
+            <%#<a href="javascript:;" onclick="want_food(151169,155174);" class="btn01 want_btn_151169 "><i class="i1">收集</i></a>%>
+          </span>
+          <div class="btn01">
+            <i class="i2">分享</i>
+            <ul class="fx-list unstyled">
+              <li><a href="" onclick="share_food('<%= post.id %>','<%= post.content.block %>','<%= post.picture.image.url %>','wb','');return false;"><i class="ico-wb"></i>新浪微博</a></li>
+              <li><a href="" onclick="share_food('<%= post.id %>','<%= post.content.block %>','<%= post.picture.image.url %>','qq','');return false;"><i class="ico-qq"></i>腾讯微博</a></li>
+              <li><a href="" onclick="share_food('<%= post.id %>','<%= post.content.block %>','<%= post.picture.image.url %>','rr','<%= post.content %>');return false;"><i class="ico-rr"></i>人人网</a></li>
+              <li><a href="" onclick="share_food('<%= post.id %>','<%= post.content.block %>','<%= post.picture.image.url %>','db','');return false;"><i class="ico-db"></i>豆瓣</a></li>
+            </ul>
+          </div>
+        </div>
+      </div> 
+      <%#<h5><a onclick="return openBoard(155174);" target="_blank" href="/show_155174.html">罐焖牛肉</a></h5>%>
+      <%#<div class="nn">%>
+        <%#<a href="/restaurant_3135.html" target="_blank">起士林西餐厅</a>%>
+      <%#</div>%>
+      <p><%= post.content %></p>
+      <div class="conts">
+        <span id="like_num_span_<%= post.id %>">0</span> 喜欢
+        <span id="want_num_span_<%= post.id %>">0</span> 分享
+      </div>
+    </div>
+    <div class="pinTxt"> 
+      <div class="icon"></div> 
+      <div class="pt">
+        <div>
+          <%#<a href="http://www.meishimeike.com/home_70.html" target="_blank"><img class="photo_30" src="http://img.meishimeike.com/upload/face/0/0/70/f1340807448_30.jpg" alt="青涩"></a>%>
+          <%= link_to '#', alt: post.user, target: '_blank' do %>
+            <%= image_tag "noface_icon.gif" %>
+          <% end -%>
+        </div>
+        <div class="txt">
+          <p class="p1"><b><%= link_to post.user, post.user, alt: post.user, target: '_blank' %>:</b>
+            通过网站分享
+            <br>   <%= Time.cc_time post.created_at %></p>
+        </div>
+      </div>
+      <!--
+      <div id="comment_new_container_155174"></div>
+      <div class="line"></div>
 
-<table>
-  <tr>
-    <th>Content</th>
-    <th>Price</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+      <a  rel='nofollow' href="/show_155174.html" class="more" target="_blank">全部</a> 
+      -->
+    </div>
+    <div class="b"></div>
+  </div>
+  <% end -%>
+</div>
+<script type="text/javascript">
+  var shownum=11
+  var start_num = 11;
+  var g_tid = 0;
+  var g_city = 11;
+  var g_dis = "";
+  var g_loading = false;
 
-<% @posts.each do |post| %>
-  <tr>
-    <td><%= post.content %></td>
-    <td><%= post.price %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+  //初始化
+  /*$(document).ready(function(){
+    getFoodList(g_tid,start_num,10);
+    });
+   */
+  //滚轴
+  $(window).bind("scroll",function(){
+    // 判断窗口的滚动条是否接近页面底部
+    if( $(document).scrollTop() + $(window).height() > $(document).height() - 210 ) {
+      if (!g_loading) {
+        getFoodList(g_tid,g_city,g_dis,start_num,shownum);
+      }
+    }
+  });
 
-<br />
+buildWaterFall('wrap', 5);
+$("img").load(function(){
+  buildWaterFall('wrap', 5);
+});
 
-<%= link_to 'New Post', new_post_path %>
+function getFoodList(tid,city,dis,start,num)
+{
+  if (start >= 100) {
+    $("#endTip").show();
+    return;
+  }
+  g_loading = true;
+  $("#loadTip").show();
+  start_num = start_num + num;
+  $.ajax( {
+    type:'GET',
+    url:"/ajax.php",
+    data:"_a=index&start="+start+"&num="+num+"&tid="+tid+"&city="+city+"&dis="+dis+"&rand="+parseInt(Math.random()*999999),
+    success: function(msg) {
+      eval('var r = '+msg+';');
+      if(r['status'] == "succ"){
+        var getdata = r['data'];
+        // No results
+        if (getdata == '') {
+          $("#endTip").show();
+          start_num = start;
+          return;
+        }
+        for(var i=1;i<face_reconfig.length;i++)
+  {
+    //var getdata = getdata.replace(face_config[i],"<img src=images/f"+i+".png>");
+    var reg = new RegExp(face_reconfig[i],'g');
+    var getdata = getdata.replace(reg,"<img src=images/f"+i+".png>");
+  }
+
+        $("#wrap").append(getdata);
+        buildWaterFall('wrap', 5);
+
+        $(".pinItem .pinImg").hover(
+            function () {		 
+              if(!$(this).children(".pinBtn").is(":animated")){//判断是否处于动画
+                $(this).children(".pinBtn").fadeIn(200);
+                $(this).children(".pinTag").fadeOut(0);
+              }			 
+            },function() { 
+              $(this).children(".pinBtn").fadeOut(0);
+              $(this).children(".pinTag").fadeIn(200);
+            });
+
+        // Wait for image to finish load
+        $("img").load(function(){
+          buildWaterFall('wrap', 5);
+        });
+      }else{
+        //失败
+        //alert(r['desc']);
+        start_num = start;
+      }
+      g_loading = false;
+    },
+    error: function() {
+      start_num = start;
+    },
+    complete: function() {
+      $("#loadTip").hide();
+      g_loading = false;
+    }
+  });
+}
+
+</script>

@@ -45,6 +45,11 @@ class PictureUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [200, 200]
   end
 
+  version :pin do
+    process :resize_to_limit => [236, 999999999]
+  end
+
+
   version :android do
     process :resize_to_fill => [400, 400]
   end
@@ -78,4 +83,8 @@ class PictureUploader < CarrierWave::Uploader::Base
       "#{@name}.#{file.extension.downcase}"
     end
   end
+
+  #def is_post? picture
+    #model.try(:pictureable).try(:class).try(:name) == 'Post'
+  #end
 end

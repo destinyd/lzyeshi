@@ -13,7 +13,7 @@ class Commodity
   belongs_to :user
   belongs_to :trader
 
-  has_one :picture
+  has_one :picture, as: :pictureable
 
   has_many :chat_messages, as: :chatable
   has_many :comments, as: :commentable

@@ -24,6 +24,7 @@
 //= require humane
 //= require traders
 //= require chat_messages
+//= require posts
 // require_tree .
 humane.timeout = 5000;
 //humane.waitForMove = true;
