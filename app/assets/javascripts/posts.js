@@ -64,14 +64,14 @@ function computeScrollTop(elem) {
 
 var fx = {
   "wb":{
-    source:"http://service.t.sina.com.cn/share/share.php?appkey=1964588744",
+    source:"http://service.t.sina.com.cn/share/share.php?appkey=3957428763",
     url:"url",
     title:"title",
     pic:"pic",
     des:""
   },
   "qq":{
-    source:"http://v.t.qq.com/share/share.php?appkey=100291631",
+    source:"http://v.t.qq.com/share/share.php?appkey=801385019",
     url:"url",
     title:"title",
     pic:"pic",
@@ -103,7 +103,7 @@ function share_food(fid,fname,pic,type,des)
 {	
   var url = fx[type].source 
     + "&" + fx[type].url+"="+encodeURIComponent("http://ysdev.realityandapp.com/posts/"+fid)
-    +"&"+fx[type].title+"="+encodeURIComponent("推荐："+fname+" - ( @柳州夜市 夜市秀,分享夜市精彩) ")
+    +"&"+fx[type].title+"="+encodeURIComponent(fname+" - ( @柳州夜市 夜市秀,分享夜市精彩) ")
     +"&"+fx[type].pic+"="+encodeURIComponent(pic)
     +fx[type].des+des;
   window.open (url, 'newwindow', 'height=600, width=500, top=300,left=300, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');

@@ -17,6 +17,8 @@ class PostsController < InheritedResources::Base
     case action_name
     when 'ajax'
       nil
+    when 'show'
+      'application'
     else
       'span12'
     end
