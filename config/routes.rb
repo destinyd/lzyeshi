@@ -4,6 +4,7 @@ Yeshi::Application.routes.draw do
   constraints subdomain: ENV['SUBDOMAIN'] do
     resources :posts, only: [:index, :show] do
       get :ajax, on: :collection
+      resources :comments, only: [:index,:create]
     end
     resources :comments, only: [:index, :show, :create]
     resources :notifications ,except: [:edit,:update,:new,:create] do

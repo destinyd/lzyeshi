@@ -9,6 +9,7 @@ class Post
   field :price, type: Money
   field :height, type: Integer
 
+  has_many :comments, as: :commentable
   has_one :picture, as: :pictureable
 
   belongs_to :user

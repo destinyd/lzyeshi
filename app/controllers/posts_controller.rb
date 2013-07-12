@@ -9,6 +9,7 @@ class PostsController < InheritedResources::Base
 
   protected
   def collection
+    add_crumb(I18n.t("controller.posts"), posts_path)
     @posts ||= end_of_association_chain.recent.page params[:page]
   end
 

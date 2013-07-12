@@ -1,15 +1,19 @@
-<p id="notice"><%= notice %></p>
+<dl class="dl-horizontal">
+  <%= d @post, :content %>
+  <dt>价格</dt>
+  <dd><%= @post.price ? @post.price : '不记得' %></dd>
+  <dt>大图</dt>
+  <dd>
+    <%= image_tag @post.picture.image.show %>
+  </dd>
+  <% @comments = @post.comments.recent.page(params[:comment_page]) %>
+  <dt>我也来说两句</dt>
+  <dd><%= render "comments/form", parent: @post, comment: @post.comments.new, any_comments: @comments.any? %></dd>
+  <dt>评论</dt>
+  <dd>
+    <div id="div_comments">
+      <%= render 'comments/comments', comments: @comments, parent: @post %>
+    </div>
+  </dd>
 
-<p>
-  <b>Content:</b>
-  <%= @post.content %>
-</p>
-
-<p>
-  <b>Price:</b>
-  <%= @post.price %>
-</p>
-
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+</dl>

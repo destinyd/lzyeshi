@@ -222,6 +222,8 @@ zh-CN:
         url: 链接
       mp_user:
         shortOpenID: 绑定码
+      post:
+        price: 价格
 
   attributes:
     created_at: 创建于
@@ -340,6 +342,7 @@ zh-CN:
     comments: 评论
     ads: 广告
     mp_users: 微信绑定
+    posts: 夜市秀
   action:
     prices:
       new: 记账
