@@ -41,5 +41,6 @@ class Trader
   after_create do 
     self.user.add_role :trader
     self.user.save
+    self.user.groups.create name: "#{self.user.name}的默认分组", category_list: '夜市'
   end
 end

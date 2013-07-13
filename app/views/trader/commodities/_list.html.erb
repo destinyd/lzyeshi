@@ -1,24 +1,28 @@
-<% @commodities.group_by{|c| c.group.name}.each do |name, commodities| %>
-  <h2>分类: <%= name %></h2>
-  <% commodities.each do |commodity| %>
-    <div class="commodity">
-      <p>
-        <%= link_to commodity do %>
-          <%= image_tag commodity.picture.image.thumb.url %>
-        <% end -%>
-      </p>
-      <p>
-        <%= link_to "记账", new_commodity_bill_path(commodity) %>
-        <%= link_to "修改", edit_commodity_path(commodity) %>
-        <%= link_to '删除', commodity, method: :delete, data: { confirm: '你确定?' } %>
-      </p>
-    </div>
-  <% end -%>
+<% if @commodities.any? %>
+  <% @commodities.group_by{|c| c.group.name}.each do |name, commodities| %>
+    <h2>分类: <%= name %></h2>
+    <% commodities.each do |commodity| %>
+      <div class="commodity">
+        <p>
+          <%= link_to commodity do %>
+            <%= image_tag commodity.picture.image.thumb.url %>
+          <% end -%>
+        </p>
+        <p>
+          <%= link_to "记账", new_commodity_bill_path(commodity) %>
+          <%= link_to "修改", edit_commodity_path(commodity) %>
+          <%= link_to '删除', commodity, method: :delete, data: { confirm: '你确定?' } %>
+        </p>
+      </div>
+    <% end -%>
+    <div class="clearfix"></div>
+  <% end %>
   <div class="clearfix"></div>
+  <div class="pull-right">
+    <%= paginate @commodities unless @commodities.blank? %>
+  </div>
+  <div class="clearfix"></div>
+<% else %>
+  <p> 您暂时还没有添加商品。 </p>
 <% end %>
-</table>
-<div class="clearfix"></div>
-<div class="pull-right">
-  <%= paginate @commodities unless @commodities.blank? %>
-</div>
-<div class="clearfix"></div>
+<%= button_to '添加商品', new_group_commodity_path(current_user.groups.first), method: :get, class: 'btn btn-primary' %>
