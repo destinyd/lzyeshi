@@ -19,7 +19,8 @@ SitemapGenerator::Sitemap.create do
   end
 
   add download_path, :changefreq => 'weekly', :priority => 0.8
-  add commodities_path, :changefreq => 'daily', :priority => 0.6
+  add posts_path, :changefreq => 'daily', :priority => 0.7
+  add commodities_path, :changefreq => 'daily', :priority => 0.7
   add traders_path, :changefreq => 'daily', :priority => 0.6
   add groups_path, :changefreq => 'daily', :priority => 0.6
   add system_contact_path, :changefreq => 'weekly'
