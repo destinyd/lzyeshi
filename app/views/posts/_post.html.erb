@@ -14,10 +14,10 @@
           <div class="btn01">
             <i class="i2">分享</i>
             <ul class="fx-list unstyled">
-              <li><a href="" onclick="share_food('<%= post.id %>','<%= post.content.block %>','<%= post.picture.image.url %>','wb','');return false;"><i class="ico-wb"></i>新浪微博</a></li>
-              <li><a href="" onclick="share_food('<%= post.id %>','<%= post.content.block %>','<%= post.picture.image.url %>','qq','');return false;"><i class="ico-qq"></i>腾讯微博</a></li>
-              <li><a href="" onclick="share_food('<%= post.id %>','<%= post.content.block %>','<%= post.picture.image.url %>','rr','<%= post.content %>');return false;"><i class="ico-rr"></i>人人网</a></li>
-              <li><a href="" onclick="share_food('<%= post.id %>','<%= post.content.block %>','<%= post.picture.image.url %>','db','');return false;"><i class="ico-db"></i>豆瓣</a></li>
+              <li><a href="" onclick="share_food('<%= post.id %>','<%= post.content.block %>','<%= ENV['DOMAIN'] %><%= post.picture.image.url %>','wb','');return false;"><i class="ico-wb"></i>新浪微博</a></li>
+              <li><a href="" onclick="share_food('<%= post.id %>','<%= post.content.block %>','<%= ENV['DOMAIN'] %><%= post.picture.image.url %>','qq','');return false;"><i class="ico-qq"></i>腾讯微博</a></li>
+              <li><a href="" onclick="share_food('<%= post.id %>','<%= post.content.block %>','<%= ENV['DOMAIN'] %><%= post.picture.image.url %>','rr','<%= post.content %>');return false;"><i class="ico-rr"></i>人人网</a></li>
+              <li><a href="" onclick="share_food('<%= post.id %>','<%= post.content.block %>','<%= ENV['DOMAIN'] %><%= post.picture.image.url %>','db','');return false;"><i class="ico-db"></i>豆瓣</a></li>
             </ul>
           </div>
         </div>
