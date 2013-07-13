@@ -6,9 +6,11 @@
       <%= render 'layouts/ad_top' %>
     </div>
 
+    <% unless controller_name == 'home' and action_name == 'index' %>
     <div class="breadcrumb">
       <%= render_crumbs separator: ' > ' %>
     </div>
+    <% end -%>
   </div>
 </div>
 
