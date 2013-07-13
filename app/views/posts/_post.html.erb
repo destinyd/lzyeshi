@@ -3,8 +3,8 @@
   <div class="pinInfo">
     <div class="pinImg">
       <%#<a onclick="return openBoard(155174);" target="_blank" href="/show_155174.html">%>
-        <%= link_to post do %>
-          <%= image_tag post.picture.image.pin, alt: "夜市秀-#{post.id}" %>
+        <%= link_to post, title: "柳州夜市秀-#{post.id}" do %>
+          <%= image_tag post.picture.image.pin, alt: "柳州夜市秀-#{post.id}图片", title: "柳州夜市秀-#{post.id}图片" %>
         <% end -%>
         <div class="pinBtn" style="display: none;">
           <span> 
@@ -36,12 +36,12 @@
       <div class="pt">
         <div>
           <%#<a href="http://www.meishimeike.com/home_70.html" target="_blank"><img class="photo_30" src="http://img.meishimeike.com/upload/face/0/0/70/f1340807448_30.jpg" alt="青涩"></a>%>
-          <%= link_to '#', alt: post.user do %>
-            <%= image_tag "noface_icon.gif" %>
+          <%= link_to '#', title: post.user do %>
+            <%= image_tag "noface_icon.gif", alt: post.user, title: post.user %>
           <% end -%>
         </div>
         <div class="txt">
-          <p class="p1"><b><%= link_to post.user, '#', alt: post.user %>:</b>
+          <p class="p1"><b><%= link_to post.user, '#', title: post.user %>:</b>
             通过网站分享
             <br>   <%= Time.cc_time post.created_at %></p>
         </div>

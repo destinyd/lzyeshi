@@ -4,7 +4,7 @@
   <dd><%= @post.price ? @post.price : '不记得' %></dd>
   <dt>大图</dt>
   <dd>
-    <%= image_tag @post.picture.image.show %>
+    <%= image_tag @post.picture.image.show, alt: "柳州夜市秀-#{@post.id}大图", title: "柳州夜市秀-#{@post.id}大图" %>
   </dd>
 
   <%= render "application/share_in_dl" %>

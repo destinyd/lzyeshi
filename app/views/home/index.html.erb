@@ -2,7 +2,7 @@
   <div class="span3 bs-docs-sidebar">
     <ul class="nav nav-list bs-docs-sidenav">
       <% @groups.each do |group| %>
-        <li class="bs-docs-sidenav-li"><a href="#<%= group.id %>"><i class="icon-chevron-right"></i> <%= group.name %></a></li>
+        <li class="bs-docs-sidenav-li"><a href="#<%= group.id %>"><i class="icon-chevron-right"></i> <%= group %></a></li>
       <% end -%>
     </ul>
   </div>
@@ -10,21 +10,21 @@
     <% @groups.each do |group| %>
       <section id="<%= group.id %>">
         <div class="page-header">
-          <h1><%= link_to group.name, group, target: '_blank' %></h1>
+          <h3><%= link_to group, group, target: '_blank', title: group %></h3>
         </div>
         <div class="">
           <ul class="thumbs inline">
             <% group.commodities.in_index.each do |commodity| %>
               <li class="pull-left li-commodity">
-                <%= link_to commodity, target: '_blank' do %>
-                  <%= image_tag commodity.picture.image.thumb %>
+                <%= link_to commodity, target: '_blank', title: commodity do %>
+                  <%= image_tag commodity.picture.image.thumb, alt: commodity, title: commodity %>
                 <% end -%>
               </li>
             <% end -%>
             <% if group.commodities.count > 23 %>
               <li class="pull-left li-commodity">
                 <%= link_to group, target: '_blank' do %>
-                  <%= image_tag 'view_more.jpg' %>
+                  <%= image_tag 'view_more.jpg', alt: '查看更多', title: '查看更多' %>
                 <% end -%>
               </li>
             <% end %>

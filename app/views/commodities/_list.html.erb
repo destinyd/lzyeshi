@@ -2,18 +2,18 @@
   <% commodities.each do |commodity| %>
     <li class="sw-mod-offerShopwindow paGetId commodities-commodity">
       <div class="photo-text-200">
-        <%= link_to commodity, class: 'photo200-box', target: '_blank' do %>
-          <%= image_tag commodity.picture.image.list.url %>
+        <%= link_to commodity, class: 'photo200-box', target: '_blank', title: commodity do %>
+          <%= image_tag commodity.picture.image.list.url, alt: commodity, title: commodity %>
         <% end -%>
         <p>￥<%= commodity.price %> </p>
       </div>
       <div class="sw-mod-offerShopwindow-title">
-        <h2>
-          <%= link_to commodity.name, commodity, class: 'sm-offerShopwindow-titleLink sw-ui-font-title12', target: '_blank' %>
-        </h2>
+        <h3>
+          <%= link_to commodity.name, commodity, class: 'sm-offerShopwindow-titleLink sw-ui-font-title12', target: '_blank', title: commodity %>
+        </h3>
       </div>
       <div class="commodity-trader">
-        <%= link_to commodity.trader, commodity.trader, class: 'sw-mod-previewCompanyInfo', target: '_blank', trader_id: commodity.trader.id %>
+        <%= link_to commodity.trader, commodity.trader, class: 'sw-mod-previewCompanyInfo', target: '_blank', trader_id: commodity.trader.id, title: commodity.trader %>
       </div>
     </li>
   <% end %>

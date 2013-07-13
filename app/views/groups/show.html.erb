@@ -8,7 +8,7 @@
   <ul class="groups_ul inline">
     <% @commodities.each do |commodity| %>
       <li>
-        <%= link_to commodity, target: '_blank' do %>
+        <%= link_to commodity, target: '_blank', title: commodity do %>
           <%= image_tag commodity.picture.image.thumb %>
         <% end -%>
       </li>
