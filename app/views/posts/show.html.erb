@@ -6,6 +6,9 @@
   <dd>
     <%= image_tag @post.picture.image.show %>
   </dd>
+
+  <%= render "application/share_in_dl" %>
+
   <% @comments = @post.comments.recent.page(params[:comment_page]) %>
   <dt>我也来说两句</dt>
   <dd><%= render "comments/form", parent: @post, comment: @post.comments.new, any_comments: @comments.any? %></dd>
@@ -15,5 +18,4 @@
       <%= render 'comments/comments', comments: @comments, parent: @post %>
     </div>
   </dd>
-
 </dl>

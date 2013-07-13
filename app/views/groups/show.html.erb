@@ -16,6 +16,9 @@
   </ul>
   <div class="clearfix"></div>
   </dd>
+
+  <%= render "application/share_in_dl" %>
+
   <% @comments = @group.comments.recent.page(params[:comment_page]) %>
   <dt>我也来说两句</dt>
   <dd><%= render "comments/form", parent: @group, comment: @group.comments.new, any_comments: @comments.any? %></dd>

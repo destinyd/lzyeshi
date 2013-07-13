@@ -29,6 +29,9 @@
   </ul>
   <div class="clearfix"></div>
   </dd>
+
+  <%= render "application/share_in_dl" %>
+
   <% @comments = @commodity.comments.recent.page(params[:comment_page]) %>
   <dt>我也来说两句</dt>
   <dd><%= render "comments/form", parent: @commodity, comment: @commodity.comments.new, any_comments: @comments.any? %></dd>
