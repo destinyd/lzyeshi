@@ -6,6 +6,10 @@ SitemapGenerator::Sitemap.create do
     add commodity_path(c), lastmod: (c.updated_at || c.created_at), :priority => 0.9
   end
 
+  Post.all.each do |c|
+    add post_path(c), lastmod: (c.updated_at || c.created_at), :priority => 0.9
+  end
+
   Trader.all.each do |c|
     add trader_path(c), lastmod: (c.updated_at || c.created_at), :priority => 0.8
   end
