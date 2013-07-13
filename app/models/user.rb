@@ -80,7 +80,7 @@ class User
 
   after_create :add_roles, :add_authentication
 
-  before_validation :valid_commucation
+  #before_validation :valid_commucation
 
   def to_s
     self.name.to_s
@@ -93,7 +93,8 @@ class User
   end
 
   def email_required?
-    super && phone.blank?
+    #super && phone.blank?
+    false
   end
 
   def apply_omniauth(omniauth)

@@ -11,7 +11,7 @@
         <%= f.input :password_confirmation, :required => true %>
       <% end -%>
       <%= f.input :email %>
-      <%= f.input :phone, hint: '邮箱和电话至少要填写一项' %>
+      <%= f.input :phone, hint: '邮箱和电话请填写一项，以确保您的账户安全' %>
       <%= f.input :is_trader,as: :boolean %>
       <div id="sign_up_trader">
         <%= f.fields_for :trader do |ft| %>
