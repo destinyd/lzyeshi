@@ -1,0 +1,20 @@
+<h4>商家信息</h4>
+<hr />
+<h5>
+  <%= link_to @trader, @trader, class:'pull-left' %>
+  <%= link_to new_commodity_chat_message_url(@commodity, chat_message: {name: @commodity.try(:user).try(:name) || @commodity.try(:trader).try(:user).try(:name)}, subdomain: ENV['USER_SUBDOMAIN']), target: '_blank', class: 'send-msg pull-left', title: "联系#{@commodity}" do %>
+    <span class="send-msg-span"> </span>
+  <% end -%>
+  <div class="clearfix"></div>
+</h5>
+<dl class="dl-horizontal">
+  <dt class="w60">商品数</dt>
+  <dd><%= link_to @trader.commodities.count, @trader %></dd>
+  <dt class="w60">常驻地址</dt>
+  <dd><%= @trader.address %></dd>
+  <% @trader.contacts.each do |contact| %>
+    <%= d_contact contact, 'w60' %>
+  <% end -%>
+</dl>
+<hr />
+

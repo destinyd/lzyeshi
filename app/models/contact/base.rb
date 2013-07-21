@@ -30,8 +30,13 @@ class Contact::Base
 
   protected
   before_create :give_trader
+  after_create :touch_trader
 
   def give_trader
     self.trader = self.try(:user).try(:trader)
+  end
+
+  def touch_trader
+    self.trader.touch
   end
 end

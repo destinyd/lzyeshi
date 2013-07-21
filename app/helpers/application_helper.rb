@@ -15,8 +15,8 @@ module ApplicationHelper
     html.html_safe
   end
 
-  def d_contact(model)
-    tmp = content_tag(:dt,model.name)
+  def d_contact(model,dt_cla=nil)
+    tmp = content_tag(:dt,model.name, class: dt_cla)
     case model.class
     when Contact::Base
       tmp += content_tag(:dd,model.value)
