@@ -83,4 +83,12 @@ class Commodity
     args.merge! p_args
     share.share_batch(args)
   end
+
+  def self.categories
+    all.map(&:categories).flatten.uniq
+  end
+
+  def self.category(category_name)
+    Commodity.tagged_with_on(:categories, category_name)
+  end
 end

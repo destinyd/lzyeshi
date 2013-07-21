@@ -1,0 +1,4 @@
+<h1><%= title '分类「' + params[:category] + "」 第#{params[:page] || '1'}页" %></h1>
+<%= render_cell :trader,:nav, parent: parent, c: controller_name, a: action_name %>
+
+<%= render "commodities/list", commodities: @commodities %>

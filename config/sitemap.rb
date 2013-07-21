@@ -25,6 +25,11 @@ SitemapGenerator::Sitemap.create do
   add groups_path, :changefreq => 'daily', :priority => 0.6
   add system_contact_path, :changefreq => 'weekly'
 
+  add categories_path
+  Commodity.categories.each do |c|
+    add category_path(c), :priority => 0.6
+  end
+
   # Put links creation logic here.
   #
   # The root path '/' and sitemap index file are added automatically for you.

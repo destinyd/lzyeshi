@@ -1,5 +1,11 @@
 <h1><%= title @commodity.name %></h1>
 <%= content_tag :dl,class: 'dl-horizontal' do %>
+  <dt>商品分类</dt>
+  <dd>
+  <% @commodity.categories.each do |category| %>
+    「<%= link_to category, category_path(category) %>」
+  <% end -%>
+  </dd>
   <dt>所属商品分组</dt>
   <dd><%= link_to @commodity.group, @commodity.group %></dd>
   <%= d @commodity,:price %>

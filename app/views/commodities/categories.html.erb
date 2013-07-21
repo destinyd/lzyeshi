@@ -1,0 +1,6 @@
+<h1>商品分类</h1>
+<ul class="inline">
+  <% @categories.each do |category| %>
+    <li><%= link_to category, category_path(category) %>(<%= Commodity.tagged_with_on(:categories, category).count %>)</li>
+  <% end -%>
+</ul>

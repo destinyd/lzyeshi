@@ -2,6 +2,8 @@ Yeshi::Application.routes.draw do
   use_doorkeeper
 
   constraints subdomain: ENV['SUBDOMAIN'] do
+    get '/categories/:category', to: 'commodities#category', as: :category
+    get '/categories', to: 'commodities#categories', as: :categories
     resources :posts, only: [:index, :show] do
       get :ajax, on: :collection
       resources :comments, only: [:index,:create]
