@@ -11,11 +11,11 @@
   </dd>
   <%= d @commodity,:price %>
   <%= d @commodity,:reserve %>
+  <%= d @commodity,:text %>
   <dt>大图</dt>
   <dd>
   <%= image_tag @commodity.picture.image.url,class: 'commodity_image', alt: @commodity, title: @commodity %>
   </dd>
-  <%#= d @commodity,:text %>
   <dt>其他款式</dt>
   <dd>
   <ul class="groups_ul inline">
