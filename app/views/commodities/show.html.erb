@@ -1,5 +1,7 @@
 <h1><%= title @commodity.name %></h1>
 <%= content_tag :dl,class: 'dl-horizontal' do %>
+  <dt>所属商品分组</dt>
+  <dd><%= link_to @commodity.group, @commodity.group %></dd>
   <%= d @commodity,:price %>
   <%= d @commodity,:reserve %>
   <%= d @commodity,:text %>
