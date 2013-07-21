@@ -1,4 +1,15 @@
-<h1>商品分类</h1>
+<% @desc = "柳州夜市商品分类列表页,主要有:#{@categories.join(',')}。".block(180) %>
+<% 
+  set_meta_tags keywords:  "#{(['商品分类'] + @categories[0..4]) .join(',')}", 
+    description:  @desc,
+  og:{
+  url: categories_url(subdomain: ENV['SUBDOMAIN']),
+  title: '商品分类',
+  type: 'categories',
+  description: @desc,
+  }
+%>
+<h1><%= title '商品分类' %></h1>
 <ul class="inline">
   <% @categories.each do |category| %>
     <li><%= link_to category, category_path(category) %>(<%= Commodity.tagged_with_on(:categories, category).count %>)</li>

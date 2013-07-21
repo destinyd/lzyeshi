@@ -1,4 +1,16 @@
-<h1><%= title '分类「' + params[:category] + "」 第#{params[:page] || '1'}页" %></h1>
-<%= render_cell :trader,:nav, parent: parent, c: controller_name, a: action_name %>
+<% @title = '分类「' + params[:category] + "」商品列表 第#{params[:page] || '1'}页" %>
+<% @desc = "柳州夜市商品分类「#{params[:category]}」商品列表 第#{params[:page] || '1'}页".block(180) %>
+<% 
+  set_meta_tags keywords:  "#{[params[:category], '商品分类', '商品', '夜市', '柳州夜市'].join(',')}", 
+    description:  @desc,
+  og:{
+  url: categories_url(subdomain: ENV['SUBDOMAIN']),
+  title: @title,
+  type: 'commodities',
+  description: @desc,
+  }
+%>
+<h1><%= title @title %></h1>
+<%= render_cell :trader, :nav, parent: parent, c: controller_name, a: action_name %>
 
 <%= render "commodities/list", commodities: @commodities %>
