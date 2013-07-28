@@ -13,7 +13,7 @@ class SidebarsCell < Cell::Rails
   end
 
   def recent_comments
-    @comments = Comment.recent.limit(10)
+    @comments = Comment.sidebar_comments
     render
   end
 

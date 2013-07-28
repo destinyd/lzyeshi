@@ -8,6 +8,8 @@ class Comment
 
   scope :recent, desc(:created_at)
   scope :system, where(commentable: nil)
+  scope :with_commentable, not_in(commentable: nil)
+  scope :sidebar_comments, with_commentable.recent.limit(10)
 
   validates :content, length: 1..300
 end
