@@ -1,3 +1,6 @@
+<%= content_tag 'li', class: @controller_name == 'articles' ? 'active' : nil do -%>
+  <%= link_to '文章', articles_path %>
+<% end -%>
 <%= content_tag 'li', class: @controller_name == 'apks' ? 'active' : nil do -%>
   <%= link_to '应用', apks_path %>
 <% end -%>

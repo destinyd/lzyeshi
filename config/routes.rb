@@ -2,6 +2,9 @@ Yeshi::Application.routes.draw do
   use_doorkeeper
 
   constraints subdomain: ENV['SUBDOMAIN'] do
+    resources :articles, only: [:index, :show] do
+      resources :comments, only: [:index,:create]
+    end
     get '/categories/:category', to: 'commodities#category', as: :category
     get '/categories', to: 'commodities#categories', as: :categories
     resources :posts, only: [:index, :show] do
@@ -92,6 +95,9 @@ Yeshi::Application.routes.draw do
 
   constraints subdomain: ENV['ADMIN_SUBDOMAIN'] do
     scope module: 'admin' do
+      resources :articles do
+        post :publish, on: :member
+      end
       resources :apks do
         get :updated_version, on: :member
       end

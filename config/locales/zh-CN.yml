@@ -204,6 +204,7 @@ zh-CN:
       ad: 广告
       mp_user: 微信绑定
       post: 夜市秀
+      article: 文章
     attributes:
       trader:
         address: 常驻地点
@@ -258,6 +259,7 @@ zh-CN:
     sign_in_count: 登录次数
     last_sign_in_at: 上次登录时间
     last_sign_in_ip: 上次登录IP
+    status: 状态
 
 
   labels:
@@ -344,6 +346,7 @@ zh-CN:
     ads: 广告
     mp_users: 微信绑定
     posts: 夜市秀
+    articles: 文章
   action:
     prices:
       new: 记账

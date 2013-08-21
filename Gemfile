@@ -58,3 +58,6 @@ gem 'httparty'
 
 # sitemap
 gem 'sitemap_generator'
+
+#富文本编辑器
+gem 'rails_kindeditor', '~> 0.4.0'

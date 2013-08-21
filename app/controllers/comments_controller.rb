@@ -3,6 +3,7 @@ class CommentsController < InheritedResources::Base
   respond_to :js
   belongs_to :commodity, optional: true
   belongs_to :group, optional: true
+  belongs_to :article, optional: true
   actions :index, :create
 
   def index
