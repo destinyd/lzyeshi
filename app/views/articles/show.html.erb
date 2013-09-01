@@ -17,6 +17,16 @@
   <%= @article.content.html_safe %>
 </div>
 
+<% unless @article.tags.blank? %>
+  <div class="meta">
+    <ul class="nav nav-pills">
+      <% @article.tags.each do |tag| %>
+      <li class="active"><%= link_to tag, tag_articles_path(tag: tag) %></li>
+      <% end -%>
+    </ul>
+  </div>
+<% end %>
+
 <%= render "application/share_in_dl" %>
 
 <div class="clearfix"></div>

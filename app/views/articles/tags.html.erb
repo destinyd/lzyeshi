@@ -1,0 +1,22 @@
+<% @desc = "夜市经验Tags：#{@tags.join(',')}。".block(170) %>
+<% 
+  set_meta_tags keywords:  "#{(['夜市经验'] + @tags[0..4]) .join(',')}", 
+    description:  @desc,
+  og:{
+  url: tags_articles_url(subdomain: ENV['SUBDOMAIN']),
+  title: '商品分类',
+  type: 'tags',
+  description: @desc,
+  }
+%>
+<h1><%= title '夜市经验Tags' %></h1>
+<% unless @tags.blank? %>
+<ul class="nav nav-pills">
+  <% @tags.each do |tag| %>
+    <li class="active"><%= link_to "#{tag}(#{Article.tag(tag).count})" , tag_articles_path(tag) %></li>
+  <% end -%>
+</ul>
+<% else %>
+  <p> 赞无Tag </p>
+<% end -%>
+

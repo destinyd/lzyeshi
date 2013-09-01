@@ -27,4 +27,12 @@ class Article
       update_attributes published_at: Time.now, status: 'published'
     end
   end
+
+  def self.tags
+    all.map(&:tags).flatten.uniq
+  end
+
+  def self.tag(tag_name)
+    Article.tagged_with_on(:tags, tag_name)
+  end
 end

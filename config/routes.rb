@@ -3,6 +3,8 @@ Yeshi::Application.routes.draw do
 
   constraints subdomain: ENV['SUBDOMAIN'] do
     resources :articles, only: [:index, :show] do
+      get '/tags/:tag', to: 'articles#tag', as: :tag, on: :collection
+      get '/tags', to: 'articles#tags', as: :tags, on: :collection
       resources :comments, only: [:index,:create]
     end
     get '/categories/:category', to: 'commodities#category', as: :category

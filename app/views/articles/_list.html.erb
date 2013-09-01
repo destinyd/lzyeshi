@@ -1,4 +1,4 @@
-<h1><%= title "夜市经验 第#{params[:page] || 1}页" %></h1>
+<h1><%= title "夜市经验 #{"Tag:" + params[:tag] unless params[:tag].blank?} 第#{params[:page] || 1}页" %></h1>
 
 <table class="table table-hover">
   <tr>

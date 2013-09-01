@@ -35,6 +35,11 @@ SitemapGenerator::Sitemap.create do
     add category_path(c), :priority => 0.6
   end
 
+  add tags_articles_path
+  Article.tags.each do |c|
+    add tag_articles_path(c), :priority => 0.6
+  end
+
   # Put links creation logic here.
   #
   # The root path '/' and sitemap index file are added automatically for you.
