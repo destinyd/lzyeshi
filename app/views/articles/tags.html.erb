@@ -1,15 +1,15 @@
-<% @desc = "夜市经验Tags：#{@tags.join(',')}。".block(170) %>
+<% @desc = "夜市经验标签：#{@tags.join(',')}。".block(170) %>
 <% 
   set_meta_tags keywords:  "#{(['夜市经验'] + @tags[0..4]) .join(',')}", 
     description:  @desc,
   og:{
   url: tags_articles_url(subdomain: ENV['SUBDOMAIN']),
-  title: '商品分类',
+  title: '夜市经验标签',
   type: 'tags',
   description: @desc,
   }
 %>
-<h1><%= title '夜市经验Tags' %></h1>
+<h1><%= title '夜市经验标签' %></h1>
 <% unless @tags.blank? %>
 <ul class="nav nav-pills">
   <% @tags.each do |tag| %>
@@ -17,6 +17,6 @@
   <% end -%>
 </ul>
 <% else %>
-  <p> 赞无Tag </p>
+  <p> 暂无标签 </p>
 <% end -%>
 
