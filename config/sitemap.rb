@@ -28,6 +28,7 @@ SitemapGenerator::Sitemap.create do
   add traders_path, :changefreq => 'daily', :priority => 0.6
   add groups_path, :changefreq => 'daily', :priority => 0.6
   add system_contact_path, :changefreq => 'weekly'
+  add articles_path, :changefreq => 'daily', :priority => 0.6
 
   add categories_path
   Commodity.categories.each do |c|
