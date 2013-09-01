@@ -28,6 +28,10 @@ class Article
     end
   end
 
+  def to_s
+    title
+  end
+
   def self.tags
     all.map(&:tags).flatten.uniq
   end
