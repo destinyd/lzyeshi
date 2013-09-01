@@ -1,5 +1,15 @@
+<% @desc = @article.content.block(180) %>
+<% 
+  set_meta_tags keywords:  "#{(['夜市经验'] + @article.tags) .join(',')}", 
+    description:  @desc,
+  og:{
+  url: article_url(@article, subdomain: ENV['SUBDOMAIN']),
+  type: 'article',
+  description: @desc,
+  }
+%>
 <div id="article_head" class="text-center">
-  <h1><%= @article.title %></h1>
+  <h1><%= title @article.title %></h1>
   <p><small>发布于: <%= @article.published_at %></small></p>
 </div>
 

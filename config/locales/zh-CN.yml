@@ -260,6 +260,7 @@ zh-CN:
     last_sign_in_at: 上次登录时间
     last_sign_in_ip: 上次登录IP
     status: 状态
+    tag_list: Tag
 
 
   labels:

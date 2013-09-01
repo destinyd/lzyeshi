@@ -7,7 +7,7 @@ class Article
   field :content, type: String
   field :status, type: String, default: 'padding' #padding,published,trash, top?
   field :published_at, type: Time
-  attr_accessible :title, :content, :status, :published_at
+  attr_accessible :title, :content, :status, :published_at, :tag_list
 
   scope :recent, desc(:published_at)
 
