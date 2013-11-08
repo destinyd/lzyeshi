@@ -49,7 +49,7 @@ class User
   field :name, :type => String
   field :phone, :type => String
   validates :name, presence: true, length: 2..10, uniqueness: true
-  validates :phone, format: {with: /1[35](\d{9})/}, uniqueness: true, if: :phone?#, presence: true
+  validates :phone, format: {with: /1[3458](\d{9})/}, uniqueness: true, if: :phone?#, presence: true
   attr_accessor :is_trader, :login, :omniauth_session
   attr_accessible :role_ids, :as => :admin
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :is_trader, :trader_attributes, :login, :phone
