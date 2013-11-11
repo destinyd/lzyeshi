@@ -4,4 +4,10 @@
     <%= @ad_top.content.html_safe %>
   </div>
 <% end %>
+<% @ad_home = Ad.home.first %>
+<% if @ad_home %>
+  <div class="text-center">
+    <%= @ad_home.content.html_safe %>
+  </div>
+<% end %>
 
