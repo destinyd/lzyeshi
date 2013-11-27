@@ -67,6 +67,9 @@ class User
   has_many :comments
   has_many :mp_users
   has_many :posts
+  has_many :topics
+  has_many :replies
+  has_many :attachments, as: :attachmentable, class_name: 'Kindeditor::Asset'
   #embeds_many :notifications, :class_name => 'Notification::Base'
   #embeds_one :trader
   has_one :trader

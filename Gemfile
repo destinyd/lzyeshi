@@ -60,4 +60,14 @@ gem 'httparty'
 gem 'sitemap_generator'
 
 #富文本编辑器
-gem 'rails_kindeditor', '~> 0.4.0'
+gem 'rails_kindeditor', '~> 0.4.0', github: 'destinyd/rails_kindeditor'
+
+#BBS
+gem "md_emoji"
+# Markdown 格式 & 文本处理
+gem "redcarpet", "~> 3.0.0"
+gem 'auto-space', '0.0.2'
+gem "rouge", "~> 1.0.0"
+
+gem "rails_autolink", ">= 1.1.0"
+#gem 'mongoid_magic_counter_cache'

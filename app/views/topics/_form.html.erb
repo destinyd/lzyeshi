@@ -1,0 +1,13 @@
+<%= simple_form_for(@topic) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :node, collection: Section.all, as: :grouped_select, group_method: :nodes, include_blank: false %>
+    <%= f.input :title %>
+    <%= f.input :body, as: :kindeditor, owner_id: current_user._id, allowFileManager: false, link: false, input_html: {simple_mode: true} %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

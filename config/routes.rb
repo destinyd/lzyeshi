@@ -2,6 +2,11 @@ Yeshi::Application.routes.draw do
   use_doorkeeper
 
   constraints subdomain: ENV['SUBDOMAIN'] do
+    resources :nodes
+    resources :sections
+    resources :topics do
+      resources :replies
+    end
     resources :articles, only: [:index, :show] do
       get '/tags/:tag', to: 'articles#tag', as: :tag, on: :collection
       get '/tags', to: 'articles#tags', as: :tags, on: :collection

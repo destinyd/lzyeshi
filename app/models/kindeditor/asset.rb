@@ -3,9 +3,15 @@ require 'carrierwave/mongoid'
 class Kindeditor::Asset
   include Mongoid::Document
   include Mongoid::Timestamps
-  mount_uploader :asset, Kindeditor::AssetUploader
+  
   field :file_size, :type => Integer
   field :file_type, :type => String
+  field :owner_id, :type => String#Integer
+  field :asset_type, :type => String
+
+  belongs_to :attachmentable, polymorphic: true
+
+  mount_uploader :asset, Kindeditor::AssetUploader
   validates_presence_of :asset
   before_save :update_asset_attributes
   attr_accessible :asset

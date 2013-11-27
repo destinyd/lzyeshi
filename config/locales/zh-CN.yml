@@ -205,6 +205,10 @@ zh-CN:
       mp_user: 微信绑定
       post: 夜市秀
       article: 文章
+      section: 分组
+      node: 分类
+      topic: 贴子
+      reply: 回复
     attributes:
       trader:
         address: 常驻地点
@@ -261,7 +265,13 @@ zh-CN:
     last_sign_in_ip: 上次登录IP
     status: 状态
     tag_list: Tag
-
+    summary: 摘要
+    sort: 排序
+    section: 分组
+    node: 分类
+    topic: 贴子
+    reply: 回复
+    body: 内容
 
   labels:
     back: 返回
