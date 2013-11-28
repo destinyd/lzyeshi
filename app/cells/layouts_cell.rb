@@ -17,6 +17,10 @@ class LayoutsCell < Cell::Rails
     nav(args)
   end
 
+  def users_nav(args)
+    nav(args)
+  end
+
   def user_nav(args)
     nav(args)
   end

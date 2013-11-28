@@ -6,7 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def registrations_layout
     case action_name
     when 'edit'
-      'user'
+      'left_nav'
     when 'new'
       'span12'
     else

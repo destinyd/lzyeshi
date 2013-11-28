@@ -1,9 +1,11 @@
 <%= render "layouts/before" %>
 <div class="col-md-3">
   <ul class="nav nav-pills nav-stacked" id="myTabs">
-      <%= render_cell :layouts, :trader_nav, controller_name: controller_name, action_name: action_name %>
-    </ul>
-  </div>
+    <%= yield(:left_nav_before) %>
+    <%= render_cell :layouts, (/(?<name>.*)\//.match(params[:controller])[:name] + "_nav").to_sym, controller_name: controller_name, action_name: action_name %>
+    <%= yield(:left_nav_after) %>
+  </ul>
+</div>
 <div class="col-md-9">
   <div class="tab-content">
     <%= render 'layouts/messages' %>
@@ -11,3 +13,4 @@
   </div>
 </div>
 <%= render "layouts/after" %>
+

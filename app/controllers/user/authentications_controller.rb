@@ -1,5 +1,5 @@
 class User::AuthenticationsController < InheritedResources::Base
-  layout 'user'
+  layout 'left_nav'
   actions :index, :update
   load_and_authorize_resource :authentication
 

@@ -1,20 +1,13 @@
 <%= render "layouts/before" %>
-<% content_for :head do -%>
-  <%= stylesheet_link_tag "bootstrap-wysihtml5", :media => "all" %>
-  <%= javascript_include_tag 'wysihtml5' %>
-
-<% end -%>
-<div class="row">
-  <div class="span12">
-    <div class="tabbable tabs-left">
-      <ul class="nav nav-tabs">
-        <%= render_cell :layouts, :admin_nav, controller_name: controller_name, action_name: action_name %>
-      </ul>
-      <div class="tab-content">
-        <%= render 'layouts/messages' %>
-        <%= yield %>
-      </div>
-    </div>
+<div class="col-md-3">
+  <ul class="nav nav-pills nav-stacked" id="myTabs">
+    <%= render_cell :layouts, :admin_nav, controller_name: controller_name, action_name: action_name %>
+  </ul>
+</div>
+<div class="col-md-9">
+  <div class="tab-content">
+    <%= render 'layouts/messages' %>
+    <%= yield %>
   </div>
 </div>
 <%= render "layouts/after" %>

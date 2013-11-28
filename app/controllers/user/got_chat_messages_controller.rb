@@ -1,5 +1,5 @@
 class User::GotChatMessagesController < InheritedResources::Base
-  layout 'user'
+  layout 'left_nav'
   before_filter :authenticate_user!
   respond_to :html, except: [:edit, :update]
   respond_to :json

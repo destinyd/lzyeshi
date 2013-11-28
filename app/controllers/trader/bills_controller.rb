@@ -1,5 +1,5 @@
 class Trader::BillsController < InheritedResources::Base
-  layout 'trader'
+  layout 'left_nav'
   actions :all, except: [:show]
   respond_to :json
   belongs_to :commodity, optional: true

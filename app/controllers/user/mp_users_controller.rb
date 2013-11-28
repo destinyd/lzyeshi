@@ -1,5 +1,5 @@
 class User::MpUsersController < InheritedResources::Base
-  layout 'user'
+  layout 'left_nav'
   before_filter :authenticate_user!
   actions :destroy
   
