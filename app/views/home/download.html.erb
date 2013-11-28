@@ -4,7 +4,7 @@
 
   <% @apks.group_by(&:english_name).each do |english_name,apks| %>
     <% apk = apks.first %>
-    <div class="span5 pull-left">
+    <div class="col-md-6 col-lg-6 bs-docs-sidebar">
       <h2><%= apk.name %></h2>
       <div class="downloader full-width">
         <p>版本：<%= apk.version %> 

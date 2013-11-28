@@ -5,7 +5,7 @@
 <%= content_tag :dl,class: 'dl-horizontal' do %>
   <dt>商品</dt>
   <dd>
-  <ul class="groups_ul inline">
+  <ul class="groups_ul list-inline">
     <% @commodities.each do |commodity| %>
       <li>
         <%= link_to commodity, target: '_blank', title: commodity do %>

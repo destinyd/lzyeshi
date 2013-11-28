@@ -48,7 +48,7 @@ class NotificationsController < InheritedResources::Base
   end
 
   def collection
-    @notifications ||= end_of_association_chain.unread.recent.page params[:page]
+    @notifications ||= end_of_association_chain.recent.unread.page params[:page]
   end
 end
 
