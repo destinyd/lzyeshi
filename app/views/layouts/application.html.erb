@@ -1,23 +1,11 @@
 <%= render "layouts/before" %>
-<div class="row">
-  <div class="span12">
-    <%= render 'layouts/messages' %>
-    <div class="mb10">
-      <%= render 'layouts/ad_top' %>
-    </div>
+  <%= render "layouts/before_content" %>
 
-    <div class="breadcrumb">
-      <%= render_crumbs separator: ' > ' %>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="span8">
+  <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8">
     <%= yield %>
   </div>
 
-  <div class="span4">
+  <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
     <%= yield(:sidebar) %>
     <%= render 'layouts/ad_sidebar_first' %>
     <%= render_cell :sidebars, :recent_commodities %>
@@ -25,5 +13,4 @@
     <%= render_cell :sidebars, :recent_comments %>
     <%= render_cell :sidebars, :listen %>
   </div>
-</div>
 <%= render "layouts/after" %>

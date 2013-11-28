@@ -1,5 +1,5 @@
 class Trader::LocationsController < InheritedResources::Base
-  layout 'trader'
+  layout 'left_nav'
   actions :all, except: [:edit, :update]
   respond_to :json
   respond_to :js, only: [:index, :create]

@@ -17,7 +17,7 @@ gem "database_cleaner", ">= 1.0.0.RC1", :group => :test
 gem "mongoid-rspec", ">= 1.7.0", :group => :test
 gem "email_spec", ">= 1.4.0", :group => :test
 gem "factory_girl_rails", ">= 4.2.0", :group => [:development, :test]
-gem "bootstrap-sass", ">= 2.3.0.0"
+gem 'bootstrap-sass', '>= 3.0.2.0'
 gem "devise", ">= 2.2.3"
 gem "cancan", ">= 1.6.9"
 gem "rolify", ">= 3.2.0"
@@ -34,7 +34,8 @@ end
 
 gem "inherited_resources"
 gem 'kaminari'
-gem 'kaminari-bootstrap'
+#gem 'kaminari-bootstrap'
+gem 'kaminari-bootstrap', github: 'mcasimir/kaminari-bootstrap'
 gem 'money-rails'
 gem 'mongoid_taggable_on'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'

@@ -1,5 +1,5 @@
 class User::ChatMessagesController < ApplicationController
-  layout 'user'
+  layout 'left_nav'
   before_filter :authenticate_user!
   #add_crumb(I18n.t("controller.chat_messages")) { |instance| instance.send :chat_messages_path }
 

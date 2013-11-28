@@ -1,5 +1,5 @@
 class Trader::PicturesController < ApplicationController
-  layout 'trader'
+  layout 'left_nav'
   def index
     @pictures = current_user.pictures.recent.page params[:page]
 

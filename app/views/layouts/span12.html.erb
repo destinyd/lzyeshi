@@ -1,22 +1,7 @@
 <%= render "layouts/before" %>
-<div class="row">
-  <div class="span12">
-    <%= render 'layouts/messages' %>
-    <div class="mb10">
-      <%= render 'layouts/ad_top' %>
-    </div>
+<%= render "layouts/before_content" %>
 
-    <% unless controller_name == 'home' and action_name == 'index' %>
-    <div class="breadcrumb">
-      <%= render_crumbs separator: ' > ' %>
-    </div>
-    <% end -%>
-  </div>
-</div>
-
-<div class="row">
-  <div class="span12">
-    <%= yield %>
-  </div>
+<div class="col-md-12 col-lg-12">
+  <%= yield %>
 </div>
 <%= render "layouts/after" %>

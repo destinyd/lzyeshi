@@ -1,16 +1,7 @@
-<a class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
-  <span class="icon-bar"></span>
-  <span class="icon-bar"></span>
-  <span class="icon-bar"></span>
-</a>
-
-<%= link_to t('trader_title'), trader_home_path, :class => 'brand' %>
-<div class="nav-collapse collapse">
-  <ul class="nav pull-right">
-    <%= render_cell :layouts, :login, user: current_user %>
-  </ul>
-
-  <ul class="nav">
+<%= link_to t('trader_title'), trader_home_path, :class => 'navbar-brand' %>
+</div>
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  <ul class="nav navbar-nav">
     <li>
       <%= link_to '柳州夜市', root_url(subdomain: ENV['SUBDOMAIN']) %>
     </li>
@@ -22,5 +13,9 @@
     <li>
       <%= link_to '应用下载', download_url(subdomain: ENV['SUBDOMAIN']) %>
     </li>
+  </ul>
+
+  <ul class="nav navbar-nav navbar-right">
+    <%= render_cell :layouts, :login, user: current_user %>
   </ul>
 </div>

@@ -1,5 +1,5 @@
 class Trader::GroupsController < InheritedResources::Base
-  layout 'trader'
+  layout 'left_nav'
   respond_to :json
   load_and_authorize_resource except: :index
   skip_load_and_authorize_resource :only => :index

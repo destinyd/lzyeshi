@@ -1,0 +1,12 @@
+<div class="col-md-12 col-sm-12 col-lg-12 col-xs-12">
+  <%= render 'layouts/messages' %>
+  <div class="mb10">
+    <%= render 'layouts/ad_top' %>
+  </div>
+
+  <% unless controller_name == 'home' and action_name == 'index' %>
+    <div class="breadcrumb">
+      <%= render_crumbs separator: ' > ' %>
+    </div>
+  <% end -%>
+</div>
