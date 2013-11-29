@@ -1,5 +1,5 @@
 class Trader::TradersController < InheritedResources::Base
-  layout 'trader'
+  layout 'left_nav'
   defaults :singleton => true 
   actions :create, :update
 

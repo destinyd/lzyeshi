@@ -1,6 +1,6 @@
 class Admin::ArticlesController < InheritedResources::Base
   before_filter :authenticate_admin!
-  layout 'admin'
+  layout 'left_nav'
 
   def create
     create!{articles_path}

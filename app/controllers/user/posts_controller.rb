@@ -28,7 +28,7 @@ class User::PostsController < InheritedResources::Base
     when 'ajax'
       nil
     else
-      'user'
+      'left_nav'
     end
   end
 end

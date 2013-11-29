@@ -1,0 +1,14 @@
+<%= render "layouts/before" %>
+<div class="col-md-3 col-lg-3 bs-docs-sidebar" role="complementary">
+  <ul class="nav nav-pills nav-stacked bs-docs-sidenav" id="myTabs">
+    <%= yield(:left_nav_before) %>
+    <%= render_cell :layouts, (/(?<name>.*)\//.match(params[:controller])[:name] + "_nav").to_sym, controller_name: controller_name, action_name: action_name %>
+    <%= yield(:left_nav_after) %>
+  </ul>
+</div>
+<div class="col-md-9 col-lg-9">
+  <%= render 'layouts/messages' %>
+  <%= yield %>
+</div>
+<%= render "layouts/after" %>
+

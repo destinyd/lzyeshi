@@ -1,6 +1,6 @@
 class Admin::CommentsController < InheritedResources::Base
   before_filter :authenticate_admin!
-  layout 'admin'
+  layout 'left_nav'
 
   actions :index, :show, :destroy
 

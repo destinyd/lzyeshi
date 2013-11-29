@@ -1,5 +1,5 @@
 class User::HomeController < ApplicationController
-  layout 'user'
+  layout 'left_nav'
   def index
     
   end

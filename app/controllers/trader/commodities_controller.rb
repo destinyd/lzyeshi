@@ -1,5 +1,5 @@
 class Trader::CommoditiesController < InheritedResources::Base
-  layout 'trader'
+  layout 'left_nav'
   respond_to :json
   belongs_to :group, optional: true
   load_and_authorize_resource :group
