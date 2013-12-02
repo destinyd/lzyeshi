@@ -1,0 +1,20 @@
+<div class="topic">
+  <div class="col-md-11 col-lg-11 oh">
+    <h4>
+      <%= link_to topic.title.block(50), topic %>
+    </h4>
+    <div class="meta">
+      <%= topic.user %>
+      •
+      最后由<%= topic.last_reply_user_name %>回复
+      •
+      <%= topic.visits %>次阅读
+    </div>
+  </div>
+  <div class="col-md-1 col-lg-1">
+    <div class="replies">
+      <%= link_to topic.replies.count, topic_path(topic) + "#reply_#{topic.replies.count}", class:"count" %>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>

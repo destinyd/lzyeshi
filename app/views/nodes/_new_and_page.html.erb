@@ -1,0 +1,14 @@
+<div class="node-new-and-page">
+  <% if params[:node] %>
+    <div class="pull-left mtb20 pl">
+      <%= button_to '发贴', new_node_topic_path(params[:node]), method: :get, class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+  <% if params[:pages] %>
+    <div class="pull-right">
+      <%= paginate params[:pages] %>
+    </div>
+  <% end -%>
+  <div class="clearfix"></div>
+</div>
+

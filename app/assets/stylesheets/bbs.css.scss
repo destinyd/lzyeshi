@@ -5,3 +5,77 @@
 .node-dt{
   word-break:break-all;
 }
+.node-topics-header{
+  border: 1px solid #CCCCCC;
+  background-color:#F2F2F2;
+  height: 41px;
+  padding: 10px 0;
+}
+.mtb20{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.oh{
+  overflow: hidden;
+}
+.word-bw{ 
+  word-wrap: break-word; 
+  word-break: normal; 
+}
+.word-ba{
+  word-break:break-all;
+}
+.topic-left{
+  background-color: #e6e6e6;
+  border-right: 1px solid #eeeeee;
+}
+.topic{
+  border: 1px solid #eeeeee;
+}
+.topic-title{
+  font: 700 2em \"Microsoft Yahei\",Hei,Tahoma,SimHei,sans-serif;
+}
+.topic-title-left{
+  min-height: 30px;
+  padding: 20px 20px 20px 20px;
+}
+#topic-td{
+  padding: 0;
+  text-align: left;
+}
+.topic-bb1{
+  border-bottom: 1px solid #eeeeee;
+  margin-bottom: 5px;
+}
+.p10{
+  padding: 10px;
+}
+.reply-body{
+  padding: 5px 20px;
+}
+.p0{
+  padding: 0;
+}
+.topics{
+  .topic{
+  border-bottom: 1px solid #CCCCCC;
+  /*border-top: none;*/
+  }
+  .replies{
+    vertical-align: middle;
+    text-align: right;
+    a.count{
+      line-height: 12px;
+      font-weight: bold;
+      color: white;
+      background-color: #1c7fdb;
+      display: inline-block;
+      padding: 2px 10px 2px 10px;
+      -moz-border-radius: 80px;
+      -webkit-border-radius: 80px;
+      border-radius: 80px;
+      margin: 18px 0px 0px 0px;
+      text-decoration: none;
+    }
+  }
+}

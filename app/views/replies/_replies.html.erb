@@ -1,0 +1,24 @@
+<div class="panel panel-default" id="<%= @topic.id %>" id="replies">
+  <div class="panel-heading">
+    共收到<%= @topic.replies.count %>条回复
+  </div>
+  <div class="panel-body">
+    <div class="topic-body">
+      <% @replies.each_with_index do |reply, index| %>
+        <% index = index + 1 %>
+        <div class="reply topic-bb1" id="reply_<%= index %>">
+          <div class="reply-info">
+            <%= reply.user %>
+            <%= link_to "#{index}楼","#reply#{index}" %>，
+            <%= reply.created_at.cc_time %>
+          </div>
+          <div class="reply-body">
+            <%= reply.body.html_safe %>
+          </div>
+        </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+

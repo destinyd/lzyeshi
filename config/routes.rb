@@ -2,7 +2,9 @@ Yeshi::Application.routes.draw do
   use_doorkeeper
 
   constraints subdomain: ENV['SUBDOMAIN'] do
-    resources :nodes
+    resources :nodes do
+      resources :topics, only: [:new, :create]
+    end
     resources :sections
     resources :topics do
       resources :replies

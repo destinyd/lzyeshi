@@ -16,6 +16,8 @@ class Topic
 
   # 回复过的人的 ids 列表
   field :follower_ids, :type => Array, :default => []
+  field :visits, :type => Integer, default: 0
+  field :last_reply_user_name, type: String
 
   belongs_to :user, :inverse_of => :topics, counter_cache: true
   #counter_cache :name => :user, :inverse_of => :topics
@@ -78,9 +80,10 @@ class Topic
     # replied_at 用于最新回复的排序，如果贴着创建时间在一个月以前，就不再往前面顶了
     self.last_active_mark = Time.now.to_i if self.created_at > 1.month.ago
     self.replied_at = Time.now
-    self.last_reply_id = reply.id 
-    self.last_reply_user_id = reply.user_id
-    self.last_reply_user_login = reply.user.try(:login) || nil
+    self.last_reply = reply 
+    self.last_reply_user = reply.user
+    self.last_reply_user_name = reply.user.try(:name) || nil
+    debugger
     self.save
   end
 
