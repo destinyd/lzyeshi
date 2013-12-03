@@ -1,5 +1,5 @@
 <% @commodity.build_picture if @commodity.picture.blank? %>
-<%= simple_form_for([@group,@commodity]) do |f| %>
+<%= simple_form_for([@group,@commodity], wrapper: :bootstrap_horizontal) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">

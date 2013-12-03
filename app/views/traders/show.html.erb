@@ -1,40 +1,38 @@
 <h1><%= title @trader.name %></h1>
 
 <%= render_cell :trader,:nav, parent: @trader, c: controller_name, a: action_name %>
-<div class="row-fluid">
-  <div class="span3 bs-docs-sidebar">
-    <ul class="nav nav-list bs-docs-sidenav">
-      <% @trader.groups.available.each do |group| %>
-        <li><a href="#<%= group.id %>"><i class="icon-chevron-right"></i> <%= group.name %></a></li>
-      <% end -%>
-    </ul>
-  </div>
-  <div class="span9">
+<div class="col-md-3 col-lg-3 bs-docs-sidebar">
+  <ul class="nav nav-list bs-docs-sidenav">
     <% @trader.groups.available.each do |group| %>
-      <% if group.commodities.any? %>
-        <section id="<%= group.id %>" class="group section">
-          <div class="page-header">
-            <h1><%= link_to group.name, group, target: '_blank' %></h1>
-          </div>
-          <ul class="thumbs inline">
-            <% group.commodities.limit(13).each do |commodity| %>
-              <li class="pull-left li-commodity">
-                <%= link_to commodity, target: '_blank' do %>
-                  <%= image_tag commodity.picture.image.thumb %>
-                <% end -%>
-              </li>
-            <% end -%>
-            <% if group.commodities.count > 13 %>
-              <li class="pull-left li-commodity">
-                <%= link_to group, target: '_blank' do %>
-                  <%= image_tag 'view_more.jpg' %>
-                <% end -%>
-              </li>
-            <% end %>
-          </ul>
-          <div class="clearfix"></div>
-        </section>
-      <% end -%>
+      <li><a href="#<%= group.id %>"><i class="icon-chevron-right"></i> <%= group.name %></a></li>
     <% end -%>
-  </div>
+  </ul>
+</div>
+<div class="col-md-9 col-lg-9 bs-docs-sidebar">
+  <% @trader.groups.available.each do |group| %>
+    <% if group.commodities.any? %>
+      <section id="<%= group.id %>" class="group section">
+        <div class="page-header">
+          <h1><%= link_to group.name, group, target: '_blank' %></h1>
+        </div>
+        <ul class="thumbs list-inline">
+          <% group.commodities.limit(13).each do |commodity| %>
+            <li class="pull-left li-commodity">
+              <%= link_to commodity, target: '_blank' do %>
+                <%= image_tag commodity.picture.image.thumb %>
+              <% end -%>
+            </li>
+          <% end -%>
+          <% if group.commodities.count > 13 %>
+            <li class="pull-left li-commodity">
+              <%= link_to group, target: '_blank' do %>
+                <%= image_tag 'view_more.jpg' %>
+              <% end -%>
+            </li>
+          <% end %>
+        </ul>
+        <div class="clearfix"></div>
+      </section>
+    <% end -%>
+  <% end -%>
 </div>

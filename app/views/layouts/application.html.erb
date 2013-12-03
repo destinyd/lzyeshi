@@ -1,11 +1,11 @@
 <%= render "layouts/before" %>
   <%= render "layouts/before_content" %>
 
-  <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8">
+  <div class="col-md-8 col-lg-8">
     <%= yield %>
   </div>
 
-  <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
+  <div class="col-md-4 col-lg-4">
     <%= yield(:sidebar) %>
     <%= render 'layouts/ad_sidebar_first' %>
     <%= render_cell :sidebars, :recent_commodities %>

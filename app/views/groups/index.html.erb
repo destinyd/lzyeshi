@@ -8,7 +8,7 @@
       <div class="title">
         <h3><%= link_to group, group, target: '_blank', title: group %></h3>
       </div>
-      <ul class="thumbs inline">
+      <ul class="thumbs list-inline">
         <% group.commodities.limit(13).each do |commodity| %>
           <li class="pull-left li-commodity">
             <%= link_to commodity, target: '_blank', title: commodity do %>

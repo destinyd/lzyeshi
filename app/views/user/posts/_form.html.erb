@@ -1,5 +1,5 @@
 <% @post.build_picture if @post.picture.blank? %>
-<%= simple_form_for(@post) do |f| %>
+<%= simple_form_for(@post, wrapper: :bootstrap_horizontal) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">

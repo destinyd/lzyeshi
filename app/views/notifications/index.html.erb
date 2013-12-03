@@ -7,18 +7,16 @@
     <%= link_to '已读',read_notifications_path %>
   </li>
 </ul>
-<div class="row-fluid" id="notifications">
-  <div class="span11">
+<div id="notifications">
+  <div class="col-md-11 col-lg-11">
     <% @notifications.each do |notification| %>
-      <div class="row-fluid" id="<%= notification.id%>">
-        <div class="span10">
-          <%= render_cell :notification,notification.type_name, notification: notification %>
-        </div>
-        <div class="span1">
-          <%= link_to t('labels.ignore'), notification_path(notification), method: :delete,remote:true,class:'btn btn-info' %>
-        </div>
-        <div class="divider" style="margin-left: 20px">
-        </div>
+      <div class="col-md-10 col-lg-10">
+        <%= render_cell :notification,notification.type_name, notification: notification %>
+      </div>
+      <div class="col-md-1 col-lg-1">
+        <%= link_to t('labels.ignore'), notification_path(notification), method: :delete,remote:true,class:'btn btn-info' %>
+      </div>
+      <div class="divider" style="margin-left: 20px">
       </div>
     <% end %>
   </div>
