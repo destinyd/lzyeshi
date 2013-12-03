@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
       if resource.trader
         dashboard_url(subdomain: ENV['TRADER_SUBDOMAIN'])
       else
-        new_trader_url(subdomain: ENV['TRADER_SUBDOMAIN'])
+        root_url(subdomain: ENV['SUBDOMAIN'])
       end
       #subdomain_root_path
     else
