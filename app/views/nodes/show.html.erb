@@ -1,25 +1,16 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @node.name %>
-</p>
-
-<p>
-  <b>Summary:</b>
-  <%= @node.summary %>
-</p>
-
-<p>
-  <b>Sort:</b>
-  <%= @node.sort %>
-</p>
-
-<p>
-  <b>Section:</b>
-  <%= @node.section %>
-</p>
-
-
-<%= link_to 'Edit', edit_node_path(@node) %> |
-<%= link_to 'Back', nodes_path %>
+<div class="panel panel-default"id="node_<%= @node.id %>">
+  <div class="panel-heading">
+    <h1 class="panel-title topic-title">
+      <%= title @node.name %>
+    </h1>
+    <div class="meta">
+      <%= @node.summary.html_safe %>
+    </div>
+  </div>
+  <div class="panel-body p0 topics">
+    <%= render @topics %>
+  </div>
+  <div class="panel-footer">
+    <%= render "nodes/new_and_page", params: {pages: @topics, node: @node} %>
+  </div>
+</div>

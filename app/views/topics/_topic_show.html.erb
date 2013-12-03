@@ -1,0 +1,22 @@
+<div class="panel panel-default" id="<%= @topic.id %>">
+  <div class="panel-heading">
+    <h1 class="panel-title topic-title word-ba"><%= @topic.title %></h1>
+    <div class="meta">
+      <%= link_to @topic.node.name, @topic.node %>
+      •
+      <%= @topic.user %>
+      •
+      于<%= @topic.created_at %>发布
+      •
+      最后由<%= @topic.last_reply_user %>回复
+      •
+      <%= @topic.visits %>次阅读
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="topic-body">
+      <%= @topic.body.html_safe %>
+    </div>
+  </div>
+</div>
+

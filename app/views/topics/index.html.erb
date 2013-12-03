@@ -1,31 +1,22 @@
-<h1>Listing topics</h1>
+<div class="pull-right">
+  <%= paginate @topics %>
+</div>
+<div class="clearfix"></div>
+<% @topics.each do |reply| %>
+  <div class="tiezi">
+    <table class="table">
+      <tr>
+        <td>
+          <div class="tiezi-user">
+            <%= link_to reply.user, reply.user %>
+          </div>
+        </td>
+        <td>
+          <div class="tiezi-body">
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Body</th>
-    <th>Replied at</th>
-    <th>Excellent</th>
-    <th>Last active mark</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @topics.each do |topic| %>
-  <tr>
-    <td><%= topic.title %></td>
-    <td><%= topic.body %></td>
-    <td><%= topic.replied_at %></td>
-    <td><%= topic.excellent %></td>
-    <td><%= topic.last_active_mark %></td>
-    <td><%= link_to 'Show', topic %></td>
-    <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
-    <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Topic', new_topic_path %>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+<% end -%>
