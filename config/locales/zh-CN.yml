@@ -358,6 +358,9 @@ zh-CN:
     mp_users: 微信绑定
     posts: 夜市秀
     articles: 文章
+    sections: 论坛
+    nodes: 论坛
+    topics: 贴子
   action:
     prices:
       new: 记账

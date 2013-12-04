@@ -8,7 +8,11 @@
     </div>
   </div>
   <div class="panel-body p0 topics">
-    <%= render @topics %>
+    <% if @topics.any? %>
+      <%= render @topics %>
+    <% else %>
+      <p> 暂无帖子，还不赶快抢沙发？ </p>
+    <% end %>
   </div>
   <div class="panel-footer">
     <%= render "nodes/new_and_page", params: {pages: @topics, node: @node} %>

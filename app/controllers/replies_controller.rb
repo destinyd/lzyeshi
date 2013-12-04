@@ -1,17 +1,10 @@
 class RepliesController < InheritedResources::Base
+  actions :show, :create, :edit, :update, :destroy
   before_filter :authenticate_user!
+  before_filter :authenticate_admin!, only: [:edit, :update, :destroy]
   def create
-    create! do |success, failure|
-      success.html{
-        @reply.user = current_user
-        @reply.save
-        redirect_to @topic
-      }
-    end
-  end
-
-  protected
-  def begin_of_association_chain
-    current_user
+    @reply = current_user.replies.new(params[:reply])
+    @reply.topic_id = params[:topic_id]
+    create!{ topic_path(@reply.topic)}
   end
 end

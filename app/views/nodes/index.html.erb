@@ -1,29 +1,17 @@
-<h1>Listing nodes</h1>
+<%= link_to "新建", new_node_path, class: 'btn btn-primary' %>
+<% @nodes.group_by(&:section).each do |section,nodes| %>
+  <div class="">
+    <h3><%= section.name %></h3>
+    <% nodes.each do |node| %>
+      <div class="">
+        <%= link_to node.name, node %>,
+        <%= link_to '修改', edit_node_path(node) %>
+        <%= link_to '删除', node, method: :delete, data: { confirm: '确定？' } %>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Summary</th>
-    <th>Sort</th>
-    <th>Section</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+      </div>
+    <% end -%>
 
-<% @nodes.each do |node| %>
-  <tr>
-    <td><%= node.name %></td>
-    <td><%= node.summary %></td>
-    <td><%= node.sort %></td>
-    <td><%= node.section %></td>
-    <td><%= link_to 'Show', node %></td>
-    <td><%= link_to 'Edit', edit_node_path(node) %></td>
-    <td><%= link_to 'Destroy', node, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+  </div>
+<% end -%>
 
-<br />
-
-<%= link_to 'New Node', new_node_path %>
+<%= link_to "新建", new_node_path, class: 'btn btn-primary' %>

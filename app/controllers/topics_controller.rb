@@ -1,5 +1,7 @@
 class TopicsController < InheritedResources::Base
-  before_filter :authenticate_user!, only: [:create, :update, :destroy]
+  before_filter :authenticate_user!, only: [:new, :create]
+  before_filter :authenticate_admin!, only: [:edit, :update, :destroy]
+  belongs_to :node, optional: true
 
   def create
     @topic = current_user.topics.new(params[:topic])

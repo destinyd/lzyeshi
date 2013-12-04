@@ -83,7 +83,6 @@ class Topic
     self.last_reply = reply 
     self.last_reply_user = reply.user
     self.last_reply_user_name = reply.user.try(:name) || nil
-    debugger
     self.save
   end
 
