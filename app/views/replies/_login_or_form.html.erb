@@ -1,0 +1,12 @@
+<div class="panel panel-default" id="<%= @topic.id %>" id="replies">
+  <div class="panel-heading">
+    <h3 class="panel-title">回贴</h3>
+  </div>
+  <div class="panel-body">
+    <% if current_user %>
+      <%= render "replies/form", from: from %>
+    <% else %>
+      <%= render "application/login" %>
+    <% end %>
+  </div>
+</div>
