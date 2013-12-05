@@ -40,6 +40,21 @@ SitemapGenerator::Sitemap.create do
     add tag_articles_path(c), :priority => 0.6
   end
 
+  Topic.all.each do |c|
+    add topic_path(c), lastmod: (c.updated_at || c.created_at), :priority => 0.9
+  end
+
+  Node.all.each do |c|
+    add node_path(c), lastmod: (c.updated_at || c.created_at), :priority => 0.8
+  end
+
+  Section.all.each do |c|
+    add section_path(c), lastmod: (c.updated_at || c.created_at), :priority => 0.7
+  end
+
+  add sections_path, :changefreq => 'daily', :priority => 0.6
+
+
   # Put links creation logic here.
   #
   # The root path '/' and sitemap index file are added automatically for you.
