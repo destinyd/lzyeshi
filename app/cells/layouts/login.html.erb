@@ -1,18 +1,14 @@
 <% if @user %>
-  <li>
+  <p class="navbar-text navbar-right">
     <%= link_to @user, user_home_url(subdomain: ENV['USER_SUBDOMAIN']) %>
-  </li>
-  <li>
-    <%= link_to @user.got_chat_messages.nav.count, got_chat_messages_url(subdomain: ENV['USER_SUBDOMAIN']), title:'未读消息', id: 'unread_messages_count' %>
-  </li>
-  <li>
+    <% if @user.got_chat_messages.nav.any? %>
+      (<%= link_to @user.got_chat_messages.nav.count, got_chat_messages_url(subdomain: ENV['USER_SUBDOMAIN']), title:'未读消息', id: 'unread_messages_count' %>)
+    <% end -%>
     <%= link_to '退出', destroy_user_session_url(subdomain: ENV['USER_SUBDOMAIN']), :method=>'delete' %>
-  </li>
-  <% if @user.has_role?(:trader) and request.subdomains.first != "trader" %>
-    <li>
-      <%= link_to '切换到商家中心', trader_home_url(subdomain: ENV['TRADER_SUBDOMAIN']) %>
-    </li>
-  <% end %>
+    <% if @user.has_role?(:trader) and request.subdomains.first != "trader" %>
+      <b><%= link_to '切换到商家中心', trader_home_url(subdomain: ENV['TRADER_SUBDOMAIN']) %></b>
+    <% end %>
+  </p>
 <% else %>
   <li class="dropdown">
     <%= link_to new_user_session_url(subdomain: ENV['USER_SUBDOMAIN']), class: 'dropdown-toggle', :'data-toggle' => 'dropdown' do %>
