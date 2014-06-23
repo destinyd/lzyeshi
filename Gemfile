@@ -1,7 +1,7 @@
 require 'rbconfig'
 HOST_OS = RbConfig::CONFIG['host_os']
 source 'http://ruby.taobao.org'
-gem 'rails', '3.2.13'
+gem 'rails', '3.2.17'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -41,7 +41,7 @@ gem 'mongoid_taggable_on'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'mini_magick', '>= 3.4'
 gem 'rack-raw-upload', '>= 1.1.0'
-gem 'debugger', git: 'git://github.com/cldwalker/debugger.git', :group => :development
+#gem 'debugger', git: 'git://github.com/cldwalker/debugger.git', :group => :development
 gem 'meta-tags', :require => 'meta_tags',git: 'git://github.com/destinyd/meta-tags.git'
 gem "symbolize", :require => "symbolize/mongoid"
 gem 'doorkeeper'
