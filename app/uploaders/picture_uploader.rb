@@ -46,7 +46,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   end
 
   version :pin do
-    process :resize_to_limit => [236, 999999999]
+    process :resize_to_limit => [200, 999999999]
   end
 
 
